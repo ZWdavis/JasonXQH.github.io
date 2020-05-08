@@ -86,19 +86,21 @@
 
 
 
-<meta name="description" content="141环形链表写在前面 因为原稿在操作时不慎丢失，所以忍痛再写！肯定不会比之前详细了 下面是题目  下面是题目给出的代码1234567891011121314&#x2F;** * Definition for singly-linked list. * struct ListNode &amp;#123; *     int val; *     ListNode *next; *     ListNode(int">
+<meta name="description" content="141环形链表写在前面 因为原稿在操作时不慎丢失，所以忍痛再写！肯定不会比之前详细了 下面是题目 下面是题目给出的代码1234567891011121314&#x2F;** * Definition for singly-linked list. * struct ListNode &amp;#123; *     int val; *     ListNode *next; *     ListNode(int">
 <meta property="og:type" content="article">
 <meta property="og:title" content="141环形链表">
 <meta property="og:url" content="http://yoursite.com/2020/04/20/141%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/index.html">
 <meta property="og:site_name" content="Jason">
-<meta property="og:description" content="141环形链表写在前面 因为原稿在操作时不慎丢失，所以忍痛再写！肯定不会比之前详细了 下面是题目  下面是题目给出的代码1234567891011121314&#x2F;** * Definition for singly-linked list. * struct ListNode &amp;#123; *     int val; *     ListNode *next; *     ListNode(int">
+<meta property="og:description" content="141环形链表写在前面 因为原稿在操作时不慎丢失，所以忍痛再写！肯定不会比之前详细了 下面是题目 下面是题目给出的代码1234567891011121314&#x2F;** * Definition for singly-linked list. * struct ListNode &amp;#123; *     int val; *     ListNode *next; *     ListNode(int">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/2020/04/20/141%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/1.png">
 <meta property="article:published_time" content="2020-04-20T09:01:44.000Z">
-<meta property="article:modified_time" content="2020-04-22T05:00:01.429Z">
+<meta property="article:modified_time" content="2020-05-08T09:54:12.748Z">
 <meta property="article:author" content="徐啟航">
 <meta property="article:tag" content="leetcode_Link">
 <meta property="article:tag" content="medium">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/04/20/141%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/1.png">
 
 
 
@@ -395,8 +397,7 @@
       
         <h1 id="141环形链表"><a href="#141环形链表" class="headerlink" title="141环形链表"></a>141环形链表</h1><p><strong>写在前面</strong></p>
 <p>因为原稿在操作时不慎丢失，所以忍痛再写！肯定不会比之前详细了</p>
-<h2 id="下面是题目"><a href="#下面是题目" class="headerlink" title="下面是题目"></a>下面是题目</h2>
-
+<h2 id="下面是题目"><a href="#下面是题目" class="headerlink" title="下面是题目"></a>下面是题目</h2><p><img src="/2020/04/20/141%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/1.png" alt></p>
 <h3 id="下面是题目给出的代码"><a href="#下面是题目给出的代码" class="headerlink" title="下面是题目给出的代码"></a>下面是题目给出的代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">hasCycle</span><span class="params">(ListNode *head)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">    &#125;    </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <h4 id="下面是题解"><a href="#下面是题解" class="headerlink" title="下面是题解"></a>下面是题解</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">hasCycle</span><span class="params">(ListNode *head)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        ListNode *cur1 &#123;head&#125; ;<span class="comment">//cur1 是快指针</span></span><br><span class="line">        ListNode *cur2 &#123;head&#125;;<span class="comment">//cur2 是慢指针</span></span><br><span class="line">        <span class="keyword">if</span>(head||head-&gt;next)<span class="comment">//如果头节点就是空，那就直接输出false</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">while</span>(cur1 &amp;&amp;cur2 )</span><br><span class="line">         <span class="comment">// 当当前的快指针和快指针指向的空间不为空，那么就可以进行一种“追赶操作“，此外，在同一链表中使用快慢指针，可以确定链表的中心所在节点</span></span><br><span class="line">         <span class="comment">//这里需要注意，只能是先cur1！=NULL再写cur1-&gt;next!=NULL，这是有顺序的，反过来会报错！</span></span><br><span class="line">        &#123;</span><br><span class="line">            </span><br><span class="line">            cur1 = cur1-&gt;next;<span class="comment">//每次执行，快指针指向后面第二个空间</span></span><br><span class="line">            cur2 = cur2-&gt;next;<span class="comment">//慢指针指向后面第一个空间</span></span><br><span class="line">            <span class="comment">//如果这是一个循环链表，那么cur1，cur2一直处于一个循环的状态</span></span><br><span class="line">            <span class="comment">//而因为cur1跑得比cur2快，所以最终会追上cur2</span></span><br><span class="line">            <span class="comment">//所以当他们重合时，就是我们要证明的——是循环链表。</span></span><br><span class="line">            <span class="keyword">if</span>(cur1)</span><br><span class="line">            &#123;</span><br><span class="line">                cur1 = cur1-&gt;next;</span><br><span class="line">            &#125;<span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (cur1 ==cur2)</span><br><span class="line">                 <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//如果到最后cur1指向的区域为NULL，那么很遗憾吗，跳出了循环，直接输出false</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;    </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -540,7 +541,7 @@
               
                 <a href="/archives%7C%7C%20archive">
               
-                  <span class="site-state-item-count">138</span>
+                  <span class="site-state-item-count">137</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

@@ -86,43 +86,43 @@
 
 
 
-<meta name="description" content="高等数学多元微积分总结（偏）导数，连续函数，全微分之间的关系  证明函数的连续证明： $f(x)在x_0处有定义$ 极限$\lim\limits_{x\rightarrow x_0}f(x)$存在 $\lim\limits_{x\rightarrow x_0}f(x)&#x3D;f(x_0)$  三个条件都满足的时候，说明函数连续 偏导数连续是什么意思？ 先用定义求出该点的偏导数值c,再用求导公式求出不在该">
+<meta name="description" content="高等数学多元微积分总结（偏）导数，连续函数，全微分之间的关系 证明函数的连续证明： $f(x)在x_0处有定义$ 极限$\lim\limits_{x\rightarrow x_0}f(x)$存在 $\lim\limits_{x\rightarrow x_0}f(x)&#x3D;f(x_0)$  三个条件都满足的时候，说明函数连续 偏导数连续是什么意思？ 先用定义求出该点的偏导数值c,再用求导公式求出不在该点">
 <meta property="og:type" content="article">
 <meta property="og:title" content="高等数学多元微积分总结">
 <meta property="og:url" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="Jason">
-<meta property="og:description" content="高等数学多元微积分总结（偏）导数，连续函数，全微分之间的关系  证明函数的连续证明： $f(x)在x_0处有定义$ 极限$\lim\limits_{x\rightarrow x_0}f(x)$存在 $\lim\limits_{x\rightarrow x_0}f(x)&#x3D;f(x_0)$  三个条件都满足的时候，说明函数连续 偏导数连续是什么意思？ 先用定义求出该点的偏导数值c,再用求导公式求出不在该">
+<meta property="og:description" content="高等数学多元微积分总结（偏）导数，连续函数，全微分之间的关系 证明函数的连续证明： $f(x)在x_0处有定义$ 极限$\lim\limits_{x\rightarrow x_0}f(x)$存在 $\lim\limits_{x\rightarrow x_0}f(x)&#x3D;f(x_0)$  三个条件都满足的时候，说明函数连续 偏导数连续是什么意思？ 先用定义求出该点的偏导数值c,再用求导公式求出不在该点">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/1.png">
-<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/2.png">
-<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/3.png">
-<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/4.png">
-<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/5.png">
-<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/9.png">
-<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/10.png">
-<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/6.png">
-<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/7.png">
-<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/8.png">
-<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/11.png">
-<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/12.png">
-<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/23.png">
-<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/24.png">
-<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/14.png">
-<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/18.png">
-<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/17.png">
-<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/21.png">
-<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/26.png">
-<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/28.png">
-<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/27.png">
-<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/29.png">
-<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/31.png">
-<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/30.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/1.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/2.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/3.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/4.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/5.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/9.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/10.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/6.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/7.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/8.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/11.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/12.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/23.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/24.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/14.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/18.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/17.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/21.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/26.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/28.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/27.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/29.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/31.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/30.png">
 <meta property="article:published_time" content="2020-05-05T01:45:03.000Z">
-<meta property="article:modified_time" content="2020-05-05T13:23:24.783Z">
+<meta property="article:modified_time" content="2020-05-08T09:17:54.314Z">
 <meta property="article:author" content="徐啟航">
 <meta property="article:tag" content="高数">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/1.png">
+<meta name="twitter:image" content="http://yoursite.com/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/1.png">
 
 
 
@@ -417,8 +417,7 @@
       
 
       
-        <h1 id="高等数学多元微积分总结"><a href="#高等数学多元微积分总结" class="headerlink" title="高等数学多元微积分总结"></a>高等数学多元微积分总结</h1><h3 id="（偏）导数，连续函数，全微分之间的关系"><a href="#（偏）导数，连续函数，全微分之间的关系" class="headerlink" title="（偏）导数，连续函数，全微分之间的关系"></a>（偏）导数，连续函数，全微分之间的关系</h3><img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/1.png" class>
-
+        <h1 id="高等数学多元微积分总结"><a href="#高等数学多元微积分总结" class="headerlink" title="高等数学多元微积分总结"></a>高等数学多元微积分总结</h1><h3 id="（偏）导数，连续函数，全微分之间的关系"><a href="#（偏）导数，连续函数，全微分之间的关系" class="headerlink" title="（偏）导数，连续函数，全微分之间的关系"></a>（偏）导数，连续函数，全微分之间的关系</h3><p><img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/1.png" alt="示例"></p>
 <h4 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h4><h5 id="函数的连续证明："><a href="#函数的连续证明：" class="headerlink" title="函数的连续证明："></a>函数的连续证明：</h5><ol>
 <li>$f(x)在x_0处有定义$</li>
 <li>极限$\lim\limits_{x\rightarrow x_0}f(x)$存在</li>
@@ -453,7 +452,7 @@
 <p>求偏导结束的时候，我们还可以自己做一遍检查，主要检查有没有一次导函数，两次导函数($f_{11},f_{22},f_{12}$)等等，$f_{12}$前后保持一致，所以是双倍。</p>
 <ul>
 <li>多元复合函数常常会考一些证明题</li>
-<li><img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/2.png" class></li>
+<li><img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/2.png" alt="示例"></li>
 <li>证明题不难，只要把能化开的全部展开，再合并同类项就行，但是要细，要慢</li>
 </ul>
 <h3 id="隐函数求导"><a href="#隐函数求导" class="headerlink" title="隐函数求导"></a>隐函数求导</h3><h4 id="当目标函数为F-x-y-z-0时"><a href="#当目标函数为F-x-y-z-0时" class="headerlink" title="当目标函数为F(x,y,z)=0时"></a>当目标函数为F(x,y,z)=0时</h4><h5 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h5><p>$\frac{∂y}{∂x}=−\frac{F_x}{F_y}$</p>
@@ -470,8 +469,7 @@
 <ul>
 <li>注意，在求隐函数二阶偏导的时候，比较复杂。下面是一个例子</li>
 </ul>
-<img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/3.png" class>
-
+<p><img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/3.png" alt="示例"></p>
 <p>我们看到在虽然表面上没有x，但是z包含了x，所以对z求导以后还要乘上偏导$\frac{dz}{dx}$并展开</p>
 <h4 id="当目标函数为方程组，但不是隐函数时"><a href="#当目标函数为方程组，但不是隐函数时" class="headerlink" title="当目标函数为方程组，但不是隐函数时"></a>当目标函数为方程组，但不是隐函数时</h4><ul>
 <li>利用线性代数中的克莱默法则求解</li>
@@ -480,12 +478,11 @@
 <li>一次求出D1，D2…D1行列式就是x1的系数替换成右边的常数，以此类推</li>
 <li>最后 $x_1=\frac{D1}{D},x_2=\frac{D2}{D}…..$</li>
 </ul>
-<img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/4.png" class>
-
+<p><img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/4.png" alt="示例"></p>
 <p>我们可以拿第一个方程组为例</p>
 <ol>
 <li>因为要求$\frac{dy}{dx},\frac{dz}{dx}$所以我们知道要两边关于x求导才能出这两个未知数</li>
-<li>然后整理过后得到了<img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/5.png" class></li>
+<li>然后整理过后得到了<img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/5.png" alt="示例"></li>
 <li>求出它的系数行列式，也就是$$\begin{bmatrix} 2y&amp;-1 \ 2y&amp;3z \end{bmatrix}$$</li>
 <li>依次求出D1,D2，对应$\frac{dy}{dx},\frac{dz}{dx}$</li>
 <li>D1= $$\begin{bmatrix} -2x&amp;-1 \ -x&amp;3z \end{bmatrix}$$ D2 = $$\begin{bmatrix} 2y&amp;-2x \ 2y&amp;-x \end{bmatrix}$$</li>
@@ -499,40 +496,36 @@
 </li>
 <li><p>利用雅可比行列式，本质上还是克莱默行列式的变形</p>
 <ul>
-<li>首先求出行列式  J  <img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/9.png" class></li>
+<li>首先求出行列式  J  <img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/9.png" alt="示例"></li>
 <li>其次开始替换，要求$\frac{du}{dx}$ 那么把u的位置替换成x求行列式的值，要求$\frac{du}{dy}$ 那么就把u的位置换成y，然后乘以 -1 / J</li>
-<li>如图 <img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/10.png" class></li>
+<li>如图 <img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/10.png" alt="示例"></li>
 <li>此外，对于$\frac{dv}{dx},\frac{dv}{dy}$也是一样的道理</li>
 <li>所以为了方便起见，我们需要先对方程组$$ D:\left{ \begin{aligned} F(x,y,u,v)=0 \G(x,y,u,v)=0 \end{aligned} \right. $$ 做一个拆分，分别求出$F_x,F_y,F_u,F_v,G_x,G_y,G_u,G_v$排列整齐就可以一目了然</li>
 </ul>
 </li>
 </ul>
-<img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/6.png" class>
-
+<p><img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/6.png" alt="示例"></p>
 <p>拿第一个方程组举例</p>
 <ol>
 <li>此方程组可以确定两个二元隐函数 u= u( x , y );v=v( x , y )</li>
 <li>要求$\frac{du}{dx},\frac{dv}{dx}$ 所以我们先要对两端关于x求偏导数</li>
-<li>整理得到<img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/7.png" class></li>
+<li>整理得到<img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/7.png" alt="示例"></li>
 <li>解除D,D1,D2 那么就解出了最后的答案</li>
 </ol>
 <p>拿第二个方程组举例</p>
 <ol>
 <li>当然，这一题也可以向上面那样，两边先对x求导，根据D，D1，D2求解，但是比较繁琐。所以这里用雅可比行列式</li>
-<li>首先把它们列成$$ D:\left{ \begin{aligned} F(x,y,u,v)=0 \G(x,y,u,v)=0 \end{aligned} \right. $$的形式<img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/8.png" class></li>
-<li>然后，我们要求出<img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/11.png" class> </li>
-<li>最后根据题目需求，求出J和一堆行列式<img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/12.png" class> </li>
+<li>首先把它们列成$$ D:\left{ \begin{aligned} F(x,y,u,v)=0 \G(x,y,u,v)=0 \end{aligned} \right. $$的形式<img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/8.png" alt="示例"></li>
+<li>然后，我们要求出<img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/11.png" alt="示例"></li>
+<li>最后根据题目需求，求出J和一堆行列式<img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/12.png" alt="示例"></li>
 </ol>
-<h3 id="多元函数的几何应用"><a href="#多元函数的几何应用" class="headerlink" title="多元函数的几何应用"></a>多元函数的几何应用</h3><h4 id="一元向量值函数及其导数"><a href="#一元向量值函数及其导数" class="headerlink" title="一元向量值函数及其导数"></a>一元向量值函数及其导数</h4><img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/23.png" class>
-
-<img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/24.png" class>
-
+<h3 id="多元函数的几何应用"><a href="#多元函数的几何应用" class="headerlink" title="多元函数的几何应用"></a>多元函数的几何应用</h3><h4 id="一元向量值函数及其导数"><a href="#一元向量值函数及其导数" class="headerlink" title="一元向量值函数及其导数"></a>一元向量值函数及其导数</h4><p><img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/23.png" alt="示例"></p>
+<p><img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/24.png" alt="示例"></p>
 <h4 id="空间间曲线的切线与法平面"><a href="#空间间曲线的切线与法平面" class="headerlink" title="空间间曲线的切线与法平面"></a>空间间曲线的切线与法平面</h4><h5 id="当曲线为向量形式-Gamma-x-varphi-t-y-psi-t-z-omega-t-t-in-a-b-的时候"><a href="#当曲线为向量形式-Gamma-x-varphi-t-y-psi-t-z-omega-t-t-in-a-b-的时候" class="headerlink" title="当曲线为向量形式$\Gamma: x = \varphi(t) ,y = \psi(t),z=\omega(t),t\in [a,b]$的时候"></a>当曲线为向量形式$\Gamma: x = \varphi(t) ,y = \psi(t),z=\omega(t),t\in [a,b]$的时候</h5><p>根据一元向量值函数的结论，我们知道切向量就是在该点的导数</p>
 <p>$\vec{f^{‘}(t)} = (\varphi^{‘}(t),\psi^{‘}(t),\omega^{‘}(t))$</p>
 <p>又因为法平面的法向量和该点的切向量平行，那么我们就知道了两者形态是一样的</p>
 <p>利用点向量式建立切线方程，利用点法式建立曲线的法平面方程如下</p>
-<img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/14.png" class>
-
+<p><img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/14.png" alt="示例"></p>
 <p>*<em>那么如果是光滑曲线 *</em>$\Gamma: y = \psi(x),z=\omega(x)$呢？</p>
 <p>我们把曲线看成 $\Gamma:x=x,y = \psi(x),z=\omega(x)$</p>
 <p>然后按照上面的方法可得</p>
@@ -541,18 +534,16 @@
 <p>$\vec{T} = (1,\frac{dy}{dx}|_M,\frac{dz}{dx}|_M)$ </p>
 <h5 id="当曲线为一般形式的时候-Gamma-left-begin-aligned-F-x-y-z-0-G-x-y-z-0-end-aligned-right-的时候"><a href="#当曲线为一般形式的时候-Gamma-left-begin-aligned-F-x-y-z-0-G-x-y-z-0-end-aligned-right-的时候" class="headerlink" title="当曲线为一般形式的时候$$ \Gamma:\left{ \begin{aligned} F(x,y,z)=0 \G(x,y,z)=0 \end{aligned} \right. $$的时候"></a>当曲线为一般形式的时候$$ \Gamma:\left{ \begin{aligned} F(x,y,z)=0 \G(x,y,z)=0 \end{aligned} \right. $$的时候</h5><p>在点$M(x_0,y_0,z_0)$处的切向量为，记住后面那个</p>
 <p> $\vec T= J(1,\frac{1}{J}\frac{∂(F,G)}{∂(z,x)}∣_M,\frac{1}{J}\frac{∂(F,G)}{∂(x,y)}∣_M)=(\frac{∂(F,G)}{∂(y,z)}|_M,\frac{∂(F,G)}{∂(z,x)}∣_M,\frac{∂(F,G)}{∂(x,y)}|_M)$</p>
-<p>这是记忆方法，如果求x处的坐标，那么就转两位 <img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/18.png" class></p>
+<p>这是记忆方法，如果求x处的坐标，那么就转两位 <img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/18.png" alt="示例"></p>
 <p>所以根据切向量，可以得到斜线方程和法平面方程</p>
-<img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/17.png" class>
-
+<p><img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/17.png" alt="示例"></p>
 <p><strong>两者可以用全微分的方法来做，也可以得到切向量</strong></p>
 <p>具体的做法，和隐函数求导一样，两边对x求导，然后根据D，D1，D2解出$\frac{dy}{dx},\frac{dz}{dx}$ 切向量$\vec{T} = (1,\frac{dy}{dx}|_M,\frac{dz}{dx}|_M)$ </p>
 <h4 id="曲面的切平面与法线"><a href="#曲面的切平面与法线" class="headerlink" title="曲面的切平面与法线"></a>曲面的切平面与法线</h4><p>曲面$\Sigma$在点M在的法向量，就是法线的线向量和切平面的法向量</p>
 <p>求x处法向量，就是曲面$\Sigma$对x的偏导，以此类推</p>
 <p>$\vec n = (F_x(x_0,y_0,z_0),F_y(x_0,y_0,z_0),F_z(x_0,y_0,z_0))$</p>
 <p>于是可以求出法线方程和切平面方程</p>
-<img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/21.png" class>
-
+<p><img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/21.png" alt="示例"></p>
 <h4 id="几何问题中的几类题"><a href="#几何问题中的几类题" class="headerlink" title="几何问题中的几类题"></a>几何问题中的几类题</h4><ul>
 <li>归根到底就是1.找出法向量 2.找向量之间的关系</li>
 </ul>
@@ -630,8 +621,7 @@
 </ul>
 </li>
 </ul>
-<h4 id="梯度"><a href="#梯度" class="headerlink" title="梯度"></a>梯度</h4><img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/26.png" class>
-
+<h4 id="梯度"><a href="#梯度" class="headerlink" title="梯度"></a>梯度</h4><p><img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/26.png" alt="示例"></p>
 <p>那么，向量$\vec G$被称为函数 f(P)在P处的梯度，记作grad f(P)  </p>
 <p>$gradf(P) = \nabla f(P) = (f_x(P),f_y(P),f_z(P))$</p>
 <p>当函数为二元函数f(x,y)在 P（x,y) 处的梯度</p>
@@ -643,10 +633,8 @@
 </ol>
 <h5 id="关系"><a href="#关系" class="headerlink" title="关系"></a>关系</h5><p>所以，函数的方向导数为梯度在该方向上的投影：</p>
 <p>$\frac{∂f}{∂l} = grad f\cdot\vec {e_l}$</p>
-<img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/28.png" class>
-
-<h5 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h5><img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/27.png" class>
-
+<p><img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/28.png" alt="示例"></p>
+<h5 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h5><p><img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/27.png" alt="示例"></p>
 <h5 id="题形-1"><a href="#题形-1" class="headerlink" title="题形"></a>题形</h5><ul>
 <li>给你一个函数，要你求出在某点沿增加最快方向的方向导数<ul>
 <li>最快方向就是该点的梯度向量</li>
@@ -672,8 +660,7 @@
 <h5 id="题型"><a href="#题型" class="headerlink" title="题型"></a>题型</h5><ul>
 <li>这类考察基本概念和定义</li>
 </ul>
-<img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/29.png" class>
-
+<p><img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/29.png" alt="示例"></p>
 <ul>
 <li>求函数 f(x,y)的极值<ul>
 <li>先求出驻点</li>
@@ -692,15 +679,14 @@
 <li>解决一元函数 $z = f(x,\psi(x))$的无条件极值问题</li>
 </ul>
 <h5 id="方法2-拉格朗日乘数法"><a href="#方法2-拉格朗日乘数法" class="headerlink" title="方法2 : 拉格朗日乘数法"></a>方法2 : 拉格朗日乘数法</h5><p>在条件$\varphi(x,y) = 0$下，求出z = f(x,y)的极值 </p>
-<img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/31.png" class>
-
+<p><img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/31.png" alt="示例"></p>
 <p>所以极值点必然满足$$ D:\left{ \begin{aligned} f_x+\lambda\varphi_x=0 \f_y+\lambda\varphi_y=0 \\varphi (x,y)= 0 \end{aligned} \right. $$</p>
 <p>引入辅助函数 $F = f(x,y)+\lambda\varphi(x,y)$</p>
 <p>那么极值点满足 $$ \left{ \begin{aligned} F_x = f_x+\lambda\varphi_x=0 \ F_y=f_y+\lambda\varphi_y=0 \F_\lambda=\varphi (x,y)= 0 \end{aligned} \right. $$</p>
 <p>可以看见下面的关系式就是上面的关系式，于是，辅助函数F的极值点就是 z = f(x,y)的极值点，辅助函数被称为拉格朗日函数。</p>
 <p>然后。根据这几个方程找出可疑的极值点，再加以验证</p>
 <ul>
-<li>推广：<img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/30.png" class></li>
+<li>推广：<img src="/2020/05/05/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86%E6%80%BB%E7%BB%93/30.png" alt="示例"></li>
 </ul>
 
       
@@ -839,7 +825,7 @@
               
                 <a href="/archives%7C%7C%20archive">
               
-                  <span class="site-state-item-count">138</span>
+                  <span class="site-state-item-count">137</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
