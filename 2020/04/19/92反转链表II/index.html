@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>92反转链表 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="92. 反转链表 II下面是题目 下面是题目给出的代码模板1234567891011121314&#x2F;** * Definition for singly-linked list. * struct ListNode &amp;#123; *     int val; *     ListNode *next; *     ListNode(int x) : val(x), next(NULL) &amp;#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="92反转链表">
+<meta property="og:url" content="http://yoursite.com/2020/04/19/92%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8II/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="92. 反转链表 II下面是题目 下面是题目给出的代码模板1234567891011121314&#x2F;** * Definition for singly-linked list. * struct ListNode &amp;#123; *     int val; *     ListNode *next; *     ListNode(int x) : val(x), next(NULL) &amp;#123;">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="d:%5Cprojects%5CLeetcode%5C%E9%93%BE%E8%A1%A8%5C%E4%B8%AD%E7%AD%89%E9%9A%BE%E5%BA%A6%5C92.png">
+<meta property="article:published_time" content="2020-04-19T04:08:36.000Z">
+<meta property="article:modified_time" content="2020-04-22T04:59:50.283Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="leetcode_Link">
+<meta property="article:tag" content="medium">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="d:%5Cprojects%5CLeetcode%5C%E9%93%BE%E8%A1%A8%5C%E4%B8%AD%E7%AD%89%E9%9A%BE%E5%BA%A6%5C92.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-92反转链表II" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/19/92%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8II/" class="article-date">
+  <time datetime="2020-04-19T04:08:36.000Z" itemprop="datePublished">2020-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      92反转链表
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="92-反转链表-II"><a href="#92-反转链表-II" class="headerlink" title="92. 反转链表 II"></a>92. 反转链表 II</h1><h2 id="下面是题目"><a href="#下面是题目" class="headerlink" title="下面是题目"></a>下面是题目</h2><p><img src="D:%5Cprojects%5CLeetcode%5C%E9%93%BE%E8%A1%A8%5C%E4%B8%AD%E7%AD%89%E9%9A%BE%E5%BA%A6%5C92.png" alt="92"></p>
+<h3 id="下面是题目给出的代码模板"><a href="#下面是题目给出的代码模板" class="headerlink" title="下面是题目给出的代码模板"></a>下面是题目给出的代码模板</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">reverseBetween</span><span class="params">(ListNode* head, <span class="keyword">int</span> m, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="我的解法，和重排列表有相似之处，-1切断，2反转，3合并"><a href="#我的解法，和重排列表有相似之处，-1切断，2反转，3合并" class="headerlink" title="我的解法，和重排列表有相似之处， 1切断，2反转，3合并"></a>我的解法，和重排列表有相似之处， 1切断，2反转，3合并</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//拿 1 2 3 4 5 6 ； m = 2 ，n = 5来讲解</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">reverseList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//递归，首先要给出返回条件</span></span><br><span class="line">        <span class="keyword">if</span> (head == <span class="literal">NULL</span> || head-&gt;next == <span class="literal">NULL</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> head;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//先建立ret节点 ，实现从第二个结点开始的 递归操作</span></span><br><span class="line">        ListNode* ret = reverseList(head-&gt;next);</span><br><span class="line">        <span class="comment">//进行反转操作，用head的next指向head本身，实现闭环</span></span><br><span class="line">        head-&gt;next-&gt;next = head;</span><br><span class="line">        <span class="comment">// 最后</span></span><br><span class="line">        head-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">   	</span><br><span class="line">    <span class="function">ListNode* <span class="title">reverseBetween</span><span class="params">(ListNode* head, <span class="keyword">int</span> m, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">       <span class="comment">//首先，把干扰全部去除，特殊条件有不少，当m==n说明不用反转</span></span><br><span class="line">        <span class="comment">//当只有一个节点，说明不用反转</span></span><br><span class="line">        <span class="comment">//当head为空，返回空</span></span><br><span class="line">        <span class="keyword">if</span>(m==n||!head-&gt;next)<span class="keyword">return</span> head;</span><br><span class="line">        <span class="keyword">if</span>(!head ) <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//然后利用双指针，精确的截取需要反转的链表，然后实现主、子脱钩</span></span><br><span class="line">        <span class="comment">//在脱钩之前，再用两个temp指针，分别指向快慢指针的下一个指针，这样让后续的再合并提供方便！</span></span><br><span class="line">        <span class="comment">//这里有个小细节，我先让快指针走，走n格，然后fast-&gt;next = NULL</span></span><br><span class="line">        <span class="comment">//然后让慢指针走，否则，一旦slow-&gt;next = NULL,快指针就不知道跑到那里去了</span></span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>,j = <span class="number">0</span>;</span><br><span class="line">        ListNode *dummy = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        dummy-&gt;next =head;</span><br><span class="line">        ListNode *slow = dummy,*fast = dummy;</span><br><span class="line">        <span class="keyword">while</span>( j&lt;n )</span><br><span class="line">        &#123;</span><br><span class="line">            fast= fast-&gt;next;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//现在fast移动到了5处</span></span><br><span class="line">        ListNode *temp2= fast-&gt;next;<span class="comment">//temp2 为6节点</span></span><br><span class="line">        <span class="comment">//实现快节点脱钩，现在，temp2和它之后的链表成为了一个新链表</span></span><br><span class="line">        fast-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">        /------------------------------------------------/</span><br><span class="line">        <span class="keyword">while</span>(i &lt;m<span class="number">-1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            i++;</span><br><span class="line">            slow = slow-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//现在slow指向2的前面一个节点，也就是1节点</span></span><br><span class="line">        ListNode *temp1 = slow-&gt;next;<span class="comment">//temp1 为2</span></span><br><span class="line">        slow-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="comment">//实现慢节点脱钩，现在，2-3-4-5 是一个新的链表了，我们现在就是要把三个再组合</span></span><br><span class="line">        <span class="comment">//先让fast == temp1 也是为了方便，因为反转链表之后，temp1的位置就是原来fast的位置，也就是5，所以等于是交换fast和temp1的值</span></span><br><span class="line">        fast = temp1;<span class="comment">//现在fast 和 temp 都为2</span></span><br><span class="line">        temp1 = reverseList(temp1);<span class="comment">//反转链表之后，temp1 变成了5</span></span><br><span class="line">        <span class="comment">//现在只要做简单的拼接就可以了</span></span><br><span class="line">		<span class="comment">//slow(1)指向temp1（5）</span></span><br><span class="line">        slow-&gt;next = temp1;</span><br><span class="line">        <span class="comment">//fast(2)指向temp（2）</span></span><br><span class="line">        fast-&gt;next =temp2;</span><br><span class="line">        <span class="keyword">return</span> dummy-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/19/92%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8II/" data-id="ck9xp0mzs003basnsc0998ubi" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-Link/" rel="tag">leetcode_Link</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/medium/" rel="tag">medium</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/04/19/82%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A02/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          82删除排序链表中的重复元素2
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/04/19/61%E6%97%8B%E8%BD%AC%E9%93%BE%E8%A1%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">61旋转链表</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DP/" rel="tag">DP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-structure/" rel="tag">Data_structure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rank/" rel="tag">Rank</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regular-Expression/" rel="tag">Regular Expression</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/STL/" rel="tag">STL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bfs/" rel="tag">bfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/coffee/" rel="tag">coffee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cour-de-francais-accelere/" rel="tag">cour de francais accelere</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/crawler/" rel="tag">crawler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/" rel="tag">dfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/discrete-mathematics/" rel="tag">discrete mathematics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/easy/" rel="tag">easy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/francais/" rel="tag">francais</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hard/" rel="tag">hard</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-Link/" rel="tag">leetcode_Link</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-Queue/" rel="tag">leetcode_Queue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-Stack/" rel="tag">leetcode_Stack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab/" rel="tag">matlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/medium/" rel="tag">medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/traduction/" rel="tag">traduction</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AB%98%E6%95%B0/" rel="tag">高数</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 16.15px;">C++</a> <a href="/tags/DP/" style="font-size: 10.77px;">DP</a> <a href="/tags/Data-structure/" style="font-size: 13.85px;">Data_structure</a> <a href="/tags/JavaScript/" style="font-size: 15.38px;">JavaScript</a> <a href="/tags/Rank/" style="font-size: 13.08px;">Rank</a> <a href="/tags/Regular-Expression/" style="font-size: 10px;">Regular Expression</a> <a href="/tags/STL/" style="font-size: 14.62px;">STL</a> <a href="/tags/bfs/" style="font-size: 10.77px;">bfs</a> <a href="/tags/coffee/" style="font-size: 13.85px;">coffee</a> <a href="/tags/cour-de-francais-accelere/" style="font-size: 18.46px;">cour de francais accelere</a> <a href="/tags/crawler/" style="font-size: 14.62px;">crawler</a> <a href="/tags/dfs/" style="font-size: 10px;">dfs</a> <a href="/tags/discrete-mathematics/" style="font-size: 12.31px;">discrete mathematics</a> <a href="/tags/easy/" style="font-size: 16.15px;">easy</a> <a href="/tags/francais/" style="font-size: 19.23px;">francais</a> <a href="/tags/hard/" style="font-size: 10px;">hard</a> <a href="/tags/leetcode/" style="font-size: 10px;">leetcode</a> <a href="/tags/leetcode-Link/" style="font-size: 17.69px;">leetcode_Link</a> <a href="/tags/leetcode-Queue/" style="font-size: 13.85px;">leetcode_Queue</a> <a href="/tags/leetcode-Stack/" style="font-size: 16.92px;">leetcode_Stack</a> <a href="/tags/matlab/" style="font-size: 10px;">matlab</a> <a href="/tags/medium/" style="font-size: 20px;">medium</a> <a href="/tags/python/" style="font-size: 11.54px;">python</a> <a href="/tags/traduction/" style="font-size: 10px;">traduction</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 13.08px;">小技巧</a> <a href="/tags/%E9%AB%98%E6%95%B0/" style="font-size: 11.54px;">高数</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/05/07/pyspider%E6%A1%86%E6%9E%B6/">pyspider框架</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/07/%E5%A0%86%E6%8E%92%E5%BA%8F/">堆排序</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/07/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/">选择排序</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/07/%E5%AF%B9%E5%BC%A7%E9%95%BF%E7%9A%84%E6%9B%B2%E7%BA%BF%E7%A7%AF%E5%88%86/">对弧长的曲线积分</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/06/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/">归并排序</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

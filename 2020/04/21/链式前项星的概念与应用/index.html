@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>链式前项星的概念与应用 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="链式前向星           链式前向星在存储图时十分有用，特别是当边有权值时。我们用过一道题目了来具体分析一下    链式前向星只是一种应用，是一种小技巧。所以我们先要构造一个链式前向星来存储数据。 123456789101112131415161718192021222324252627282930313233343536373839404142int n,m,cnt;&#x2F;&#x2F;全局变量默认为0i">
+<meta property="og:type" content="article">
+<meta property="og:title" content="链式前项星的概念与应用">
+<meta property="og:url" content="http://yoursite.com/2020/04/21/%E9%93%BE%E5%BC%8F%E5%89%8D%E9%A1%B9%E6%98%9F%E7%9A%84%E6%A6%82%E5%BF%B5%E4%B8%8E%E5%BA%94%E7%94%A8/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="链式前向星           链式前向星在存储图时十分有用，特别是当边有权值时。我们用过一道题目了来具体分析一下    链式前向星只是一种应用，是一种小技巧。所以我们先要构造一个链式前向星来存储数据。 123456789101112131415161718192021222324252627282930313233343536373839404142int n,m,cnt;&#x2F;&#x2F;全局变量默认为0i">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-04-21T04:37:54.000Z">
+<meta property="article:modified_time" content="2020-05-07T09:44:59.580Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="小技巧">
+<meta property="article:tag" content="bfs">
+<meta property="article:tag" content="Data_structure">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-链式前项星的概念与应用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/21/%E9%93%BE%E5%BC%8F%E5%89%8D%E9%A1%B9%E6%98%9F%E7%9A%84%E6%A6%82%E5%BF%B5%E4%B8%8E%E5%BA%94%E7%94%A8/" class="article-date">
+  <time datetime="2020-04-21T04:37:54.000Z" itemprop="datePublished">2020-04-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      链式前项星的概念与应用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="链式前向星"><a href="#链式前向星" class="headerlink" title="链式前向星"></a>链式前向星</h1>
+
+
+
+
+
+
+
+
+
+<ul>
+<li>链式前向星在存储图时十分有用，特别是当边有权值时。我们用过一道题目了来具体分析一下</li>
+</ul>
+
+
+<p>链式前向星只是一种应用，是一种小技巧。所以我们先要构造一个链式前向星来存储数据。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n,m,cnt;<span class="comment">//全局变量默认为0</span></span><br><span class="line"><span class="keyword">int</span> head[N],dis[N];</span><br><span class="line"><span class="comment">//head数组就是存储头节点的数组，head[i]就是存储以i为起点的第一条边的下标</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="comment">//链式前向星的三个空间：to代表这条边连接的另一个方向（因为一个方向就是头节点）</span></span><br><span class="line">    <span class="comment">//c代表权值，在这里就是指颜色</span></span><br><span class="line">    <span class="comment">//next存储的是下一条边的编号，如果没有下一条了，那么就是-1</span></span><br><span class="line">    <span class="keyword">int</span> to,c,next;</span><br><span class="line">&#125;e[M];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> c)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//这个add函数就是实现头插</span></span><br><span class="line">    <span class="comment">//cnt代表边序号</span></span><br><span class="line">    e[++cnt].to = v;</span><br><span class="line">    e[cnt].c = c;</span><br><span class="line">    <span class="comment">//这一步，其实就是指向这个头结点指向的第一条边</span></span><br><span class="line">    e[cnt].next = head[u];</span><br><span class="line">    <span class="comment">//然后更新头结点的第一条边，让头结点的第一条边为这条边</span></span><br><span class="line">   <span class="comment">//cnt++就是这条边的序号</span></span><br><span class="line">    head[u] = cnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> u,v,c;</span><br><span class="line"><span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m)<span class="comment">//输入n也就是最后要达到的目标，m也就是下面数据的组数</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">memset</span>(head,<span class="number">0</span>, <span class="keyword">sizeof</span>(head));</span><br><span class="line">    cnt = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//这里，因为我们要存储的是无向图，所以对于每一组数据，都要存储两条边</span></span><br><span class="line">        <span class="comment">//一条从头指向尾，一条反指</span></span><br><span class="line">    	<span class="built_in">cin</span>&gt;&gt;u&gt;&gt;v&gt;&gt;c;</span><br><span class="line">        add(u,v,c);</span><br><span class="line">        add(v,u,c);</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">     bfs1();</span><br><span class="line">     <span class="built_in">cout</span>&lt;&lt;dis[<span class="number">1</span>]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">     bfs2();</span><br><span class="line">     <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>构建好，并存储好后，开始bfs</li>
+</ul>
+
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//关于为什么要逆向标高</span></span><br><span class="line"><span class="comment">//逆向标高是从目标反向遍历，比如我们要从1找到4，那么从4开始反向便利</span></span><br><span class="line"><span class="comment">//这样，4 的深度为0，1的深度为2，那么1-&gt;4 的深度是2</span></span><br><span class="line"><span class="comment">//因为要输出至少经过k条边，那么深度就是边的条数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bfs1</span><span class="params">()</span><span class="comment">//逆向标高</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> u,v;</span><br><span class="line">    <span class="comment">//首先把所有的节点的访问值标为0，在接下来的访问中，凡是访问到，标为1</span></span><br><span class="line">    <span class="built_in">memset</span>(vis,<span class="literal">false</span>, <span class="keyword">sizeof</span>(vis));</span><br><span class="line">    <span class="comment">//首先把目标的深度标为0</span></span><br><span class="line">    dis[n]=<span class="number">0</span>;</span><br><span class="line">    <span class="comment">//队列q1是保存节点号的</span></span><br><span class="line">    q1.push(n);</span><br><span class="line">    <span class="comment">//然后把n设为已经访问</span></span><br><span class="line">    vis[n]=<span class="literal">true</span>;</span><br><span class="line">    <span class="comment">//第一次深度搜索</span></span><br><span class="line">    <span class="keyword">while</span>(!q1.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//每次u设为队列的头节点，</span></span><br><span class="line">        u = q1.front();</span><br><span class="line">        q1.pop();</span><br><span class="line">        <span class="comment">//把u设为已经访问</span></span><br><span class="line">        vis[u]=<span class="literal">true</span>;</span><br><span class="line">        <span class="comment">//把头节点出队以后，将这个头结点所有的边连接着的节点入队</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i  = head[u];i;i=e[i].next)</span><br><span class="line">        <span class="comment">//因为存储的时候是从1开始的，所以结束条件是i！=0</span></span><br><span class="line">        &#123;            </span><br><span class="line">            v=e[i].to;</span><br><span class="line">            <span class="keyword">if</span>(vis[v])<span class="comment">//如果v已经被访问过了</span></span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            <span class="comment">//把下一个结点的深度标为出队节点+1</span></span><br><span class="line">            dis[v]=dis[u]+<span class="number">1</span>;</span><br><span class="line">            <span class="comment">//然后把新节点入队</span></span><br><span class="line">            q1.push(v);</span><br><span class="line">            <span class="comment">//把新节点标记为访问</span></span><br><span class="line">            vis[v]=<span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>反向遍历之后，我们需要从1开始正向遍历</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bfs2</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> u,v,minc,c;</span><br><span class="line">    <span class="keyword">bool</span> first = <span class="literal">true</span>;</span><br><span class="line">    <span class="comment">//刚才vis数组已经有改了，现在是正向遍历，所以要重置</span></span><br><span class="line">    <span class="built_in">memset</span>(vis,<span class="literal">false</span>,<span class="keyword">sizeof</span>(vis));</span><br><span class="line">    vis[<span class="number">1</span>] = <span class="literal">true</span>;</span><br><span class="line">    <span class="comment">//从1开始bfs，把1所有连接的节点，而且节点是满足”1的深度“-1的，入队</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = head[<span class="number">1</span>];i;i = e[i].next)</span><br><span class="line">        <span class="keyword">if</span>(dis[e[i].to]==dis[<span class="number">1</span>]<span class="number">-1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//这里，入队不仅仅是把节点号入队，也要把颜色入队</span></span><br><span class="line">            q1.push(e[i].to);</span><br><span class="line">            q2.push(e[i].c);</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">while</span>(!q1.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//把最小的颜色号初始化为最大值</span></span><br><span class="line">        minc = inf;</span><br><span class="line">        <span class="keyword">while</span>(!q1.empty())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//和bfs1一样，先出队，然后把符合条件的全部入队</span></span><br><span class="line">            <span class="comment">//q1，q2同时入队，同时出队，能保证他们之间是一一对应的</span></span><br><span class="line">            v= q1.front();</span><br><span class="line">            q1.pop();</span><br><span class="line">            c= q2.front();</span><br><span class="line">            q2.pop();</span><br><span class="line">            <span class="comment">//q3 用来保存色号最小的关联的临节点号</span></span><br><span class="line">            <span class="comment">//如果发现有比q3中存储的更小的色号，那么直接把q3清空</span></span><br><span class="line">            <span class="comment">//再把现有的色号存储进进q3</span></span><br><span class="line">            <span class="keyword">if</span>(c&lt;minc)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">while</span>(!q3.empty())</span><br><span class="line">                    q3.pop();</span><br><span class="line">                minc = c;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(c==minc)</span><br><span class="line">                q3.push(v);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(first)</span><br><span class="line">            first = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">        <span class="comment">//这样，每一次输出的都是当前深度下，最小的色号</span></span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;minc;</span><br><span class="line">        <span class="comment">//接下俩这一步就是通过当前q3中存储的这些节点出发，寻找下一层、</span></span><br><span class="line">        <span class="comment">//并且把下一层的节点和色号都入队</span></span><br><span class="line">        <span class="comment">//且能达到清空q3的作用，为下一次循环做准备</span></span><br><span class="line">        <span class="keyword">while</span>(!q3.empty())</span><br><span class="line">        &#123;</span><br><span class="line">            u = q3.front();</span><br><span class="line">            q3.pop();</span><br><span class="line">            <span class="keyword">if</span>(vis[u])</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            vis[u]=<span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = head[u];i;i = e[i].next)</span><br><span class="line">            &#123;</span><br><span class="line">                v=e[i].to;</span><br><span class="line">                <span class="keyword">if</span>(dis[v]==dis[u]<span class="number">-1</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    q1.push(v);</span><br><span class="line">                    q2.push(e[i].c);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/21/%E9%93%BE%E5%BC%8F%E5%89%8D%E9%A1%B9%E6%98%9F%E7%9A%84%E6%A6%82%E5%BF%B5%E4%B8%8E%E5%BA%94%E7%94%A8/" data-id="ck9xp0n1l008sasnsdwyz9fjx" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Data-structure/" rel="tag">Data_structure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bfs/" rel="tag">bfs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/04/21/Javascript-5%E8%AF%AD%E5%8F%A5/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Javascript-5语句
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/04/20/%E5%88%9D%E8%AF%86%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">初识正则表达式</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DP/" rel="tag">DP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-structure/" rel="tag">Data_structure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rank/" rel="tag">Rank</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regular-Expression/" rel="tag">Regular Expression</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/STL/" rel="tag">STL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bfs/" rel="tag">bfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/coffee/" rel="tag">coffee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cour-de-francais-accelere/" rel="tag">cour de francais accelere</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/crawler/" rel="tag">crawler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/" rel="tag">dfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/discrete-mathematics/" rel="tag">discrete mathematics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/easy/" rel="tag">easy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/francais/" rel="tag">francais</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hard/" rel="tag">hard</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-Link/" rel="tag">leetcode_Link</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-Queue/" rel="tag">leetcode_Queue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-Stack/" rel="tag">leetcode_Stack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab/" rel="tag">matlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/medium/" rel="tag">medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/traduction/" rel="tag">traduction</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AB%98%E6%95%B0/" rel="tag">高数</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 16.15px;">C++</a> <a href="/tags/DP/" style="font-size: 10.77px;">DP</a> <a href="/tags/Data-structure/" style="font-size: 13.85px;">Data_structure</a> <a href="/tags/JavaScript/" style="font-size: 15.38px;">JavaScript</a> <a href="/tags/Rank/" style="font-size: 13.08px;">Rank</a> <a href="/tags/Regular-Expression/" style="font-size: 10px;">Regular Expression</a> <a href="/tags/STL/" style="font-size: 14.62px;">STL</a> <a href="/tags/bfs/" style="font-size: 10.77px;">bfs</a> <a href="/tags/coffee/" style="font-size: 13.85px;">coffee</a> <a href="/tags/cour-de-francais-accelere/" style="font-size: 18.46px;">cour de francais accelere</a> <a href="/tags/crawler/" style="font-size: 14.62px;">crawler</a> <a href="/tags/dfs/" style="font-size: 10px;">dfs</a> <a href="/tags/discrete-mathematics/" style="font-size: 12.31px;">discrete mathematics</a> <a href="/tags/easy/" style="font-size: 16.15px;">easy</a> <a href="/tags/francais/" style="font-size: 19.23px;">francais</a> <a href="/tags/hard/" style="font-size: 10px;">hard</a> <a href="/tags/leetcode/" style="font-size: 10px;">leetcode</a> <a href="/tags/leetcode-Link/" style="font-size: 17.69px;">leetcode_Link</a> <a href="/tags/leetcode-Queue/" style="font-size: 13.85px;">leetcode_Queue</a> <a href="/tags/leetcode-Stack/" style="font-size: 16.92px;">leetcode_Stack</a> <a href="/tags/matlab/" style="font-size: 10px;">matlab</a> <a href="/tags/medium/" style="font-size: 20px;">medium</a> <a href="/tags/python/" style="font-size: 11.54px;">python</a> <a href="/tags/traduction/" style="font-size: 10px;">traduction</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 13.08px;">小技巧</a> <a href="/tags/%E9%AB%98%E6%95%B0/" style="font-size: 11.54px;">高数</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/05/07/pyspider%E6%A1%86%E6%9E%B6/">pyspider框架</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/07/%E5%A0%86%E6%8E%92%E5%BA%8F/">堆排序</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/07/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/">选择排序</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/07/%E5%AF%B9%E5%BC%A7%E9%95%BF%E7%9A%84%E6%9B%B2%E7%BA%BF%E7%A7%AF%E5%88%86/">对弧长的曲线积分</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/06/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/">归并排序</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

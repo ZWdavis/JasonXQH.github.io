@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>1047删除字符串中所有的相邻重复项 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1047删除字符串中所有的相邻重复项下面是题目  下面是题目给出的模板12345class Solution &amp;#123;public:    string removeDuplicates(string S) &amp;#123;    &amp;#125;&amp;#125;;  这里给出两个解法，第一种是我自己想出来的原始解法，第二种是高人做的112345678910111213141516171819202122">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1047删除字符串中所有的相邻重复项">
+<meta property="og:url" content="http://yoursite.com/2020/04/22/1047%E5%88%A0%E9%99%A4%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E6%89%80%E6%9C%89%E7%9A%84%E7%9B%B8%E9%82%BB%E9%87%8D%E5%A4%8D%E9%A1%B9/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1047删除字符串中所有的相邻重复项下面是题目  下面是题目给出的模板12345class Solution &amp;#123;public:    string removeDuplicates(string S) &amp;#123;    &amp;#125;&amp;#125;;  这里给出两个解法，第一种是我自己想出来的原始解法，第二种是高人做的112345678910111213141516171819202122">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-04-21T16:24:49.000Z">
+<meta property="article:modified_time" content="2020-04-22T04:57:23.966Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="easy">
+<meta property="article:tag" content="leetcode_Stack">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-1047删除字符串中所有的相邻重复项" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/22/1047%E5%88%A0%E9%99%A4%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E6%89%80%E6%9C%89%E7%9A%84%E7%9B%B8%E9%82%BB%E9%87%8D%E5%A4%8D%E9%A1%B9/" class="article-date">
+  <time datetime="2020-04-21T16:24:49.000Z" itemprop="datePublished">2020-04-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      1047删除字符串中所有的相邻重复项
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1047删除字符串中所有的相邻重复项"><a href="#1047删除字符串中所有的相邻重复项" class="headerlink" title="1047删除字符串中所有的相邻重复项"></a>1047删除字符串中所有的相邻重复项</h1><h2 id="下面是题目"><a href="#下面是题目" class="headerlink" title="下面是题目"></a>下面是题目</h2>
+
+<h3 id="下面是题目给出的模板"><a href="#下面是题目给出的模板" class="headerlink" title="下面是题目给出的模板"></a>下面是题目给出的模板</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">removeDuplicates</span><span class="params">(<span class="built_in">string</span> S)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="这里给出两个解法，第一种是我自己想出来的原始解法，第二种是高人做的"><a href="#这里给出两个解法，第一种是我自己想出来的原始解法，第二种是高人做的" class="headerlink" title="这里给出两个解法，第一种是我自己想出来的原始解法，第二种是高人做的"></a>这里给出两个解法，第一种是我自己想出来的原始解法，第二种是高人做的</h4><h4 id="1"><a href="#1" class="headerlink" title="1"></a>1</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">removeDuplicates</span><span class="params">(<span class="built_in">string</span> S)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">stack</span>&lt;<span class="keyword">char</span>&gt;s;</span><br><span class="line">        <span class="comment">//首先压栈，如果有元素和栈顶重复，那么需要pop</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">char</span> n:S)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(!s.empty()&amp;&amp;n==s.top())</span><br><span class="line">                s.pop();</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                s.push(n);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">string</span> ans;</span><br><span class="line">        <span class="comment">//把栈里面的元素赋值给字符串，使用头插法</span></span><br><span class="line">        <span class="comment">//直接赋值再使用reverse函数会导致超时</span></span><br><span class="line">        <span class="comment">//即使这样，运行时长也很多</span></span><br><span class="line">        <span class="keyword">while</span>(!s.empty())</span><br><span class="line">        &#123; </span><br><span class="line">            temp=ans;</span><br><span class="line">            ans=s.top();</span><br><span class="line">            ans+=temp;</span><br><span class="line">            s.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//短小且精悍</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">removeDuplicates</span><span class="params">(<span class="built_in">string</span> S)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> top = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//同样的是遍历S，不过他用在原字符串的基础上改，而不是另起炉灶</span></span><br><span class="line">        <span class="comment">//这个top可以看作是“新”字符串的长度</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">char</span> ch : S) &#123;</span><br><span class="line">            <span class="comment">//如果“新“字符串长度为0或者相邻数字是不重复的，那么将修改</span></span><br><span class="line">            <span class="keyword">if</span>(top == <span class="number">0</span> || S[top<span class="number">-1</span>] != ch) S[top++] = ch;</span><br><span class="line">            <span class="comment">//否则，如果相邻数字是重复的话，那么长度-1，下次修改string的时候</span></span><br><span class="line">            <span class="comment">//会直接覆盖掉原来重复的第一个数字！妙</span></span><br><span class="line">            <span class="keyword">else</span> top--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//最后，重新规定S的长度，让他等于新字符串的长度，鸠占鹊巢</span></span><br><span class="line">        S.resize(top);</span><br><span class="line">        <span class="keyword">return</span> S;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/22/1047%E5%88%A0%E9%99%A4%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E6%89%80%E6%9C%89%E7%9A%84%E7%9B%B8%E9%82%BB%E9%87%8D%E5%A4%8D%E9%A1%B9/" data-id="ck9xp0myl0007asns3kgwcmx3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/easy/" rel="tag">easy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-Stack/" rel="tag">leetcode_Stack</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/04/22/20%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          20有效的括号
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/04/22/844%E6%AF%94%E8%BE%83%E5%90%AB%E9%80%80%E6%A0%BC%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">844比较含退格的字符串</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DP/" rel="tag">DP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-structure/" rel="tag">Data_structure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rank/" rel="tag">Rank</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regular-Expression/" rel="tag">Regular Expression</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/STL/" rel="tag">STL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bfs/" rel="tag">bfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/coffee/" rel="tag">coffee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cour-de-francais-accelere/" rel="tag">cour de francais accelere</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/crawler/" rel="tag">crawler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/" rel="tag">dfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/discrete-mathematics/" rel="tag">discrete mathematics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/easy/" rel="tag">easy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/francais/" rel="tag">francais</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hard/" rel="tag">hard</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-Link/" rel="tag">leetcode_Link</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-Queue/" rel="tag">leetcode_Queue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-Stack/" rel="tag">leetcode_Stack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab/" rel="tag">matlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/medium/" rel="tag">medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/traduction/" rel="tag">traduction</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AB%98%E6%95%B0/" rel="tag">高数</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 16.15px;">C++</a> <a href="/tags/DP/" style="font-size: 10.77px;">DP</a> <a href="/tags/Data-structure/" style="font-size: 13.85px;">Data_structure</a> <a href="/tags/JavaScript/" style="font-size: 15.38px;">JavaScript</a> <a href="/tags/Rank/" style="font-size: 13.08px;">Rank</a> <a href="/tags/Regular-Expression/" style="font-size: 10px;">Regular Expression</a> <a href="/tags/STL/" style="font-size: 14.62px;">STL</a> <a href="/tags/bfs/" style="font-size: 10.77px;">bfs</a> <a href="/tags/coffee/" style="font-size: 13.85px;">coffee</a> <a href="/tags/cour-de-francais-accelere/" style="font-size: 18.46px;">cour de francais accelere</a> <a href="/tags/crawler/" style="font-size: 14.62px;">crawler</a> <a href="/tags/dfs/" style="font-size: 10px;">dfs</a> <a href="/tags/discrete-mathematics/" style="font-size: 12.31px;">discrete mathematics</a> <a href="/tags/easy/" style="font-size: 16.15px;">easy</a> <a href="/tags/francais/" style="font-size: 19.23px;">francais</a> <a href="/tags/hard/" style="font-size: 10px;">hard</a> <a href="/tags/leetcode/" style="font-size: 10px;">leetcode</a> <a href="/tags/leetcode-Link/" style="font-size: 17.69px;">leetcode_Link</a> <a href="/tags/leetcode-Queue/" style="font-size: 13.85px;">leetcode_Queue</a> <a href="/tags/leetcode-Stack/" style="font-size: 16.92px;">leetcode_Stack</a> <a href="/tags/matlab/" style="font-size: 10px;">matlab</a> <a href="/tags/medium/" style="font-size: 20px;">medium</a> <a href="/tags/python/" style="font-size: 11.54px;">python</a> <a href="/tags/traduction/" style="font-size: 10px;">traduction</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 13.08px;">小技巧</a> <a href="/tags/%E9%AB%98%E6%95%B0/" style="font-size: 11.54px;">高数</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/05/07/pyspider%E6%A1%86%E6%9E%B6/">pyspider框架</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/07/%E5%A0%86%E6%8E%92%E5%BA%8F/">堆排序</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/07/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/">选择排序</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/07/%E5%AF%B9%E5%BC%A7%E9%95%BF%E7%9A%84%E6%9B%B2%E7%BA%BF%E7%A7%AF%E5%88%86/">对弧长的曲线积分</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/06/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/">归并排序</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

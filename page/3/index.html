@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/page/3/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-JavaScript-9类和模块" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/28/JavaScript-9%E7%B1%BB%E5%92%8C%E6%A8%A1%E5%9D%97/" class="article-date">
+  <time datetime="2020-04-28T09:26:12.000Z" itemprop="datePublished">2020-04-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/28/JavaScript-9%E7%B1%BB%E5%92%8C%E6%A8%A1%E5%9D%97/">JavaScript-9类和模块</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="JavaScript-9类和模块"><a href="#JavaScript-9类和模块" class="headerlink" title="JavaScript-9类和模块"></a>JavaScript-9类和模块</h1><h2 id="概况"><a href="#概况" class="headerlink" title="概况"></a>概况</h2><ul>
+<li>通过定义对象的类，让每个对象都共享某些属性</li>
+<li>类的属性，用以存放或定义状态，或行为</li>
+<li>9.4 类的一个重要特性是“动态可继承”</li>
+<li>9.5 检测对象的类的方式，“鸭式辩型”</li>
+<li>9.6 实现类的方法</li>
+<li>9.7 类的继承</li>
+<li>9.8 ECMAScript 2015 中的类</li>
+<li>模块</li>
+</ul>
+<h3 id="9-1类和原型"><a href="#9-1类和原型" class="headerlink" title="9.1类和原型"></a>9.1类和原型</h3><ul>
+<li>在JS中，类的所有实例对象都从同一个原型对象上继承属性。因此，原型对象是类的核心。通常，类的实例还需要进一步的初始化，通常通过定义一个函数来创建并初始化这个对象</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">range</span>(<span class="params">from,to</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> r = <span class="built_in">Object</span>.create(range.methods);</span><br><span class="line">    r.from = <span class="keyword">from</span>;</span><br><span class="line">    r.to = to;</span><br><span class="line">    <span class="keyword">return</span> r;</span><br><span class="line">&#125;</span><br><span class="line">range.methods = &#123;</span><br><span class="line">    <span class="comment">//在不在这个range当中</span></span><br><span class="line">    includes: <span class="function"><span class="keyword">function</span> (<span class="params">x</span>) </span>&#123; <span class="keyword">return</span> <span class="keyword">this</span>.from&lt;=x &amp;&amp;x&lt;=<span class="keyword">this</span>.to;&#125;,</span><br><span class="line"></span><br><span class="line">    foreach: <span class="function"><span class="keyword">function</span> (<span class="params">f</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> x = <span class="built_in">Math</span>.ceil(<span class="keyword">this</span>.from);x&lt;=<span class="keyword">this</span>.to;x++) f(x);&#125;,</span><br><span class="line">    <span class="comment">//range起点到终点</span></span><br><span class="line">    toString: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;<span class="keyword">return</span> <span class="string">"("</span>+ <span class="keyword">this</span>.from+<span class="string">"..."</span>+<span class="keyword">this</span>.to+<span class="string">")"</span>;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> r=range(<span class="number">1</span>,<span class="number">3</span>);</span><br><span class="line">r.includes(<span class="number">2</span>);      <span class="comment">//true</span></span><br><span class="line">r.foreach(<span class="built_in">console</span>.log);<span class="comment">//1,2</span></span><br><span class="line"><span class="built_in">console</span>.log(r);     <span class="comment">//from:1 to:3</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>工厂函数方法，没有定义构造函数。</li>
+<li>使用关键词new 来调用构造函数，使用new调用构造函数会自动创建一个新对象。因此构造函数本身只需要初始化这个新对象的状态即可</li>
+<li>调用构造函数的一个重要特征是，构造函数的protype属性被用作新对象的原型。这意味着通过同一个构造函数创建的所有对象都继承自一个相同的对象，因此他们都是同一个类的成员</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这是一个构造函数，用以初始化新创建的“范围对象</span></span><br><span class="line"><span class="comment">//注意，这里没有创造一个对象，而是初始化</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">Range</span>(<span class="params">from,to</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.from = <span class="keyword">from</span>;</span><br><span class="line">        <span class="keyword">this</span>.to = to;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//所有的范围对象都继承自这个对象</span></span><br><span class="line">    <span class="comment">//注意，属性的名字必须是prototype</span></span><br><span class="line">    Range.prototype = &#123;</span><br><span class="line">        <span class="comment">//在不在这个range当中</span></span><br><span class="line">        includes: <span class="function"><span class="keyword">function</span> (<span class="params">x</span>) </span>&#123; <span class="keyword">return</span> <span class="keyword">this</span>.from&lt;=x &amp;&amp;x&lt;=<span class="keyword">this</span>.to;&#125;,</span><br><span class="line"></span><br><span class="line">        foreach: <span class="function"><span class="keyword">function</span> (<span class="params">f</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">var</span> x = <span class="built_in">Math</span>.ceil(<span class="keyword">this</span>.from);x&lt;=<span class="keyword">this</span>.to;x++) f(x);&#125;,</span><br><span class="line">        <span class="comment">//range起点到终点</span></span><br><span class="line">        toString: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;<span class="keyword">return</span> <span class="string">"("</span>+ <span class="keyword">this</span>.from+<span class="string">"..."</span>+<span class="keyword">this</span>.to+<span class="string">")"</span>;&#125;</span><br><span class="line">    &#125;;</span><br><span class="line"><span class="comment">//这是后一定要+new 关键词，是从range里出来的一个实例</span></span><br><span class="line">    <span class="keyword">var</span> r =<span class="keyword">new</span> Range(<span class="number">1</span>,<span class="number">3</span>);</span><br><span class="line">    <span class="built_in">console</span>.log( r.includes(<span class="number">2</span>));</span><br><span class="line">    r.foreach(<span class="built_in">console</span>.log(r));</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>工厂函数range()转化为构造函数时被重命名为Range()</li>
+<li>Range()构造函数通过new 关键词调用，而range()工厂函数则不必使用new</li>
+<li>在第一段实例代码中的原型为range.methods,过于随意。在第二段示例代码中的原型时Range.prototype，这是一个强制的命名。对Range()构造函数的调用会自动使用</li>
+<li>Range.prototype作为新Range对象的原型</li>
+</ul>
+<h3 id="9-2类和构造函数"><a href="#9-2类和构造函数" class="headerlink" title="9.2类和构造函数"></a>9.2类和构造函数</h3><h4 id="构造函数和类的标识"><a href="#构造函数和类的标识" class="headerlink" title="构造函数和类的标识"></a>构造函数和类的标识</h4><ul>
+<li><p>原型对象时类的唯一标识：当且仅当两个对象继承自同一个原型对象时，他们才是属于同一类的额实例</p>
+</li>
+<li><p>构造函数时类的”外在表现，构造函数的名字通常用作类名</p>
+<ul>
+<li><p>使用instanceof运算符来检测对象是否属于某个类</p>
+</li>
+<li><pre><code class="javascript">r <span class="keyword">instanceof</span> Range     <span class="comment">//    如果r继承自Range.prototype 返回true</span>
+&lt;!--￼<span class="number">2</span>--&gt;</code></pre>
+</li>
+</ul>
+</li>
+<li><p>例子</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Range.prototype = &#123;</span><br><span class="line"><span class="comment">//原来创建的这个重写了prototype，所以没有constructor的值</span></span><br><span class="line">    <span class="keyword">constructor</span>：Range,//显示设置构造函数反向引用</span><br><span class="line">    includes: function (x) &#123; <span class="keyword">return</span> <span class="keyword">this</span>.from&lt;=x &amp;&amp;x&lt;=<span class="keyword">this</span>.to;&#125;,</span><br><span class="line">    foreach: <span class="function"><span class="keyword">function</span> (<span class="params">f</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> x = <span class="built_in">Math</span>.ceil(<span class="keyword">this</span>.from);x&lt;=<span class="keyword">this</span>.to;x++) f(x);&#125;,</span><br><span class="line">    toString: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;<span class="keyword">return</span> <span class="string">"("</span>+ <span class="keyword">this</span>.from+<span class="string">"..."</span>+<span class="keyword">this</span>.to+<span class="string">")"</span>;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>尽量不用constructor属性</li>
+</ul>
+<h3 id="9-3Javascript中Java-式的类继承"><a href="#9-3Javascript中Java-式的类继承" class="headerlink" title="9.3Javascript中Java 式的类继承"></a>9.3Javascript中Java 式的类继承</h3><ul>
+<li>用JavaScript模拟出Java中的四种类成员类</li>
+<li>四种类型成员<ul>
+<li>实例字段<ul>
+<li>他们是基于实例的属性或者变量，用以保存独立对象的状态</li>
+</ul>
+</li>
+<li>实例方法<ul>
+<li>他们是类的所有实例所共享的方法，由每个独立的实例调用</li>
+</ul>
+</li>
+<li>类字段<ul>
+<li>这些属性或者变量是属于类的，而不是属于类的某个实例的</li>
+</ul>
+</li>
+<li>类方法<ul>
+<li>这些方法是属于类的，而不是属于某个实例的</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Js和Java 的不同之处</li>
+<li>Js的函数时以值得形式出现的，方法和字段没有太大的区别，如果属性值时函数，那么这个属性就定义了一个方法，否则仅仅时一个普通的属性或者字段，js中由三种不同的对象，如下所示</li>
+<li>Javascript中类得三种不同的对象<ul>
+<li>构造函数对象<ul>
+<li>构造函数为JavaScript得类定义了名字。任何添加到这个构造函数对象中的属性都时类字段和类方法</li>
+</ul>
+</li>
+<li>原型对象<ul>
+<li>原型对象的属性被类得所有实例所继承’</li>
+</ul>
+</li>
+<li>实例对象<ul>
+<li>类的每个实例都是一个独立的对象，直接给这个实例定义的属性是不会为所有实例对象所共享的</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Javascript中定义类<ul>
+<li>第一步，先定义一个构造函数，并设置初始化新对象的实例属性</li>
+<li>第二部，给构造函数的prototype对象定义实例的方法</li>
+<li>第三步，给构造函数定义类字段和类属性<h5 id="Step1-先定义一个构造函数，并设置初始化新对象的实例属性"><a href="#Step1-先定义一个构造函数，并设置初始化新对象的实例属性" class="headerlink" title="Step1 先定义一个构造函数，并设置初始化新对象的实例属性"></a>Step1 先定义一个构造函数，并设置初始化新对象的实例属性</h5></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	这个构造函数为它所创建的每个实例定义了实例字段r和i</span></span><br><span class="line"><span class="comment">	这两个字段分别保存附属的实部和虚部</span></span><br><span class="line"><span class="comment">	它们是对象的状态</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Complex</span>(<span class="params">real,imaginary</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">isNaN</span>(real)||<span class="built_in">isNaN</span>(imaginary))</span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>();</span><br><span class="line">	<span class="keyword">this</span>.r = real;</span><br><span class="line">    <span class="keyword">this</span>.i = imaginary;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="Step-2给构造函数的prototype对象定义实例的方法"><a href="#Step-2给构造函数的prototype对象定义实例的方法" class="headerlink" title="Step 2给构造函数的prototype对象定义实例的方法"></a>Step 2给构造函数的prototype对象定义实例的方法</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//当前复数对象加上另外一个复数，并返回一个新的计算和值后的附属对象</span></span><br><span class="line">Complex.prototype.add = <span class="function"><span class="keyword">function</span>(<span class="params">that</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> Complex (<span class="keyword">this</span>.r+that.r,<span class="keyword">this</span>.i+that.i);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//负数的求负运算</span></span><br><span class="line">Complex.prototyle.neg = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> complex (-<span class="keyword">this</span>.r,-<span class="keyword">this</span>.i);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//将复数对象转换为一个字符串</span></span><br><span class="line">Complex.prototype.toString = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">"&#123;"</span>+<span class="keyword">this</span>.r +<span class="string">","</span>+<span class="keyword">this</span>.i+<span class="string">"&#125;"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="Step3-给构造函数定义类字段和类属性"><a href="#Step3-给构造函数定义类字段和类属性" class="headerlink" title="Step3 给构造函数定义类字段和类属性"></a>Step3 给构造函数定义类字段和类属性</h5>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> c = <span class="keyword">new</span> Complex(<span class="number">2</span>,<span class="number">3</span>);</span><br><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> Complex(c.i,c.r);</span><br><span class="line">c.add(d).toString();	<span class="comment">//"&#123;5,5&#125;"使用了实例的方法</span></span><br><span class="line"><span class="comment">//这个稍微复杂的表达式用到了类方法和类字段</span></span><br><span class="line"><span class="comment">//complex表示一个类，先&#123;2，3&#125;，再定义一个加上&#123;-2，-3&#125;</span></span><br><span class="line">Complex.prase(c.toString()),add(c.neg()).equals(Complex.ZERO)<span class="comment">//结果永远是0</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="9-4类的扩充"><a href="#9-4类的扩充" class="headerlink" title="9.4类的扩充"></a>9.4类的扩充</h3><ul>
+<li>具体可通过给原型对象添加新方法来扩充Javascript类</li>
+</ul>
+
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printf</span>(<span class="params"></span>)</span>&#123;<span class="keyword">return</span> <span class="built_in">console</span>.log(<span class="keyword">this</span>)&#125;;</span><br><span class="line">n=<span class="number">3</span>;</span><br><span class="line">n.times(printf,<span class="string">"hello world"</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="9-5类和类型"><a href="#9-5类和类型" class="headerlink" title="9.5类和类型"></a>9.5类和类型</h3><ul>
+<li>三种用以检测任意对象的类的技术<ul>
+<li>instanceof运算符</li>
+<li>constructor属性</li>
+<li>构造函数的名字</li>
+</ul>
+</li>
+<li>鸭式辩型<ul>
+<li>更关注对象可以完成什么工作（它包含什么方法）而不是对象属于哪个类</li>
+</ul>
+</li>
+</ul>
+<h5 id="instanceof运算符"><a href="#instanceof运算符" class="headerlink" title="instanceof运算符"></a>instanceof运算符</h5><ul>
+<li><p>左操作数是待检测类的对象，有操作时是定义类的构造函数</p>
+</li>
+<li><p>如果o继承自c.prototype 则表达式o instanceof c的值为true。这里的继承可以不是直接继承</p>
+</li>
+<li><p>构造函数是类的公共标识，但原型是唯一的标识</p>
+<ul>
+<li>尽管instanceof运算符的右操作数是构造函数，但计算过程实际上是检测了对象的继承关系，而不是检测创建对象的构造函数</li>
+</ul>
+</li>
+<li><p>检测对象的原型链上是否有存在某特定的原型对象，而不用构造函数做中介的方法：isPrototypeOf() </p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">range.methods.isPrototypeOf(r);<span class="comment">//range.method是原型对象</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>instanceOf()和isPrototypeOf()方法的缺点<ul>
+<li>无法通过对象获得类名，只能检测对象是否属于指定的类名</li>
+<li>客户端Javascript中，多窗口和多框架子页面的web应用中兼容性不佳，每个窗口和框架的子页面都具有单独的执行上下文，每个上下文都包含独有的全局变量和一组构造函数</li>
+</ul>
+</li>
+</ul>
+<h5 id="constructor-属性"><a href="#constructor-属性" class="headerlink" title="constructor 属性"></a>constructor 属性</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">typeAndValue</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x===<span class="literal">null</span>) <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">	<span class="keyword">switch</span>(x.constructor)&#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="built_in">Number</span>: <span class="keyword">return</span> <span class="string">"Number: "</span>+x;</span><br><span class="line">		cise <span class="built_in">String</span>: <span class="keyword">return</span> <span class="string">"String：'"</span>+x+<span class="string">"'"</span>;</span><br><span class="line">		......</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>不足之处<ul>
+<li>再多个执行上下文的场景中无法正常工作（比如再浏览器窗口的多个框架子页面中）</li>
+<li>并非所有的对象都包含constructor属性。我们常常会忽略原型上的constructor属性。比如本章前面的示例代码中所定义的两个类，它们的实例都没有constructor属性</li>
+</ul>
+</li>
+</ul>
+<h5 id="构造函数的名称"><a href="#构造函数的名称" class="headerlink" title="构造函数的名称"></a>构造函数的名称</h5><ul>
+<li><p>使用instanceof元素安抚和constructor属性检测对象所属的类的主要的问题：</p>
+<ul>
+<li>多个执行上下文中的函数看起来是一摸一样的，但是他们是相互独立的对象，因此彼此不相等</li>
+</ul>
+</li>
+<li><p>一种可能的解决方案，使用构造函数的名字而不是构造函数本身作为类标识符</p>
+<ul>
+<li>一些JS实现中，函数对象由非标准的属性name，用来标识函数的名称</li>
+<li>对没有name属性的Javascript实现，可将函数转换为字符串然后从中提取出函数名</li>
+</ul>
+</li>
+<li></li>
+<li>
+</li>
+<li><p>缺点： </p>
+<ul>
+<li>并不是所有的对象都具有constructor属性。此外并不是所有的函数都有名字。如果使用不带名字的函数定义表达式定义一个构造函数，getName(）方法则会返回空字符串：</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这个构造函数没有名字</span></span><br><span class="line"><span class="keyword">var</span> Complex = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>&#123;<span class="keyword">this</span>.r = x,<span class="keyword">this</span>.i = y;&#125;</span><br><span class="line"><span class="comment">//这个构造函数有名字</span></span><br><span class="line"><span class="keyword">var</span> Range = <span class="function"><span class="keyword">function</span> <span class="title">Range</span>(<span class="params">f,t</span>)</span>&#123;<span class="keyword">this</span>.from = f;<span class="keyword">this</span>.to = t;&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="鸭式辩型"><a href="#鸭式辩型" class="headerlink" title="鸭式辩型"></a>鸭式辩型</h4><ul>
+<li>不关注“对象的类是什么”关注“对象能做什么”<ul>
+<li>上文所描述的检测对象的类的各种技术多少都会有些问题，至少在客户端Javascript中式如此。解决办法就是规避掉这些问题：不要关注“对象的类是什么”，而是关注“对象能做什么”。因此提出鸭式辩型</li>
+</ul>
+</li>
+<li>像鸭子一样走路，有用并且嘎嘎叫的鸟就是鸭子<ul>
+<li>哪怕并不是从鸭子类的原型对象继承而来，但认为这个对象是鸭子</li>
+</ul>
+</li>
+</ul>
+
+
+<h3 id="9-6-JavaScript面向对象的技术（略去）"><a href="#9-6-JavaScript面向对象的技术（略去）" class="headerlink" title="9.6 JavaScript面向对象的技术（略去）"></a>9.6 JavaScript面向对象的技术（略去）</h3><h3 id="9-7子类"><a href="#9-7子类" class="headerlink" title="9.7子类"></a>9.7子类</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><ul>
+<li><p>在JavaScript中创建子类的关键之处在于，采用合适的方法对原型对象进行初始化</p>
+</li>
+<li><p>如果类B继承自类A,B.prototype 必须是 A.prototype的后嗣。B的实例继承自B.prototype，后者同样继承自A.prototype</p>
+</li>
+<li><p>例子</p>
+</li>
+</ul>
+<h5 id="step1-定义Teacher（）构造函数"><a href="#step1-定义Teacher（）构造函数" class="headerlink" title="step1 定义Teacher（）构造函数"></a>step1 定义Teacher（）构造函数</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//teacher类继承自Person类</span></span><br><span class="line"><span class="comment">//首先Person类定义如下</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">first,last,age,gender,interests</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = &#123;</span><br><span class="line">        first,</span><br><span class="line">        last</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">    <span class="keyword">this</span>.gender = gender;</span><br><span class="line">    <span class="keyword">this</span>.interests = interests;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//不要重新定义一边属性，否则就不是从Person（）中继承的</span></span><br><span class="line"><span class="comment">//会需要更多的代码</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Teacher</span>(<span class="params">first,last,age,gender,interests,subject</span>) </span>&#123;</span><br><span class="line">    Person.call(<span class="keyword">this</span>,first,last,age,gender,interests,subject);</span><br><span class="line">    <span class="keyword">this</span>.subject = subject;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="step-2-设置Teacher-的原型和构造器引用"><a href="#step-2-设置Teacher-的原型和构造器引用" class="headerlink" title="step 2 设置Teacher()的原型和构造器引用"></a>step 2 设置Teacher()的原型和构造器引用</h5><ul>
+<li>Teacher.prototype=Object.create(Person.prototype)</li>
+<li>create()在这个例子里，创建一个和Person.prototype 一样的新的原型属性值，这个属性指向一个包括属性和方法的对象，然后将它作为Teacher.prototype 的属性值，这意味着Teacher.prototype现在会继承Person.prototype的所有属性和方法</li>
+<li>现在Teacher()的prototype的constructor属性指向的是Person()，所以我们需要将其 正确设置</li>
+<li>Teacher.prototype.constructor = Teacher;</li>
+</ul>
+<h5 id="step3-尝试向Teacher-添加新的greeeting-函数"><a href="#step3-尝试向Teacher-添加新的greeeting-函数" class="headerlink" title="step3 尝试向Teacher()添加新的greeeting()函数"></a>step3 尝试向Teacher()添加新的greeeting()函数</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Teacher.prototype.greeting = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> prefix;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.gender===<span class="string">'male'</span>||<span class="keyword">this</span>.gender===<span class="string">'Male'</span>||<span class="keyword">this</span>.gender===<span class="string">'M'</span>||<span class="keyword">this</span>.gender===<span class="string">'m'</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        prefix = <span class="string">'Mr.'</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">this</span>.gender === <span class="string">'female'</span>||<span class="keyword">this</span>.gender ===<span class="string">'Female'</span>||<span class="keyword">this</span>.gender ===<span class="string">'f'</span>||<span class="keyword">this</span>.gender ===<span class="string">'F'</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        prefix = <span class="string">'Mrs.'</span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        prefix = <span class="string">'Mx.'</span></span><br><span class="line">    &#125;</span><br><span class="line">    alert(<span class="string">'Hello ,my name is '</span>+ prefix+<span class="string">''</span>+<span class="keyword">this</span>.name.last +<span class="string">',and I teache '</span>+ <span class="keyword">this</span>.subject+<span class="string">'.'</span>)</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h5 id="step4创建一个Teacher-的实例"><a href="#step4创建一个Teacher-的实例" class="headerlink" title="step4创建一个Teacher()的实例"></a>step4创建一个Teacher()的实例</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> teacher1 = <span class="keyword">new</span> Teacher(<span class="string">'Dave'</span>,<span class="string">'Griffiths'</span>,<span class="number">31</span>,<span class="string">'male'</span>,[<span class="string">'football'</span>,<span class="string">'cookery'</span>],<span class="string">'mathematics'</span>);</span><br><span class="line">teacher1.name,first;</span><br><span class="line">teacher1.interests[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">teacher1.subject;</span><br><span class="line">teacher1.greeting();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>前面两个进入到Person()的构造器，继承的属性和方法</li>
+<li>后面两个则是只有Teacher()的构造器才有的属性和方法</li>
+</ul>
+<h3 id="9-8-ES6中的类"><a href="#9-8-ES6中的类" class="headerlink" title="9.8 ES6中的类"></a>9.8 ES6中的类</h3><h4 id="定义类-类声明"><a href="#定义类-类声明" class="headerlink" title="定义类-类声明"></a>定义类-类声明</h4><ul>
+<li>使用戴悠class关键词的类名</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span></span>&#123;</span><br><span class="line">     <span class="keyword">constructor</span>(height,width) &#123;</span><br><span class="line">         <span class="keyword">this</span>.height = height;</span><br><span class="line">         <span class="keyword">this</span>.width = width;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>注意：函数声明和类声明之间的一个重要区别是函数声明会提升，但是类不会</li>
+</ul>
+<h4 id="定义类类表达式"><a href="#定义类类表达式" class="headerlink" title="定义类类表达式"></a>定义类类表达式</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//匿名类</span></span><br><span class="line">    <span class="keyword">let</span> Rectangle = <span class="class"><span class="keyword">class</span> </span>&#123;</span><br><span class="line">        <span class="keyword">constructor</span>(height,width) &#123;</span><br><span class="line">            <span class="keyword">this</span>.height = height;</span><br><span class="line">            <span class="keyword">this</span>.width = width;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="built_in">console</span>.log(Rectangle.name)</span><br><span class="line">    <span class="comment">//输出实例名字，因为类是匿名的</span></span><br><span class="line">    <span class="comment">//具名类</span></span><br><span class="line">    <span class="keyword">let</span> Rectangle = <span class="class"><span class="keyword">class</span> <span class="title">Rectangle2</span> </span>&#123;</span><br><span class="line">        <span class="keyword">constructor</span>(height,width) &#123;</span><br><span class="line">            <span class="keyword">this</span>.height = height;</span><br><span class="line">            <span class="keyword">this</span>.width = width;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="built_in">console</span>.log(Rectangle.name);</span><br><span class="line">    <span class="comment">//后面会把类具体的名字输出，不输出实例名</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="类体和方法定义"><a href="#类体和方法定义" class="headerlink" title="类体和方法定义"></a>类体和方法定义</h4><ul>
+<li>一个类 的类体式{}中的部分。这是定义类成员的位置，如方法或者构造函数</li>
+<li>严格模式<ul>
+<li>类声明和类表达式的主题都执行在严格模式下，比如，构造函数，静态方法，原型方法，getter和setter都在严格模式下执行</li>
+</ul>
+</li>
+<li>构造函数<ul>
+<li>一个类只能拥有一个名为constructor的特殊方法。这个constructor方法是一个特殊的方法，这个方法用于创建和初始化一个由 class 创建的对象。一个构造函数可以使super关键词来调用一个父类的构造函数‘</li>
+</ul>
+</li>
+</ul>
+<h5 id="原型方法"><a href="#原型方法" class="headerlink" title="原型方法"></a>原型方法</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span></span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(height,width) &#123;</span><br><span class="line">        <span class="keyword">this</span>.height = height;</span><br><span class="line">        <span class="keyword">this</span>.width = width;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">get</span> area()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.calcArea()</span><br><span class="line">    &#125;</span><br><span class="line">    calcArea()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.height*<span class="keyword">this</span>.width;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> square = <span class="keyword">new</span> Rectangle(<span class="number">10</span>,<span class="number">10</span>)</span><br><span class="line"><span class="built_in">console</span>.log(square.area)<span class="comment">//100</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span></span>&#123;</span><br><span class="line">       <span class="keyword">constructor</span>(x,y) &#123;</span><br><span class="line">           <span class="keyword">this</span>.x = x;</span><br><span class="line">           <span class="keyword">this</span>.y = y;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">static</span> distance (a,b)</span><br><span class="line">       &#123;</span><br><span class="line">           <span class="keyword">const</span> dx = a.x-b.x;</span><br><span class="line">           <span class="keyword">const</span> dy = a.y-b.y;</span><br><span class="line">           <span class="keyword">return</span> <span class="built_in">Math</span>.hypot(dx,dy);<span class="comment">//返回所有参数的平方和的平方根</span></span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">const</span> p1 = <span class="keyword">new</span> Point(<span class="number">5</span>,<span class="number">5</span>);<span class="comment">//两个实例</span></span><br><span class="line">   <span class="keyword">const</span> p2 = <span class="keyword">new</span> Point(<span class="number">10</span>,<span class="number">10</span>);</span><br><span class="line">   <span class="built_in">console</span>.log(Point.distance(p1,p2));</span><br><span class="line"><span class="comment">//静态方法直接写类名+方法，再传入参数</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="用原型和静态方法包装"><a href="#用原型和静态方法包装" class="headerlink" title="用原型和静态方法包装"></a>用原型和静态方法包装</h5><ul>
+<li><p>当一个对象调用静态或者原型方法时，如果该对象没有this值，那么this值再被调用的函数内部就是undefined，不会发生自动包装</p>
+</li>
+<li><pre><code class="javascript">  <span class="class"><span class="keyword">class</span> <span class="title">Animal</span></span>{
+      speak() {
+          <span class="keyword">return</span> <span class="keyword">this</span>;
+      }
+      <span class="keyword">static</span> eat(){
+<span class="comment">//这是对类来说的，不是对实例来说的，所以这样定义，this必为undefined</span>
+          <span class="keyword">return</span> <span class="keyword">this</span>;
+      }
+  }
+  <span class="keyword">let</span> obj = <span class="keyword">new</span> Animal();
+  obj.speak();<span class="comment">// 这是一个Animal实例，有this对象，返回Animal{}</span>
+  <span class="keyword">let</span> speak = obj.speak();
+  speak();<span class="comment">//undefined，找不到this的值</span>
+
+  Animal.eat();<span class="comment">//class Animal;</span>
+  <span class="keyword">let</span> eat = Animal.eat();
+  eat();<span class="comment">//用一个类来调用一个方法，肯定没有this</span>
+&lt;!--￼<span class="number">18</span>--&gt;
+</code></pre>
+</li>
+</ul>
+<h5 id="实例属性"><a href="#实例属性" class="headerlink" title="实例属性"></a>实例属性</h5><ul>
+<li>实例的属性必须定义在类的方法里</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span></span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(height,width) &#123;</span><br><span class="line">        <span class="keyword">this</span>.height = height;</span><br><span class="line">        <span class="keyword">this</span>.width = width;</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>静态的或者原型的数据属性，必须定义在类定义的外面</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//他和实例就完全没关系了，任何一个实例，要用这个静态属性的时候必然都是20</span></span><br><span class="line"><span class="comment">//对每个实例都是一样的，而且实例不能修改这个属性</span></span><br><span class="line">Rectangle.staticWidth = <span class="number">20</span>;</span><br><span class="line"><span class="comment">//对于每个实例来说都继承了一个原型，那么他也有这个原型的数据属性</span></span><br><span class="line"><span class="comment">//但是可以对这个prototypeWidth修改</span></span><br><span class="line">Rectangle.prototype.prototypeWidth = <span class="number">25</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="字段声明"><a href="#字段声明" class="headerlink" title="字段声明"></a>字段声明</h5><ul>
+<li><p>共有字段声明</p>
+<ul>
+<li>通过预先声明字段，字段始终存在</li>
+<li>这个字段可以用也可以不用默认值来声明</li>
+</ul>
+</li>
+<li><p>私有字段声明</p>
+<ul>
+<li>只能在类里面读取或者写入</li>
+<li>私有字段仅能在字段声明中预先定义</li>
+<li>私有字段不能通过在之后赋值来创建他们，这种方式只适合普通属性</li>
+</ul>
+</li>
+<li><p>共有例子</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span></span>&#123;</span><br><span class="line">	height = <span class="number">0</span>;</span><br><span class="line">	width ;</span><br><span class="line"> <span class="keyword">constructor</span>(height,width) &#123;</span><br><span class="line">            <span class="keyword">this</span>.height = height;</span><br><span class="line">            <span class="keyword">this</span>.width = width;</span><br><span class="line">        &#125;	 </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>私有例子</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span></span>&#123;</span><br><span class="line">#	height = 0;</span><br><span class="line">#	width ;</span><br><span class="line"> <span class="keyword">constructor</span>(height,width) &#123;</span><br><span class="line">            <span class="keyword">this</span>.height = height;</span><br><span class="line">            <span class="keyword">this</span>.width = width;</span><br><span class="line">        &#125;	 </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//在外面是看不到的</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="用extends创建子类"><a href="#用extends创建子类" class="headerlink" title="用extends创建子类"></a>用extends创建子类</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span></span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    speak()&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name+<span class="string">' makes a noise.'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">//再原型方法的基础上修改speak()，打印....barks</span></span><br><span class="line">    speak() &#123;</span><br><span class="line">         <span class="built_in">console</span>.log(<span class="keyword">this</span>.name+<span class="string">' barks.'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//不对原型方法进行任何修改，打印...makes a noise</span></span><br><span class="line">    speak() &#123;</span><br><span class="line">        <span class="keyword">super</span>.speak();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> Dog(<span class="string">'轲轲'</span>);</span><br><span class="line">d.speak();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果子类中存在构造函数，则需要再使用this之前首先调用super()</li>
+<li>也可以继承传统的基于函数的类</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    Animal.prototype.speak= <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name+<span class="string">' makes a noise.'</span>);</span><br><span class="line">    &#125;;</span><br><span class="line"><span class="comment">//可以继承传统的基于函数的类</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span></span></span><br><span class="line"><span class="class">    </span>&#123;</span><br><span class="line">        speak() &#123;</span><br><span class="line">            <span class="comment">// super.speak();</span></span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>.name+<span class="string">' barks.'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> d = <span class="keyword">new</span> Dog(<span class="string">'轲轲'</span>);</span><br><span class="line">    d.speak();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>需要注意的式，类不能继承常规对象。如果要继承常规对象，可以改成Object.setPrototypeOf();</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义一个简单的对象</span></span><br><span class="line"><span class="keyword">var</span> Animal = &#123;</span><br><span class="line">	speak()&#123;</span><br><span class="line">		 <span class="built_in">console</span>.log(<span class="keyword">this</span>.name+<span class="string">' makes a noise.'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//这是一个类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span></span>&#123;</span><br><span class="line">	 <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">            <span class="keyword">this</span>.name = name;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//显示的指定Dog的prototype就是Animal</span></span><br><span class="line"><span class="built_in">Object</span>.setPrototypeOf(Dog.prototype,Animal);</span><br><span class="line">    <span class="keyword">var</span> d = <span class="keyword">new</span> Dog(<span class="string">'轲轲'</span>);</span><br><span class="line">    d.speak();</span><br></pre></td></tr></table></figure>
+
+<h3 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h3><ul>
+<li>任何javascript代码段就可以当作一个模块</li>
+<li>模块化的目标<ul>
+<li>支持大规模的程序开发，处理分散源中代码的组装，并且能够让代码正确运行</li>
+<li>不同的模块必须避免修改全局执行上下文，因此后续模块应当在他们所期望运行的原始（或接近原始）上下文中执行</li>
+</ul>
+</li>
+</ul>
+<h4 id="用作命名空间的对象"><a href="#用作命名空间的对象" class="headerlink" title="用作命名空间的对象"></a>用作命名空间的对象</h4><ul>
+<li>在模块创建过程中避免污染全局变量的一种方法是使用一个对象作为命名空间</li>
+<li>用命名空间来的导入模块（往往将整个模块导入全局命名空间，而不是导入命名空间中的某个单独的类）<ul>
+<li>var sets = com.davidflanagan.collections.sets;</li>
+</ul>
+</li>
+<li>按照约定，模块的文件名应当和命名空间匹配<ul>
+<li>
+
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="作为私有命名空间的函数"><a href="#作为私有命名空间的函数" class="headerlink" title="作为私有命名空间的函数"></a>作为私有命名空间的函数</h4><ul>
+<li>模块对外导出一些公用API，这些API是提供给其他程序员使用的，它包括函数类属性和方法</li>
+<li>例子：</li>
+<li>将模块函数当作构造函数使用，通过new来调用，通过将他们赋值来给this将其到处</li>
+<li>
+
+</li>
+</ul>
+<h4 id="模块化的几个规范"><a href="#模块化的几个规范" class="headerlink" title="模块化的几个规范"></a>模块化的几个规范</h4><h5 id="CommonJS"><a href="#CommonJS" class="headerlink" title="CommonJS"></a>CommonJS</h5><ul>
+<li>CommonJS的一个模块就是一个脚本文件，通过执行该文件来加载模块。CommonJS规范规定，每个模块内部，module变量代表当前模块，这个变量是一个对象，他的exports属性是对外的接口。加在某个模块其实是加载该模块的module.exports属性</li>
+<li></li>
+<li>优点：解决了依赖，全局变量污染的问题</li>
+<li>缺点：CommonJS用同步的方式加载模块，在浏览器端，限于网络原因，CommonJS不适合浏览器端模块加载，更合理的是使用异步加载，比如AMD</li>
+</ul>
+<h5 id="AMD"><a href="#AMD" class="headerlink" title="AMD"></a>AMD</h5><ul>
+<li><p>即异步模块定义</p>
+</li>
+<li><p>采用这个异步方式加载模块，模块的加载不影响后面语句的运行</p>
+</li>
+<li><p>所有依赖这个模块的语句，都定义在一个回调函数中，等到加载完成之后，这个回调函数才会运行，除了和CommonJS同步加载方式不同之外，AMD在模块的定义与引用上也有所不同</p>
+</li>
+<li><p>在AMD标准中，定义了下面三个API</p>
+<ul>
+<li><p>require([module],callback)</p>
+<ul>
+<li>又是我们依旧通过require关键字，它包含两个参数，第一个数组为要加载的模块，第二个参数为回调函数</li>
+</ul>
+</li>
+<li><p>define(id,[depends],callback)</p>
+<ul>
+<li>id:模块名称，或者模块加载器请求的指定脚本的名字</li>
+<li>depends：是个定义模块所依赖的模块数组，默认为[“require”,”exports”,”module”]</li>
+<li>callback:为模块初始化要执行的函数或对象。如果为函数，他应该只被执行一次。如果是对象，此对象应该为模块的输出值</li>
+</ul>
+</li>
+<li><p>require.config()</p>
+</li>
+</ul>
+</li>
+<li><p>优点：适合在浏览器环境中异步加载模块，并行加载多个模块</p>
+</li>
+<li><p>不能按需加载</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/28/JavaScript-9%E7%B1%BB%E5%92%8C%E6%A8%A1%E5%9D%97/" data-id="ck9xp0n010040asnsgh3g0bsk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-1190-反转每对括号间的字符串" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/28/1190-%E5%8F%8D%E8%BD%AC%E6%AF%8F%E5%AF%B9%E6%8B%AC%E5%8F%B7%E9%97%B4%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="article-date">
+  <time datetime="2020-04-28T09:13:23.000Z" itemprop="datePublished">2020-04-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/28/1190-%E5%8F%8D%E8%BD%AC%E6%AF%8F%E5%AF%B9%E6%8B%AC%E5%8F%B7%E9%97%B4%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2/">1190.反转每对括号间的字符串</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1190反转每对括号间的字符串"><a href="#1190反转每对括号间的字符串" class="headerlink" title="1190反转每对括号间的字符串"></a>1190反转每对括号间的字符串</h1><h2 id="下面是题目"><a href="#下面是题目" class="headerlink" title="下面是题目"></a>下面是题目</h2>
+
+<h3 id="下面是题目给出的代码"><a href="#下面是题目给出的代码" class="headerlink" title="下面是题目给出的代码"></a>下面是题目给出的代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">reverseParentheses</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">       </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="解题思路和394字符串解码一样"><a href="#解题思路和394字符串解码一样" class="headerlink" title="解题思路和394字符串解码一样"></a>解题思路和394字符串解码一样</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">reverseParentheses</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">stack</span>&lt;<span class="built_in">string</span>&gt; stk;</span><br><span class="line">        <span class="built_in">string</span> res;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.<span class="built_in">size</span>(); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//如果是字母，就加到res字符串里去</span></span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">isalpha</span>(s[i]))&#123;</span><br><span class="line">                res.push_back(s[i]);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (s[i]==<span class="string">'('</span>)</span><br><span class="line">            <span class="comment">//如果是出现左括号，那么入栈+更新res</span></span><br><span class="line">            &#123;</span><br><span class="line">                stk.push(res);</span><br><span class="line">                res = <span class="string">""</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">              <span class="comment">//如果是右括号，把现有的res反转，然后加给栈头</span></span><br><span class="line">             <span class="comment">//出栈，更新res = 栈头 </span></span><br><span class="line">                  reverse(res.<span class="built_in">begin</span>(),res.<span class="built_in">end</span>());</span><br><span class="line">                  stk.top()+=res;</span><br><span class="line">                  res=stk.top();</span><br><span class="line">                  stk.pop();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="reverse-函数的用法"><a href="#reverse-函数的用法" class="headerlink" title="reverse()函数的用法"></a>reverse()函数的用法</h4><h5 id="反转string"><a href="#反转string" class="headerlink" title="反转string"></a>反转string</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">string</span> N;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;N;</span><br><span class="line">	reverse(N.<span class="built_in">begin</span>(), N.<span class="built_in">end</span>());</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;N&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="反转字符数组"><a href="#反转字符数组" class="headerlink" title="反转字符数组"></a>反转字符数组</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">char</span> a[<span class="number">101</span>];</span><br><span class="line">	<span class="built_in">cin</span>.getline(a,<span class="keyword">sizeof</span>(a));</span><br><span class="line">	<span class="keyword">int</span> m=<span class="built_in">strlen</span>(a);</span><br><span class="line">	reverse(a,a+m);</span><br><span class="line">	<span class="built_in">puts</span>(a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/28/1190-%E5%8F%8D%E8%BD%AC%E6%AF%8F%E5%AF%B9%E6%8B%AC%E5%8F%B7%E9%97%B4%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2/" data-id="ck9xp0myo000basnsb9hbh4u6" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-Stack/" rel="tag">leetcode_Stack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/medium/" rel="tag">medium</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-901股票价格跨度" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/28/901%E8%82%A1%E7%A5%A8%E4%BB%B7%E6%A0%BC%E8%B7%A8%E5%BA%A6/" class="article-date">
+  <time datetime="2020-04-28T08:48:43.000Z" itemprop="datePublished">2020-04-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/28/901%E8%82%A1%E7%A5%A8%E4%BB%B7%E6%A0%BC%E8%B7%A8%E5%BA%A6/">901股票价格跨度</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="901股票价格跨度"><a href="#901股票价格跨度" class="headerlink" title="901股票价格跨度"></a>901股票价格跨度</h1>
+
+<h2 id="下面是代码"><a href="#下面是代码" class="headerlink" title="下面是代码"></a>下面是代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StockSpanner</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    StockSpanner() &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">next</span><span class="params">(<span class="keyword">int</span> price)</span> </span>&#123;</span><br><span class="line">   </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your StockSpanner object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * StockSpanner* obj = new StockSpanner();</span></span><br><span class="line"><span class="comment"> * int param_1 = obj-&gt;next(price);</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="这题思路很简单啊，凭什么老是超时"><a href="#这题思路很简单啊，凭什么老是超时" class="headerlink" title="这题思路很简单啊，凭什么老是超时!?????"></a>这题思路很简单啊，凭什么老是超时!?????</h3><p>用pair存储，我一下子就想到了，但是老是超时，有时候AC了，有时候WA了</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StockSpanner</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">stack</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt; s ;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    StockSpanner() &#123;</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">next</span><span class="params">(<span class="keyword">int</span> price)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//初始化1</span></span><br><span class="line">        <span class="keyword">int</span> temp = <span class="number">1</span>;</span><br><span class="line"><span class="comment">//如果栈非空，那么和栈顶比，比栈顶的price大，那么就把他吸收进来，再pop掉</span></span><br><span class="line">        <span class="keyword">while</span> (!s.empty() &amp;&amp; price &gt;= s.top().second) &#123;</span><br><span class="line">            temp += s.top().first;</span><br><span class="line">            s.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//然后入栈</span></span><br><span class="line">        s.push(make_pair(temp, price));</span><br><span class="line">        <span class="keyword">return</span> temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//真不知道为啥！！！！</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/28/901%E8%82%A1%E7%A5%A8%E4%BB%B7%E6%A0%BC%E8%B7%A8%E5%BA%A6/" data-id="ck9xp0mzq0036asns2khme4c2" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-Stack/" rel="tag">leetcode_Stack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/medium/" rel="tag">medium</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-LHRandLNR" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/28/LHRandLNR/" class="article-date">
+  <time datetime="2020-04-28T05:36:34.000Z" itemprop="datePublished">2020-04-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/28/LHRandLNR/">LHRandLNR</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="线性递推"><a href="#线性递推" class="headerlink" title="线性递推"></a>线性递推</h1><h2 id="LHR-2"><a href="#LHR-2" class="headerlink" title="$LHR^2$"></a>$LHR^2$</h2><ul>
+<li>方法</li>
+<li>首先解特征方程，求出每一个根包括重根</li>
+<li>如果根都是不重复的,比如 $a_n$ = 6a<sub>n-1</sub>-5a<sub>n-2</sub><ul>
+<li>解的 $r_1=1$, $r_2=5$</li>
+<li>那么   $a_n$ = $\alpha_1(1)^n$+$\alpha_2(5)^n$</li>
+<li>然后把 $a_0,a_1$带入方程算出 $\alpha_1$和$\alpha_2$的值</li>
+</ul>
+</li>
+<li>如果根是重复的。比如 $a_n$ = 6a<sub>n-1</sub>-9a<sub>n-2</sub><ul>
+<li>解得 $r_1=3$, $r_2=3$</li>
+<li>那么    $a_n$ = $\alpha_1(3)^n$+$\alpha_2n(3)^n$</li>
+<li>也就是说，$\alpha$后出现了$n^0,n^1,n^2,n^3……$</li>
+<li>然后把 $a_0,a_1$带入方程算出 $\alpha_1$和$\alpha_2$的值</li>
+</ul>
+</li>
+</ul>
+<h2 id="LNR-2"><a href="#LNR-2" class="headerlink" title="$LNR^2$"></a>$LNR^2$</h2><ul>
+<li><p>方法</p>
+</li>
+<li><p>通项公式是 通解+ 特解</p>
+</li>
+<li><p>通解得算法就是抹掉常数项，然后解法和$LHR^2$一样</p>
+</li>
+<li><p>再计算特解</p>
+<ul>
+<li>这里需要分类</li>
+<li>如果常数项是  C(常数)  那么对应的就是 <strong>A</strong><ul>
+<li>如果常数项是  n  那么对应的就是    $A_1n+A_0$      </li>
+<li>如果常数项是  $n^2$ 那么对应的就是 $A_2n^2+A_1n+A_0$ （以此类推）</li>
+<li>如果常数项是   $r^n$   那么对应的就是 $Ar^n$      </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>把F(n)化成一下格式再做判断 $F(n) =$ (b<sub>t</sub> $n^t$+b<sub>t-1</sub>n<sup>t-1</sup>+……+b<sub>1</sub>n+b<sub>0</sub>) $s^n$</p>
+</li>
+<li><p>If s is not a root of the characteristic equation of the associated LHR2, there is a particular solution of form. （待会会举例子）</p>
+<ul>
+<li>(p<sub>t</sub> $n^t$+p<sub>t-1</sub>n<sup>t-1</sup>+……+p<sub>1</sub>n+p<sub>0</sub>) $s^n$;</li>
+</ul>
+</li>
+<li><p>Else, s is a root of multiplicity m, the particular solution is of form</p>
+</li>
+<li><p>(p<sub>t</sub> $n^t$+p<sub>t-1</sub>n<sup>t-1</sup>+……+p<sub>1</sub>n+p<sub>0</sub>) $s^nn^m$  ;</p>
+</li>
+</ul>
+<ul>
+<li><p>例子1</p>
+<ul>
+<li><p><strong>$a_n$ = 3a<sub>n-1</sub>-2n</strong></p>
+</li>
+<li><p>step1: find the solution for LHR<sup>2</sup>. The associated linear homogeneous equation is <strong>a<sub>n</sub> = 3a<sub>n-1</sub></strong>. Its solution is    <strong>a<sub>n</sub><sup>(h)</sup> = $\alpha3^n$</strong>    ,where $\alpha$ is a constant.</p>
+</li>
+<li><p>上标代表了homogeneous，是齐次方程组的通解</p>
+</li>
+<li><p>step2: 因为常数项是2n所以对应表中的 $A_1n+A_0$,所以 令<strong>p<sub>n</sub> = cn+d</strong>，然后带入原方程，得到 了这个<strong>cn+d= 3（ c(n-1)+d)+2n</strong>  要让<strong>(2 + 2c)n +(2d - 3c) = 0</strong> 解得 <strong>c = -1 and d = -3/2</strong></p>
+</li>
+<li><p>$a_n = {a_n^p+a_n^h }=-n-1.5+  \alpha3^n$</p>
+</li>
+<li><p>最后带入求$\alpha$</p>
+</li>
+</ul>
+</li>
+<li><p>例子2</p>
+<ul>
+<li><p><strong>$a_n$ =  a<sub>n-1</sub> +n</strong></p>
+</li>
+<li><p>step1:The associated linear homogeneous equation is<strong>a<sub>n</sub> =a<sub>n-1</sub></strong>. Its solution is <strong>a<sub>n</sub><sup>(h)</sup> = $\alpha1^n$</strong> =$\alpha$   where $\alpha$ is a constant.</p>
+</li>
+<li><p>step2: F(n) = n = n<em>(1)<sup>n</sup>,    s=1 是 LHR<sup>2</sup>的一个根，所以说，这里有变化， 原来的*</em>p<sub>n</sub> = cn+d<strong>变成了 **n(cn+d)</strong> </p>
+</li>
+<li><p>再带入原方程<strong>n(cn+d)= (n-1)(c(n-1)+d)+n  解得 c=d=0.5</strong>  </p>
+</li>
+<li><p>$a_n = {a_n^p+a_n^h }=n(n+1)/2 +  \alpha $ </p>
+</li>
+</ul>
+</li>
+<li><p>例子3</p>
+<ul>
+<li><strong>$a_n$ = 2a<sub>n-1</sub>+2<sup>n</sup></strong></li>
+<li>step1: <strong>a<sub>n</sub> =2a<sub>n-1</sub></strong>   so  <strong>a<sub>n</sub><sup>(h)</sup> = $\alpha(2)^n$</strong></li>
+<li>step2: 这里常数项是(1)*2<sup>n</sup> 根据表内，对应$Ar^n$ 但是 因为2是 LHR<sup>2</sup>的一个根，所以说，这里有变化，变成了 A2<sup>n</sup>n  </li>
+<li>带入原方程 A2<sup>n+1</sup>(n+1) -2A2<sup>n</sup>n = 2<sup>n</sup>   解得A = 0.5</li>
+<li>$a_n = {a_n^p+a_n^h }=\alpha2^n $+ *<em>n2<sup>n-1</sup> *</em></li>
+</ul>
+</li>
+<li><p>例子4</p>
+<ul>
+<li><strong>a<sub>n+2</sub>+3a<sub>n+1</sub>+2a<sub>n</sub> = 3<sup>n</sup></strong></li>
+<li>step1: r<sup>2</sup>+3r+2 = 0 (r+2)(r+1) =0; r = -1,r = -2    <strong>a<sub>n</sub><sup>(h)</sup></strong> = $\alpha_1(-2)^n$+$\alpha_2(-1)^n$</li>
+<li>step2: 这里常数项是(1)*3<sup>n</sup> 根据表内，对应$Ar^n$   因为3不是 LHR<sup>2</sup>的一个根，所以说，照常</li>
+<li><strong>A3<sup>n+2</sup>+3A3<sup>n+1</sup>+2A3<sup>n</sup> = 3<sup>n</sup>  $\Longrightarrow$  A = 1/20</strong></li>
+<li><strong>a<sub>n</sub><sup>(h)</sup></strong> = $\alpha_1(-2)^n$+$\alpha_2(-1)^n$+<strong>1/20(3<sup>n</sup>)</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="结合下面的例子，我们可以更清楚的了解"><a href="#结合下面的例子，我们可以更清楚的了解" class="headerlink" title="结合下面的例子，我们可以更清楚的了解"></a>结合下面的例子，我们可以更清楚的了解</h2>
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/28/LHRandLNR/" data-id="ck9xp0n07004fasns2glbc31u" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/discrete-mathematics/" rel="tag">discrete mathematics</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-背包问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/27/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/" class="article-date">
+  <time datetime="2020-04-27T07:45:04.000Z" itemprop="datePublished">2020-04-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/27/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/">背包问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="下面是问题"><a href="#下面是问题" class="headerlink" title="下面是问题"></a>下面是问题</h1>
+
+<p> 讲人话，就是这个意思</p>
+
+
+<p>所以他的子问题如下 </p>
+<table>
+<thead>
+<tr>
+<th>子问题</th>
+<th>条件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>i=0或w=0</td>
+</tr>
+<tr>
+<td>c[i][w]= c[i-1][w]</td>
+<td>wi&gt;w</td>
+</tr>
+<tr>
+<td>max{c[i-1][w-wi]+v,c[i-1][w]}</td>
+<td>wi&lt;=w</td>
+</tr>
+</tbody></table>
+<p>PS:0/1背包问题和普通背包的差别就在于(1)物品是否可以重复选择, (2)物品是否可以只选取部分</p>
+<p>现在就可用动态规划的方法运用上面的公式来填表求解了.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//这里把值和重量分开存储了</span></span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; value;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; weight;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; DP;</span><br><span class="line">    <span class="keyword">int</span> Number,maxSize;</span><br><span class="line">    <span class="comment">//Nis the number of items ,V is your capacity</span></span><br><span class="line">    <span class="keyword">while</span> ( <span class="built_in">cin</span> &gt;&gt; Number &gt;&gt; maxSize )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(Number&lt;<span class="number">0</span>&amp;&amp;maxSize&lt;<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        value.resize(Number+<span class="number">1</span>);</span><br><span class="line">        weight.resize(maxSize+<span class="number">1</span>);</span><br><span class="line">        DP.<span class="built_in">clear</span>();</span><br><span class="line">        DP.resize(maxSize+<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= Number; i++ )</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; weight[i] &gt;&gt; value[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> ( <span class="keyword">int</span> v = <span class="number">1</span>; v &lt;= maxSize; v++ )</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%3d"</span>,v);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= Number; i++ )<span class="comment">//row</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span> ( <span class="keyword">int</span> v = <span class="number">1</span>; v &lt;= maxSize; v++ )<span class="comment">//column</span></span><br><span class="line">            &#123;</span><br><span class="line"><span class="comment">//这里的设计很巧妙，因为现在DP数组都是上一层的值，如果有需要改动的地方，就改动，否则保持原样</span></span><br><span class="line">				<span class="comment">//第1层的dp初始化都是0</span></span><br><span class="line">                <span class="keyword">if</span> ( v &gt;= weight[i] )</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span> ( DP[v-weight[i]] + value[i] &gt;= DP[v] )</span><br><span class="line">                    &#123;</span><br><span class="line">                        DP[v] = DP[v-weight[i]] + value[i];</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%3d"</span>,DP[v]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; DP[maxSize] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果如下</p>
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/27/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/" data-id="ck9xp0n1j008oasnsc429cmk1" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DP/" rel="tag">DP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/discrete-mathematics/" rel="tag">discrete mathematics</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-72Edit-Problem" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/27/72Edit-Problem/" class="article-date">
+  <time datetime="2020-04-27T04:04:04.000Z" itemprop="datePublished">2020-04-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/27/72Edit-Problem/">72Edit_Problem</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="下面是作业题目和力扣上的问题"><a href="#下面是作业题目和力扣上的问题" class="headerlink" title="下面是作业题目和力扣上的问题"></a>下面是作业题目和力扣上的问题</h1>
+
+
+
+<p>动态规划算法，比较困难，这里附上一个比较容易懂的视频链接</p>
+<p><a href="https://www.youtube.com/watch?v=MiqoA-yF-0M" target="_blank" rel="noopener">https://www.youtube.com/watch?v=MiqoA-yF-0M</a></p>
+<p>这是算法的伪代码</p>
+
+
+<p>下面我们拿Sundays和Saturday为例，做一个动态规划表</p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">“”</th>
+<th align="center">s</th>
+<th align="center">u</th>
+<th align="center">n</th>
+<th align="center">d</th>
+<th align="center">a</th>
+<th align="center">y</th>
+<th align="center">s</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">“”</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">5</td>
+<td align="center">6</td>
+<td align="center">7</td>
+</tr>
+<tr>
+<td align="center">s</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">5</td>
+<td align="center">6</td>
+</tr>
+<tr>
+<td align="center">a</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">5</td>
+</tr>
+<tr>
+<td align="center">t</td>
+<td align="center">3</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="center">5</td>
+</tr>
+<tr>
+<td align="center">u</td>
+<td align="center">4</td>
+<td align="center">3</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">5</td>
+<td align="center">5</td>
+</tr>
+<tr>
+<td align="center">r</td>
+<td align="center">5</td>
+<td align="center">4</td>
+<td align="center">3</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="center">5</td>
+<td align="center">6</td>
+</tr>
+<tr>
+<td align="center">d</td>
+<td align="center">6</td>
+<td align="center">5</td>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">5</td>
+<td align="center">6</td>
+</tr>
+<tr>
+<td align="center">a</td>
+<td align="center">7</td>
+<td align="center">6</td>
+<td align="center">5</td>
+<td align="center">5</td>
+<td align="center">4</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">5</td>
+</tr>
+<tr>
+<td align="center">y</td>
+<td align="center">8</td>
+<td align="center">7</td>
+<td align="center">6</td>
+<td align="center">6</td>
+<td align="center">5</td>
+<td align="center">4</td>
+<td align="center">3</td>
+<td align="center">4</td>
+</tr>
+</tbody></table>
+<p>我们看到了最后 的交点就是4</p>
+<p>这里我贴上花花酱的链接和他的答案</p>
+<p><a href="https://zxi.mytechroad.com/blog/dynamic-programming/leetcode-72-edit-distance/" target="_blank" rel="noopener">https://zxi.mytechroad.com/blog/dynamic-programming/leetcode-72-edit-distance/</a></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">minDistance</span><span class="params">(<span class="built_in">string</span> word1, <span class="built_in">string</span> word2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> l1 = word1.length();</span><br><span class="line">    <span class="keyword">int</span> l2 = word2.length();</span><br><span class="line">    <span class="comment">// d[i][j] := minDistance(word1[0:i - 1], word2[0:j - 1]);</span></span><br><span class="line">    <span class="comment">//这是个建表操作建立l1+1列，每一列填充vector&lt;int&gt;(l2+1,0)这个数组</span></span><br><span class="line">    <span class="comment">//也就是（l2+1）个0，也就是l2+1行</span></span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="title">d</span><span class="params">(l1 + <span class="number">1</span>, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(l2 + <span class="number">1</span>, <span class="number">0</span>))</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//然后给第一行第一列都标上行数列数</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= l1; ++i)</span><br><span class="line">        d[i][<span class="number">0</span>] = i;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= l2; ++j)</span><br><span class="line">        d[<span class="number">0</span>][j] = j;</span><br><span class="line">	<span class="comment">//开始动态规划</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= l1; ++i)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= l2; ++j) </span><br><span class="line">        &#123;</span><br><span class="line"><span class="comment">//这个就是delta如果这两个字符串最后一个数字相等，那么delta=0，否则delta=1</span></span><br><span class="line">            <span class="keyword">int</span> delta = (word1[i - <span class="number">1</span>] == word2[j - <span class="number">1</span>]) ? <span class="number">0</span> : <span class="number">1</span>;</span><br><span class="line"><span class="comment">// 这就是最核心的算法           </span></span><br><span class="line"> d[i][j] = <span class="built_in">min</span>(d[i - <span class="number">1</span>][j - <span class="number">1</span>] + delta,<span class="built_in">min</span>(d[i][j - <span class="number">1</span>], d[i - <span class="number">1</span>][j]) + <span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span>;i&lt;=l1;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j =<span class="number">0</span>;j&lt;=l2;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%3d"</span>,d[i][j]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> d[l1][l2];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">string</span> word1,word2;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;word1&gt;&gt;word2;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;minDistance(word1,word2)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="结果如下"><a href="#结果如下" class="headerlink" title="结果如下"></a>结果如下</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/27/72Edit-Problem/" data-id="ck9xp0mzk002pasnsh2h4dfk1" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DP/" rel="tag">DP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/discrete-mathematics/" rel="tag">discrete mathematics</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hard/" rel="tag">hard</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-503下一个更大的数II" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/26/503%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E7%9A%84%E6%95%B0II/" class="article-date">
+  <time datetime="2020-04-26T13:35:58.000Z" itemprop="datePublished">2020-04-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/26/503%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E7%9A%84%E6%95%B0II/">503下一个更大的数II</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="503下一个更大的数II"><a href="#503下一个更大的数II" class="headerlink" title="503下一个更大的数II"></a>503下一个更大的数II</h1>
+
+<h3 id="下面是题目给出的代码"><a href="#下面是题目给出的代码" class="headerlink" title="下面是题目给出的代码"></a>下面是题目给出的代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">nextGreaterElements</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="我给出-两种解法，栈及其优化，BF"><a href="#我给出-两种解法，栈及其优化，BF" class="headerlink" title="我给出 两种解法，栈及其优化，BF"></a>我给出 两种解法，栈及其优化，BF</h4><h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><p>因为我在1019链表下一个更大的数中介绍过了这种方法</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">nextGreaterElements</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> tot = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="comment">//因为这个数组是可循环的，我们不妨直接拉长一倍</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;tot;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            nums.push_back(nums[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt;s;</span><br><span class="line">        <span class="comment">//随后再每个遍历，很傻逼吧？确实！</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = (<span class="keyword">int</span>)nums.<span class="built_in">size</span>() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> cur = nums.at(i); <span class="comment">//先暂存当前元素</span></span><br><span class="line">            <span class="keyword">while</span> (!s.empty() &amp;&amp; cur &gt;= s.top())</span><br><span class="line">             <span class="comment">//注意: 等于号不能少 等于时也需要出栈 这里是找严格大于的数</span></span><br><span class="line">            &#123;</span><br><span class="line">                s.pop();  <span class="comment">//淘汰小的 留下更大的</span></span><br><span class="line">            &#125;</span><br><span class="line">            nums.at(i) = (s.empty() ? <span class="number">-1</span> : s.top()); <span class="comment">//栈空 右边没有更大的</span></span><br><span class="line">            s.push(cur);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//随后resize一下</span></span><br><span class="line">         nums.resize(tot);</span><br><span class="line">        <span class="keyword">return</span> nums;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="栈优化"><a href="#栈优化" class="headerlink" title="栈优化"></a>栈优化</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">nextGreaterElements</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">res</span><span class="params">(n, <span class="number">-1</span>)</span></span>;</span><br><span class="line">        <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; st;</span><br><span class="line">        <span class="comment">//不用扩充nums，而是把i双倍，并用nums[i%n]实现循环效果</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span> * n; ++i) &#123;</span><br><span class="line">            <span class="keyword">int</span> num = nums[i % n];</span><br><span class="line">            <span class="comment">//如果栈非空并且栈顶&lt;num,那么应该在res中修改</span></span><br><span class="line">            <span class="keyword">while</span> (!st.empty() &amp;&amp; nums[st.top()] &lt; num) &#123;</span><br><span class="line">                res[st.top()] = num; </span><br><span class="line">                <span class="comment">//一旦给栈顶所对应的元素，就让他出栈</span></span><br><span class="line">                st.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//把st作为标记栈</span></span><br><span class="line">            <span class="keyword">if</span> (i &lt; n) st.push(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="BF"><a href="#BF" class="headerlink" title="BF"></a>BF</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">nextGreaterElements</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> tot = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;res;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;tot;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            nums.push_back(nums[i]);</span><br><span class="line">            res.push_back(nums[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt;s;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=tot<span class="number">-1</span>;i&gt;=<span class="number">0</span>;--i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> <span class="built_in">max</span>=<span class="number">-1</span>;</span><br><span class="line">            <span class="comment">//每一次都遍历后面tot个数，一旦找到就break;</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;=i+tot;j++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(nums[j]&gt;nums[i])</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="built_in">max</span>=nums[j];</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            res[i]=<span class="built_in">max</span>;</span><br><span class="line">        &#125;</span><br><span class="line">          </span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/26/503%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E7%9A%84%E6%95%B0II/" data-id="ck9xp0mzb0025asns1bn29yaw" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-Stack/" rel="tag">leetcode_Stack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/medium/" rel="tag">medium</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-如何用表格显示查询结果" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/26/%E5%A6%82%E4%BD%95%E7%94%A8%E8%A1%A8%E6%A0%BC%E6%98%BE%E7%A4%BA%E6%9F%A5%E8%AF%A2%E7%BB%93%E6%9E%9C/" class="article-date">
+  <time datetime="2020-04-26T05:11:22.000Z" itemprop="datePublished">2020-04-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/26/%E5%A6%82%E4%BD%95%E7%94%A8%E8%A1%A8%E6%A0%BC%E6%98%BE%E7%A4%BA%E6%9F%A5%E8%AF%A2%E7%BB%93%E6%9E%9C/">如何用表格显示查询结果</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="如何用表格显示查询结果"><a href="#如何用表格显示查询结果" class="headerlink" title="如何用表格显示查询结果"></a>如何用表格显示查询结果</h1><h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><ul>
+<li>这篇博客记录了如何通过express框架让我们前端能出现表格式的查询内容</li>
+<li>我会先讲述老师的操作</li>
+<li>然后，我会以 我建立的 经济新闻 为例子，展示搜索成果</li>
+</ul>
+<h3 id="1-老师操作：如何搭建express网站并实现查找"><a href="#1-老师操作：如何搭建express网站并实现查找" class="headerlink" title="1.老师操作：如何搭建express网站并实现查找"></a>1.老师操作：如何搭建express网站并实现查找</h3><h4 id="第一步，建立文件夹"><a href="#第一步，建立文件夹" class="headerlink" title="第一步，建立文件夹"></a>第一步，建立文件夹</h4><ul>
+<li>我们用express 脚手架来创建一个网站框架</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">express -e search_site</span><br><span class="line"><span class="comment">//-e 的参数说明我们用ejs作为缺省view引擎，而非采用jade（这句话不是很理解）</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>然后 这样就可以建立一个search_site 文件夹</p>
+</li>
+<li><p>由于我们需要使用mysql，因此将mysql.js拷贝到这个文件夹</p>
+</li>
+<li><p>这里值得一提的是，因为我全把数据存储到一个database中了，也就是说，我们所有文件都可以引用这个mysql.js，但是如果是说存放在不同的databas中的话，我们就需要修改mysql.js中的database: ‘’中的值，名字就是你的database</p>
+</li>
+<li><p>建立好后，我们还需要引入一些配置</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//npm install mysql --save</span></span><br><span class="line"><span class="comment">//- --save表示将mysql包安装到该项目中，并且将依赖项存进package.json里</span></span><br><span class="line"><span class="comment">//在search_site文件夹内cmd运行npm instll</span></span><br><span class="line"><span class="comment">//- 将package.json中列举的依赖项全部安装，完成网站搭建</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="第二步，修改index-js和search-html"><a href="#第二步，修改index-js和search-html" class="headerlink" title="第二步，修改index.js和search.html"></a>第二步，修改index.js和search.html</h4><ul>
+<li>修改index.js</li>
+<li>具体的express用法我不是很明白，更多的是照葫芦画瓢罢了，有时间会系统学习express框架</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//引入express模块，引入mysql.js 注意，这个mysql.js在上层文件夹中，所以要用 ../</span></span><br><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">var</span> router = express.Router();</span><br><span class="line"><span class="keyword">var</span> mysql = <span class="built_in">require</span>(<span class="string">'../mysql.js'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* GET home page. */</span></span><br><span class="line">router.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">    res.render(<span class="string">'index'</span>, &#123; <span class="attr">title</span>: <span class="string">'Express'</span> &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">router.get(<span class="string">'/process_get'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">request, response</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//sql字符串和参数,和前面一样，搜索我们需要的东西</span></span><br><span class="line">    <span class="keyword">var</span> fetchSql = <span class="string">"select url,source_name,title,author,publish_date "</span> +</span><br><span class="line">        <span class="string">"from fetches where title like '%"</span> + request.query.title + <span class="string">"%'"</span>;</span><br><span class="line">    mysql.query(fetchSql, <span class="function"><span class="keyword">function</span>(<span class="params">err, result, fields</span>) </span>&#123;</span><br><span class="line">        response.writeHead(<span class="number">200</span>, &#123;</span><br><span class="line">            <span class="string">"Content-Type"</span>: <span class="string">"application/json"</span></span><br><span class="line">        &#125;);</span><br><span class="line">        response.write(<span class="built_in">JSON</span>.stringify(result));</span><br><span class="line">        response.end();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">module</span>.exports = router;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>创建search.html,在public文件夹下创建</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">header</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.bootcss.com/jquery/3.4.1/jquery.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">br</span>&gt;</span> 标题：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"title_text"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"form-submit"</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"查询"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"cardLayout"</span> <span class="attr">style</span>=<span class="string">"margin: 10px 0px"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">table</span> <span class="attr">width</span>=<span class="string">"100%"</span> <span class="attr">id</span>=<span class="string">"record2"</span>&gt;</span><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript"><span class="comment">//上面是引入jquery的包，下面是操作代码。但是jquery我也没系统学习过，所以这里很多功能不是很明白</span></span></span><br><span class="line"><span class="javascript">        $(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="actionscript">            <span class="comment">//对查询按钮进行了一个操作，就是click后会进行下面操作</span></span></span><br><span class="line"><span class="javascript">            $(<span class="string">"input:button"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="actionscript">                $.get(<span class="string">'/process_get?title='</span> + $(<span class="string">"input:text"</span>).val(), <span class="function"><span class="keyword">function</span><span class="params">(data)</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">                    $(<span class="string">"#record2"</span>).empty();</span></span><br><span class="line"><span class="handlebars"><span class="xml">                    $("#record2").append('<span class="tag">&lt;<span class="name">tr</span> <span class="attr">class</span>=<span class="string">"cardLayout"</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>url<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>source_name<span class="tag">&lt;/<span class="name">td</span>&gt;</span>' +</span></span></span><br><span class="line"><span class="handlebars"><span class="xml">                        '<span class="tag">&lt;<span class="name">td</span>&gt;</span>title<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>author<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>publish_date<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span>');</span></span></span><br><span class="line"><span class="actionscript">                    <span class="comment">//查询完后，信息放在data当中</span></span></span><br><span class="line"><span class="javascript">                    <span class="keyword">for</span> (<span class="keyword">let</span> list <span class="keyword">of</span> data) &#123;</span></span><br><span class="line"><span class="handlebars"><span class="xml">                        let table = '<span class="tag">&lt;<span class="name">tr</span> <span class="attr">class</span>=<span class="string">"cardLayout"</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>';</span></span></span><br><span class="line"><span class="actionscript">                        <span class="comment">//对其遍历，每一行都把具体的数据放到每一行中去</span></span></span><br><span class="line"><span class="javascript">                        <span class="built_in">Object</span>.values(list).forEach(<span class="function"><span class="params">element</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="handlebars"><span class="xml">                            table += (element + '<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>');</span></span></span><br><span class="line">                        &#125;);</span><br><span class="line"><span class="javascript">                        $(<span class="string">"#record2"</span>).append(table + <span class="string">'&lt;/td&gt;&lt;/tr&gt;'</span>);</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;);</span><br><span class="line"></span><br><span class="line">        &#125;);</span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>上面的讲解很生疏，也不是很明白具体原理，望见谅！</li>
+</ul>
+<h4 id="第三步，显示查询结果"><a href="#第三步，显示查询结果" class="headerlink" title="第三步，显示查询结果"></a>第三步，显示查询结果</h4><ul>
+<li>在search_site 文件夹下 的终端 打入以下命令</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node bin/www</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>用chrome打开 <a href="http://127.0.0.1:3000/search.html" target="_blank" rel="noopener">http://127.0.0.1:3000/search.html</a></li>
+<li>输入关键词，即可查询</li>
+</ul>
+
+
+
+
+<h3 id="2-模仿老师，建立自己查询页面"><a href="#2-模仿老师，建立自己查询页面" class="headerlink" title="2.模仿老师，建立自己查询页面"></a>2.模仿老师，建立自己查询页面</h3><h4 id="首先建立一个search-economy的文件夹，完成基本配置"><a href="#首先建立一个search-economy的文件夹，完成基本配置" class="headerlink" title="首先建立一个search_economy的文件夹，完成基本配置"></a>首先建立一个search_economy的文件夹，完成基本配置</h4>
+
+<p>然后修改html和index的代码，主要集中在一句话上</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">('<span class="tag">&lt;<span class="name">tr</span> <span class="attr">class</span>=<span class="string">"cardLayout"</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>url<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>source_name<span class="tag">&lt;/<span class="name">td</span>&gt;</span>' +</span><br><span class="line">                        '<span class="tag">&lt;<span class="name">td</span>&gt;</span>title<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>crawltime<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>author<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span>');</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>说穿了就是改变类型，把原来的publish_date换成了crawltime，在最后加了个author</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fetchSql = <span class="string">"select url,source_name,title_format,crawltime,author "</span> +</span><br><span class="line">    <span class="string">"from 经济新闻 where title_format like '%"</span> + request.query.title + <span class="string">"%'"</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在index.js中修改搜寻的表和内容样式</li>
+</ul>
+<h4 id="开始自己的搜寻"><a href="#开始自己的搜寻" class="headerlink" title="开始自己的搜寻"></a>开始自己的搜寻</h4>
+
+<p>这时候，爬取好几个网站的重要性就体现出来了，我们可以看到不同门户网站上的不同新闻，在这里，我的关键词是”股“</p>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>这是系列博客的最后一篇，但是我并不会停止学习的脚步。在这个基础上，我还有很多工作可以做，比如美化操作界面，增加表格的美观程度，增加第二关键词搜索等功能。一周以来，我基本实现了每天更新爬虫博客，有些可能是JavaScript语法内容，也有可能是最新写的一些文章。我最大的感受就是：只要把时间花下去，肯定会有产出和收获。这也给我漫漫人生路增添了一段美好的经验和记忆。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/26/%E5%A6%82%E4%BD%95%E7%94%A8%E8%A1%A8%E6%A0%BC%E6%98%BE%E7%A4%BA%E6%9F%A5%E8%AF%A2%E7%BB%93%E6%9E%9C/" data-id="ck9xp0n18007rasns01ka0wj0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/crawler/" rel="tag">crawler</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-如何把数据存储到MySql中" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/24/%E5%A6%82%E4%BD%95%E6%8A%8A%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E5%88%B0MySql%E4%B8%AD/" class="article-date">
+  <time datetime="2020-04-24T13:49:44.000Z" itemprop="datePublished">2020-04-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/24/%E5%A6%82%E4%BD%95%E6%8A%8A%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E5%88%B0MySql%E4%B8%AD/">如何把数据存储到MySql中</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="如何把数据存储到MySql中"><a href="#如何把数据存储到MySql中" class="headerlink" title="如何把数据存储到MySql中"></a>如何把数据存储到MySql中</h1><h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>这篇博客主要记录了在学习了老师得课程之后如何把爬取下来的文件存储到MySql中去</li>
+<li>数据库的安装和配置在这里略去不讲</li>
+<li>目标如下：</li>
+<li><ol>
+<li>数据库存储爬取的数据</li>
+<li>爬取新闻页面之前先查询数据库，是否该url已经爬取过了</li>
+<li>设置爬虫定时工作</li>
+</ol>
+</li>
+</ul>
+<h3 id="用npm引入mysql模块"><a href="#用npm引入mysql模块" class="headerlink" title="用npm引入mysql模块"></a>用npm引入mysql模块</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install mysql --save</span><br></pre></td></tr></table></figure>
+
+<h3 id="给root用户授权从客户端访问"><a href="#给root用户授权从客户端访问" class="headerlink" title="给root用户授权从客户端访问"></a>给root用户授权从客户端访问</h3><p>在mysql中敲入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alter user&#39;root&#39;@&#39;localhost&#39;identified with mysql_native_password by &#39;root&#39;;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>目的是让其他客户端，也能访问我的mysql </li>
+</ul>
+
+
+<h3 id="使用mysql创造一个数据库和一张用来存放数据的表"><a href="#使用mysql创造一个数据库和一张用来存放数据的表" class="headerlink" title="使用mysql创造一个数据库和一张用来存放数据的表"></a>使用mysql创造一个数据库和一张用来存放数据的表</h3><ul>
+<li>建库代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">create database crawl;(crawl就是新的数据库名字)</span><br><span class="line">use crawl;(切换数据库)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>建表代码，老师的最为详细，我一一来解释，同时也会附上我的建表码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE &#96;fetches&#96; (</span><br><span class="line">    &#x2F;&#x2F;id_fetches 就是每段信息的标号，默认从1开始递增</span><br><span class="line">  &#96;id_fetches&#96; int(11)  NOT NULL AUTO_INCREMENT,</span><br><span class="line">    &#x2F;&#x2F;url 就是我们爬取个网站的链接</span><br><span class="line">  &#96;url&#96; varchar(200) DEFAULT NULL,</span><br><span class="line">    &#x2F;&#x2F;source_name 就是每个网站的题目，比如什么值得买，中国新闻网，网易等等</span><br><span class="line">  &#96;source_name&#96; varchar(200) DEFAULT NULL,</span><br><span class="line">    &#x2F;&#x2F;source_encoding 就是编码，可以实GBK，也可以是UTF-8，根据网站编码来定</span><br><span class="line">  &#96;source_encoding&#96; varchar(45) DEFAULT NULL,</span><br><span class="line">    &#x2F;&#x2F;title 就是标题</span><br><span class="line">  &#96;title&#96; varchar(200) DEFAULT NULL,</span><br><span class="line">    &#x2F;&#x2F;keywords 就是关键字</span><br><span class="line">  &#96;keywords&#96; varchar(200) DEFAULT NULL,</span><br><span class="line">    &#x2F;&#x2F; author 就是作者</span><br><span class="line">  &#96;author&#96; varchar(200) DEFAULT NULL,</span><br><span class="line">    &#x2F;&#x2F; publish_date 就是出版时间</span><br><span class="line">  &#96;publish_date&#96; date DEFAULT NULL,</span><br><span class="line">    &#x2F;&#x2F; crawltime 就是爬取信息的时间</span><br><span class="line">  &#96;crawltime&#96; datetime DEFAULT NULL,</span><br><span class="line">    &#x2F;&#x2F;content就是内容，主体</span><br><span class="line">  &#96;content&#96; longtext,</span><br><span class="line">    &#x2F;&#x2F; createtime就是创造这行数据所用的时间</span><br><span class="line">  &#96;createtime&#96; datetime DEFAULT CURRENT_TIMESTAMP,</span><br><span class="line">    &#x2F;&#x2F;下面是默认设置</span><br><span class="line">  PRIMARY KEY (&#96;id_fetches&#96;),&#x2F;&#x2F;primary key是主键的意思</span><br><span class="line">1，主键非空，也就是说被设定为主键的列在插入数据的时候就不能为空，如果为度空就会报错。</span><br><span class="line">2，主键是唯一的，一个表通过一个主键可以确定一条记录。</span><br><span class="line">3，有时可以用专两个字段来建立主键，这叫联合主键。这种情况出现在当一个字段无法唯一的时候要借助属另一个字段来确保唯一性的时候。</span><br><span class="line"> &#x2F;&#x2F;这里，把id设为主键，就是用来标号的，</span><br><span class="line">  UNIQUE KEY &#96;id_fetches_UNIQUE&#96; (&#96;id_fetches&#96;),&#x2F;&#x2F;就是说id是不能重复的</span><br><span class="line">  UNIQUE KEY &#96;url_UNIQUE&#96; (&#96;url&#96;)&#x2F;&#x2F;就是说url字段是不能重复的</span><br><span class="line">) ENGINE&#x3D;InnoDB DEFAULT CHARSET&#x3D;utf8;&#x2F;&#x2F;编码</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>我爬取的数据分类比较少，除了改动一行代码的名字之外，删了几行不需要的代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE &#96;fetches&#96; (</span><br><span class="line">  &#96;id_fetches&#96; int(11)  NOT NULL AUTO_INCREMENT,</span><br><span class="line">  &#96;url&#96; varchar(200) DEFAULT NULL,</span><br><span class="line">  &#96;source_name&#96; varchar(200) DEFAULT NULL,</span><br><span class="line">  &#96;source_encoding&#96; varchar(45) DEFAULT NULL,</span><br><span class="line">  &#96;interface_format&#96; longtext,&#x2F;&#x2F;这个其实就是存放标题的</span><br><span class="line">  &#96;crawltime&#96; datetime DEFAULT NULL,</span><br><span class="line">  &#96;content_format&#96; longtext,</span><br><span class="line">  &#96;createtime&#96; datetime DEFAULT CURRENT_TIMESTAMP,</span><br><span class="line">  PRIMARY KEY (&#96;id_fetches&#96;),</span><br><span class="line">  UNIQUE KEY &#96;id_fetches_UNIQUE&#96; (&#96;id_fetches&#96;),</span><br><span class="line">  UNIQUE KEY &#96;url_UNIQUE&#96; (&#96;url&#96;)</span><br><span class="line">) ENGINE&#x3D;InnoDB DEFAULT CHARSET&#x3D;utf8;</span><br></pre></td></tr></table></figure>
+
+<h3 id="用node调用mysql"><a href="#用node调用mysql" class="headerlink" title="用node调用mysql"></a>用node调用mysql</h3><ul>
+<li>我们通过引用分文件的方式。也就是说新建一个mysql.js文件，在里面写上具体操作，然后在主爬虫程序中引入即可,我们还是通过讲解代码的方式来介绍。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在这个文件里真正引入了mysql模块</span></span><br><span class="line"><span class="keyword">var</span> mysql = <span class="built_in">require</span>(<span class="string">"mysql"</span>);</span><br><span class="line"><span class="comment">//定义了mysql的一些基本信息</span></span><br><span class="line"><span class="keyword">var</span> pool = mysql.createPool(&#123;</span><br><span class="line">    host: <span class="string">'127.0.0.1'</span>,<span class="comment">//本机</span></span><br><span class="line">    user: <span class="string">'root'</span>,<span class="comment">//用户名，这里是root</span></span><br><span class="line">    password: <span class="string">'root'</span>,<span class="comment">//密码，这里也是root</span></span><br><span class="line">    database: <span class="string">'crawl'</span><span class="comment">//database:要导入的数据库，这里是crawl数据库</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//下面是两种不同的链接数据库的方式，我们在没有系统学习mysql之前，略去不讲</span></span><br><span class="line"><span class="keyword">var</span> query = <span class="function"><span class="keyword">function</span>(<span class="params">sql, sqlparam, callback</span>) </span>&#123;</span><br><span class="line">    pool.getConnection(<span class="function"><span class="keyword">function</span>(<span class="params">err, conn</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (err) &#123;</span><br><span class="line">            callback(err, <span class="literal">null</span>, <span class="literal">null</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            conn.query(sql, sqlparam, <span class="function"><span class="keyword">function</span>(<span class="params">qerr, vals, fields</span>) </span>&#123;</span><br><span class="line">                conn.release(); <span class="comment">//释放连接 </span></span><br><span class="line">                callback(qerr, vals, fields); <span class="comment">//事件驱动回调 </span></span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> query_noparam = <span class="function"><span class="keyword">function</span>(<span class="params">sql, callback</span>) </span>&#123;</span><br><span class="line">    pool.getConnection(<span class="function"><span class="keyword">function</span>(<span class="params">err, conn</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (err) &#123;</span><br><span class="line">            callback(err, <span class="literal">null</span>, <span class="literal">null</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            conn.query(sql, <span class="function"><span class="keyword">function</span>(<span class="params">qerr, vals, fields</span>) </span>&#123;</span><br><span class="line">                conn.release(); <span class="comment">//释放连接 </span></span><br><span class="line">                callback(qerr, vals, fields); <span class="comment">//事件驱动回调 </span></span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br><span class="line">exports.query = query;</span><br><span class="line">exports.query_noparam = query_noparam;</span><br></pre></td></tr></table></figure>
+
+<h3 id="改写主函数脚本—主要两方面"><a href="#改写主函数脚本—主要两方面" class="headerlink" title="改写主函数脚本—主要两方面"></a>改写主函数脚本—主要两方面</h3><h4 id="在文件开始"><a href="#在文件开始" class="headerlink" title="在文件开始"></a>在文件开始</h4><p>需要用var mysql = require(‘./mysql.js’）,前提是两个文件放在同一个文件夹下。关于js中调用同文件夹的语法，这里略去不讲</p>
+<h4 id="在newsGet函数的最后修改"><a href="#在newsGet函数的最后修改" class="headerlink" title="在newsGet函数的最后修改"></a>在newsGet函数的最后修改</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//因为老师的代码更为详细，所以那他的举例子，具体到我自己写的每个爬虫，只需要在原基础上删改即可</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//下面注释掉的是原来写入文件的操作，现在我们要把他写入数据库中</span></span><br><span class="line"><span class="comment">// var filename = source_name + "_" + (new Date()).toFormat("YYYY-MM-DD") +</span></span><br><span class="line"><span class="comment">//     "_" + myURL.substr(myURL.lastIndexOf('/') + 1) + ".json";</span></span><br><span class="line"><span class="comment">// 存储json</span></span><br><span class="line"><span class="comment">// fs.writeFileSync(filename, JSON.stringify(fetch));</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//INSERT INTO fetches就是要把信息写入我们建立出来的fetches表中</span></span><br><span class="line"><span class="comment">//后面跟着的就是我们要写入的数据种类，注意，要一一对应：括号内的类型，创建表的时候定义的类型，问号个数</span></span><br><span class="line"><span class="keyword">var</span> fetchAddSql = <span class="string">'INSERT INTO fetches(url,source_name,source_encoding,title,'</span> </span><br><span class="line">+<span class="string">'keywords,author,publish_date,crawltime,content) VALUES(?,?,?,?,?,?,?,?,?)'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//下面这个params数组中的值，就是要具体传给上面问号里的，所以也要一一对应</span></span><br><span class="line"><span class="keyword">var</span> fetchAddSql_Params = [fetch.url, fetch.source_name, fetch.source_encoding,</span><br><span class="line">            fetch.title, fetch.keywords, fetch.author, fetch.publish_date,</span><br><span class="line">            fetch.crawltime.toFormat(<span class="string">"YYYY-MM-DD HH24:MI:SS"</span>), fetch.content</span><br><span class="line">        ];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//最后，执行sql，数据库中fetch表里的url属性是unique的，不会把重复的url内容写入数据库</span></span><br><span class="line">mysql.query(fetchAddSql, fetchAddSql_Params, <span class="function"><span class="keyword">function</span>(<span class="params">qerr, vals, fields</span>) </span>&#123;</span><br><span class="line">           <span class="keyword">if</span> (qerr) &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(qerr);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;); <span class="comment">//mysql写入</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="成果展示"><a href="#成果展示" class="headerlink" title="成果展示"></a>成果展示</h3><p>经过了上面的操作，我们来分别看看老师的爬虫和我的爬虫分别爬取到的信息吧！</p>
+<ul>
+<li>老师的爬虫</li>
+</ul>
+
+
+<ul>
+<li>我的爬虫</li>
+</ul>
+
+
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><ul>
+<li>其实我真的只是想看看大佬们都买了那些咖啡玩具，QAQ</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/24/%E5%A6%82%E4%BD%95%E6%8A%8A%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E5%88%B0MySql%E4%B8%AD/" data-id="ck9xp0n17007pasnsfgw50ni7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/crawler/" rel="tag">crawler</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-模仿老师的代码开始自己的爬虫项目" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/23/%E6%A8%A1%E4%BB%BF%E8%80%81%E5%B8%88%E7%9A%84%E4%BB%A3%E7%A0%81%E5%BC%80%E5%A7%8B%E8%87%AA%E5%B7%B1%E7%9A%84%E7%88%AC%E8%99%AB%E9%A1%B9%E7%9B%AE/" class="article-date">
+  <time datetime="2020-04-23T13:35:41.000Z" itemprop="datePublished">2020-04-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/23/%E6%A8%A1%E4%BB%BF%E8%80%81%E5%B8%88%E7%9A%84%E4%BB%A3%E7%A0%81%E5%BC%80%E5%A7%8B%E8%87%AA%E5%B7%B1%E7%9A%84%E7%88%AC%E8%99%AB%E9%A1%B9%E7%9B%AE/">模仿老师的代码开始自己的爬虫项目</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="模仿老师的代码开始自己的爬虫项目"><a href="#模仿老师的代码开始自己的爬虫项目" class="headerlink" title="模仿老师的代码开始自己的爬虫项目"></a>模仿老师的代码开始自己的爬虫项目</h1><h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>这篇子博客主要是记录我写的三个爬虫得心得，主要把精力集中在第一个爬取什么值得买网站上了，剩下两个通过修改爬取信息和正则表达式，可以很快的运作起来</li>
+<li>我会运用一一讲解代码的形式来介绍为什么要这么做，或者这么做有什么作用（第一个例子）</li>
+<li>剩下，我爬取了十个左右的网站，因为代码大多数重复，所以我就简要介绍一下他们的不同之处</li>
+</ul>
+<h3 id="什么值得买-网站"><a href="#什么值得买-网站" class="headerlink" title="什么值得买 网站"></a>什么值得买 网站</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> source_name = <span class="string">"什么值得买？"</span>;</span><br><span class="line"><span class="keyword">var</span> domain = <span class="string">'https://post.smzdm.com'</span>;</span><br><span class="line"><span class="keyword">var</span> myEncoding = <span class="string">"utf-8"</span>;</span><br><span class="line"><span class="keyword">var</span> seedURL = <span class="string">'https://post.smzdm.com'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> seedURL_format = <span class="string">"$('a')"</span>;<span class="comment">//a-href，这是为了获取到源代码中所有a开头的链接</span></span><br><span class="line"><span class="keyword">var</span> regExp =<span class="regexp">/\/.\/.&#123;8&#125;\//</span>;<span class="comment">//获取a href的正则表达式</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> interface_format = <span class="string">"$('h1.item-name').text()"</span>;<span class="comment">//标题内容</span></span><br><span class="line"><span class="keyword">var</span> content_format = <span class="string">"$('.m-contant').text()"</span>;<span class="comment">//正文内容</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//下面是引环节，具体的讲解在我的另一篇：爬虫项目中引用的包极其用法有所讲解</span></span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="keyword">var</span> myRequest = <span class="built_in">require</span>(<span class="string">'request'</span>)</span><br><span class="line"><span class="keyword">var</span> myCheerio = <span class="built_in">require</span>(<span class="string">'cheerio'</span>)</span><br><span class="line"><span class="keyword">var</span> myIconv = <span class="built_in">require</span>(<span class="string">'iconv-lite'</span>)</span><br><span class="line"><span class="built_in">require</span>(<span class="string">'date-utils'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//因为很多网站会防止爬虫，所以我们必须伪装成一个浏览器来防止屏蔽</span></span><br><span class="line"><span class="keyword">var</span> headers = &#123;</span><br><span class="line">    <span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.65 Safari/537.36'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//下面的代码块，我在request模块讲解时有所提及，这里略去不讲</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">request</span>(<span class="params">url, callback</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> options = &#123;</span><br><span class="line">        url: url,</span><br><span class="line">        encoding: <span class="literal">null</span>,</span><br><span class="line">        <span class="comment">//proxy: 'http://x.x.x.x:8080',//过代理</span></span><br><span class="line">        headers: headers,</span><br><span class="line">        timeout: <span class="number">10000</span> <span class="comment">//多长时间没有反应，就不去理他了</span></span><br><span class="line">    &#125;</span><br><span class="line">    myRequest(options, callback)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//下面的代码块的作用是搜索主网的源代码，找出符合条件的子网页的链接</span></span><br><span class="line">request(seedURL,<span class="function"><span class="keyword">function</span> (<span class="params">err,res,body</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> html = myIconv.decode(body, myEncoding);</span><br><span class="line">    <span class="built_in">console</span>.log(html);</span><br><span class="line">    <span class="comment">//准备用cheerio解析html</span></span><br><span class="line">    <span class="keyword">var</span> $ = myCheerio.load(html, &#123; <span class="attr">decodeEntities</span>: <span class="literal">true</span> &#125;);</span><br><span class="line">    <span class="comment">//定义一个子网页数组，然后让他把我想要的所有目标链接都写进去，这里，还没有做进一步筛选</span></span><br><span class="line">    <span class="keyword">var</span> seedurl_news;</span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">        seedurl_news = <span class="built_in">eval</span>(seedURL_format);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (e) &#123; <span class="built_in">console</span>.log(<span class="string">'url列表所处的html块识别出错：'</span> + e) &#125;;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//这里做了进一步筛选，搜索我们新闻链接数组中的每一个元素</span></span><br><span class="line">    seedurl_news.each(<span class="function"><span class="keyword">function</span> (<span class="params">i,e</span>) </span>&#123;</span><br><span class="line">        <span class="comment">//定义一个子链接字符串</span></span><br><span class="line">        <span class="keyword">var</span> myURL =<span class="string">""</span>;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            <span class="keyword">var</span> href = <span class="string">""</span>;</span><br><span class="line"><span class="comment">//让href等于  &lt;a href="https://post.smzdm.com/p/alpwnzve/"  源代码中href后面的字符串、</span></span><br><span class="line"><span class="comment">//也就是我们想要的子网站的链接          </span></span><br><span class="line">            href = $(e).attr(<span class="string">"href"</span>);     </span><br><span class="line">            <span class="keyword">if</span>(href.toLocaleString().indexOf(<span class="string">'https://'</span>)&gt;=<span class="number">0</span>||href.toLocaleString().indexOf(<span class="string">'http://'</span>)&gt;=<span class="number">0</span>)</span><br><span class="line">                <span class="comment">//这里再做一个判断，如果成功，我们就让子链接等于href</span></span><br><span class="line">            myURL =   href; <span class="comment">//其他</span></span><br><span class="line">        &#125; <span class="keyword">catch</span> (e) &#123; <span class="built_in">console</span>.log(<span class="string">'识别种子页面中的论坛链接出错：'</span> + e) &#125;</span><br><span class="line">        <span class="comment">//同时，如果子链接是不复合我们的正则表达式的，那么，我们就需要遍历下一个。</span></span><br><span class="line">        <span class="keyword">if</span>(!regExp.test(myURL))<span class="keyword">return</span>;</span><br><span class="line">        <span class="comment">//最后经过三层筛选，我们终于可以进一步读取了，这里用自己定义的newsGet函数</span></span><br><span class="line">        newsGet(myURL);<span class="comment">//读取论坛页面</span></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//下面是newsGet函数的具体内容</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">newsGet</span>(<span class="params">myURL</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//首先做一个对myURL的访问</span></span><br><span class="line">    request(myURL,<span class="function"><span class="keyword">function</span> (<span class="params">err,res,body</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 然后做一个转码</span></span><br><span class="line">        <span class="keyword">var</span> html_news = myIconv.decode(body,myEncoding);</span><br><span class="line">        <span class="comment">//用cheerio解析，并把我们需要的内容分别存给了各个$开头的内容</span></span><br><span class="line">        <span class="comment">//关于$是怎么操作的，请看我的博客：爬虫项目中引用的包及其用法</span></span><br><span class="line">        <span class="keyword">var</span> $ = myCheerio.load(html_news, &#123; <span class="attr">decodeEntities</span>: <span class="literal">true</span> &#125;);</span><br><span class="line">		<span class="comment">//进行到这一步，我们可以说已经把所有子页面中我们需要的</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"转码读取成功:"</span> + myURL);</span><br><span class="line">        <span class="comment">//然后就定义一个对象，把所有我们需要的信息都放到对象中的属性中去</span></span><br><span class="line">        <span class="keyword">var</span> fetch = &#123;&#125;</span><br><span class="line">        fetch.url = myURL;</span><br><span class="line">        fetch.content = <span class="string">""</span>;</span><br><span class="line">        fetch.crawltime = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">        fetch.source_encoding = myEncoding; <span class="comment">//编码</span></span><br><span class="line">        fetch.source_name = source_name;</span><br><span class="line">        fetch.interface_format = <span class="built_in">eval</span>(interface_format);</span><br><span class="line">        fetch.content = <span class="built_in">eval</span>(content_format); <span class="comment">//内容</span></span><br><span class="line">		<span class="comment">//最后做一个json文件的存储，关于存储时遇到的问题，我再主博客的问题6有所介绍</span></span><br><span class="line">        <span class="keyword">var</span> filename = source_name + <span class="string">"_"</span> +(<span class="keyword">new</span> <span class="built_in">Date</span>()).valueOf() +<span class="string">".json"</span>;</span><br><span class="line">        <span class="comment">// 存储json</span></span><br><span class="line">        fs.writeFileSync(filename, <span class="built_in">JSON</span>.stringify(fetch));</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>从下面开始的十一个网站，就是如法炮制一般，可以批量生产了，唯一要改动的，就是编码格式，正则表达式，还有更具不同网页源代码改变不同存储类型中的样式</li>
+<li>比如，同样是title_format 虎扑后面就是  #j_data 网易就是 h1 这种非常灵活，需要我们一一对照devtool</li>
+</ul>
+<h3 id="虎扑论坛"><a href="#虎扑论坛" class="headerlink" title="虎扑论坛"></a>虎扑论坛</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> source_name = <span class="string">"虎扑"</span>;</span><br><span class="line"><span class="keyword">var</span> domain = <span class="string">'https://www.hupu.com/'</span>;</span><br><span class="line"><span class="keyword">var</span> myEncoding = <span class="string">"utf-8"</span>;</span><br><span class="line"><span class="keyword">var</span> seedURL = <span class="string">'https://www.hupu.com/'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> seedURL_format = <span class="string">"$('a')"</span>;<span class="comment">//a-href</span></span><br><span class="line"><span class="keyword">var</span> regExp =<span class="regexp">/\/\d+[.]html/</span>;<span class="comment">//获取a href的正则表达式</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> title_format = <span class="string">"$('#j_data').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> user_format =<span class="string">"$('.u').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> content_format =<span class="string">"$('.quote-content').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> title_format2 = <span class="string">"$('.headline').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> content_format2 =<span class="string">"$('.artical-main-content').text()"</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="网易新闻"><a href="#网易新闻" class="headerlink" title="网易新闻"></a>网易新闻</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> source_name = <span class="string">"网易"</span>;</span><br><span class="line"><span class="keyword">var</span> domain = <span class="string">'https://www.163.com/'</span>;</span><br><span class="line"><span class="keyword">var</span> myEncoding = <span class="string">"GBK"</span>;<span class="comment">//</span></span><br><span class="line"><span class="keyword">var</span> seedURL = <span class="string">'https://www.163.com/'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> seedURL_format = <span class="string">"$('a')"</span>;<span class="comment">//a-href</span></span><br><span class="line"><span class="keyword">var</span> regExp =<span class="regexp">/\/\d&#123;2&#125;\/\d&#123;4&#125;\/\d&#123;2&#125;\/.+[.]html/</span>;<span class="comment">//获取a href的正则表达式</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> article_source = <span class="string">"$('#ne_article_source').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> title_format = <span class="string">"$('h1').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> author =<span class="string">"$('.ep-editor').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> content_format =<span class="string">"$('.post_text').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> pubtime = <span class="string">"$('.post_time_source').text()"</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>值得注意的是，网易的编码是GBK而不是utf-8如果以utf-8的编码格式这样把他存入数据库或者保存在json文件夹中，会出现乱码</li>
+</ul>
+
+
+<ul>
+<li>只要改成myEncoding = “GBK”就可以完美规避这个问题</li>
+</ul>
+<h3 id="新浪"><a href="#新浪" class="headerlink" title="新浪"></a>新浪</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> source_name = <span class="string">"新浪体育"</span>;</span><br><span class="line"><span class="keyword">var</span> domain = <span class="string">'http://sports.sina.com.cn/'</span>;</span><br><span class="line"><span class="keyword">var</span> myEncoding = <span class="string">"utf-8"</span>;</span><br><span class="line"><span class="keyword">var</span> seedURL = <span class="string">'http://sports.sina.com.cn/'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> seedURL_format = <span class="string">"$('a')"</span>;<span class="comment">//a-href</span></span><br><span class="line"><span class="keyword">var</span> regExp =<span class="regexp">/\/.+\/\d&#123;4&#125;-\d&#123;2&#125;-\d&#123;2&#125;\/.+[.]shtml/</span>;<span class="comment">//获取a href的正则表达式</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> title_format = <span class="string">"$('.main-title').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> article_source = <span class="string">"$('.source ent-source').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> content_format =<span class="string">"$('.article').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> author =<span class="string">"$('.show_author').text()"</span>;</span><br><span class="line"><span class="comment">// var content_format2 ="$('.artical-main-content').text()";</span></span><br><span class="line"><span class="keyword">var</span> pubtime = <span class="string">"$('.date').text()"</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="东方财富"><a href="#东方财富" class="headerlink" title="东方财富"></a>东方财富</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> source_name = <span class="string">"东方财富网"</span>;</span><br><span class="line"><span class="keyword">var</span> domain = <span class="string">'https://www.eastmoney.com/'</span>;</span><br><span class="line"><span class="keyword">var</span> myEncoding = <span class="string">"utf-8"</span>;</span><br><span class="line"><span class="keyword">var</span> seedURL = <span class="string">'https://www.eastmoney.com/'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> seedURL_format = <span class="string">"$('a')"</span>;<span class="comment">//a-href</span></span><br><span class="line"><span class="keyword">var</span> regExp =<span class="regexp">/\/.\/\d+[.]html/</span>;<span class="comment">//获取a href的正则表达式</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> title_format = <span class="string">"$('h1').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> pubtime = <span class="string">"$('.time').text()"</span>;</span><br><span class="line"><span class="comment">// var article_source = "$('.source data-source').text()";</span></span><br><span class="line"><span class="keyword">var</span> content_format =<span class="string">"$('.Body').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> author =<span class="string">"$('.res-edit').text()"</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="雪球财经"><a href="#雪球财经" class="headerlink" title="雪球财经"></a>雪球财经</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> source_name = <span class="string">"雪球财经"</span>;</span><br><span class="line"><span class="keyword">var</span> domain = <span class="string">'https://xueqiu.com/'</span>;</span><br><span class="line"><span class="keyword">var</span> myEncoding = <span class="string">"utf-8"</span>;</span><br><span class="line"><span class="keyword">var</span> seedURL = <span class="string">'https://xueqiu.com/'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> seedURL_format = <span class="string">"$('a')"</span>;<span class="comment">//a-href</span></span><br><span class="line"><span class="keyword">var</span> regExp =<span class="regexp">/\/\d+\/\d&#123;9&#125;/</span>;<span class="comment">//获取a href的正则表达式</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> title_format = <span class="string">"$('.article__bd__title').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> pubtime = <span class="string">"$('.time').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> article_source = <span class="string">"$('.source').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> content_format =<span class="string">"$('.article__bd__detail').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> author =<span class="string">"$('.avatar__name').text()"</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="中国证券网"><a href="#中国证券网" class="headerlink" title="中国证券网"></a>中国证券网</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> source_name = <span class="string">"中国证券网"</span>;</span><br><span class="line"><span class="keyword">var</span> domain = <span class="string">'http://www.cnstock.com/'</span>;</span><br><span class="line"><span class="keyword">var</span> myEncoding = <span class="string">"GBK"</span>;</span><br><span class="line"><span class="keyword">var</span> seedURL = <span class="string">'http://www.cnstock.com/'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> seedURL_format = <span class="string">"$('a')"</span>;<span class="comment">//a-href</span></span><br><span class="line"><span class="keyword">var</span> regExp =<span class="regexp">/news,[a-zA-Z]&#123;4&#125;-\d&#123;6&#125;-\d+[.]/</span>;<span class="comment">//获取a href的正则表达式</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> title_format = <span class="string">"$('.title').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> pubtime = <span class="string">"$('.timer').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> article_source = <span class="string">"$('.source').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> content_format =<span class="string">"$('.content').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> author =<span class="string">"$('.author').text()"</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>这里同样注意，中国证券网也是GBK编码的</li>
+</ul>
+<h3 id="中财网"><a href="#中财网" class="headerlink" title="中财网"></a>中财网</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> source_name = <span class="string">"中财网"</span>;</span><br><span class="line"><span class="keyword">var</span> domain = <span class="string">'http://www.cfi.net.cn/'</span>;</span><br><span class="line"><span class="keyword">var</span> myEncoding = <span class="string">"utf-8"</span>;</span><br><span class="line"><span class="keyword">var</span> seedURL = <span class="string">'http://www.cfi.net.cn/'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> seedURL_format = <span class="string">"$('a')"</span>;<span class="comment">//a-href</span></span><br><span class="line"><span class="keyword">var</span> regExp =<span class="regexp">/[a-z]\d+[.]/</span>;<span class="comment">//获取a href的正则表达式</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> title_format = <span class="string">"$('h1').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> pubtime = <span class="string">"$('.time').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> article_source = <span class="string">"$('.source data-source').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> content_format =<span class="string">"$('.Body').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> author =<span class="string">"$('.res-edit').text()"</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="凤凰财经"><a href="#凤凰财经" class="headerlink" title="凤凰财经"></a>凤凰财经</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> source_name = <span class="string">"凤凰财经"</span>;</span><br><span class="line"><span class="keyword">var</span> domain = <span class="string">'http://finance.ifeng.com/'</span>;</span><br><span class="line"><span class="keyword">var</span> myEncoding = <span class="string">"utf-8"</span>;</span><br><span class="line"><span class="keyword">var</span> seedURL = <span class="string">'http://finance.ifeng.com/'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> seedURL_format = <span class="string">"$('a')"</span>;<span class="comment">//a-href</span></span><br><span class="line"><span class="keyword">var</span> regExp =<span class="regexp">/\/.\/[1-9a-zA-Z]&#123;10&#125;/</span>;<span class="comment">//获取a href的正则表达式</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> title_format = <span class="string">"$('.topic-3bY8Hw-9').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> pubtime = <span class="string">"$('.time-hm3v7ddj').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> article_source = <span class="string">"$('.source-2pXi2vGI').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> content_format =<span class="string">"$('.text-3zQ3cZD4').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> author =<span class="string">"$('#editor_baidu').text()"</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="新浪财经"><a href="#新浪财经" class="headerlink" title="新浪财经"></a>新浪财经</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> source_name = <span class="string">"新浪财经"</span>;</span><br><span class="line"><span class="keyword">var</span> domain = <span class="string">'https://finance.sina.com.cn/'</span>;</span><br><span class="line"><span class="keyword">var</span> myEncoding = <span class="string">"utf-8"</span>;</span><br><span class="line"><span class="keyword">var</span> seedURL = <span class="string">'https://finance.sina.com.cn/'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> seedURL_format = <span class="string">"$('a')"</span>;<span class="comment">//a-href</span></span><br><span class="line"><span class="keyword">var</span> regExp =<span class="regexp">/\/.+\/\d&#123;4&#125;-\d&#123;2&#125;-\d&#123;2&#125;\/.+[.]shtml/</span>;<span class="comment">//获取a href的正则表达式</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> title_format = <span class="string">"$('.main-title').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> pubtime = <span class="string">"$('.date').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> article_source = <span class="string">"$('.source ent-source').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> content_format =<span class="string">"$('#artibody').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> author =<span class="string">"$('.article-editor').text()"</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="财经网"><a href="#财经网" class="headerlink" title="财经网"></a>财经网</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> source_name = <span class="string">"财经网"</span>;</span><br><span class="line"><span class="keyword">var</span> domain = <span class="string">'http://www.caijing.com.cn/'</span>;</span><br><span class="line"><span class="keyword">var</span> myEncoding = <span class="string">"utf-8"</span>;</span><br><span class="line"><span class="keyword">var</span> seedURL = <span class="string">'http://www.caijing.com.cn/'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> seedURL_format = <span class="string">"$('a')"</span>;<span class="comment">//a-href</span></span><br><span class="line"><span class="keyword">var</span> regExp =<span class="regexp">/\/\d+\/\d+[.]shtml/</span>;<span class="comment">//获取a href的正则表达式</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> title_format = <span class="string">"$('#cont_title').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> pubtime = <span class="string">"$('#pubtime_baidu').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> article_source = <span class="string">"$('#source_baidu').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> content_format =<span class="string">"$('#the_content').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> author =<span class="string">"$('#editor_baidu').text()"</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="金融界"><a href="#金融界" class="headerlink" title="金融界"></a>金融界</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> source_name = <span class="string">"金融界"</span>;</span><br><span class="line"><span class="keyword">var</span> domain = <span class="string">'http://www.jrj.com.cn/'</span>;</span><br><span class="line"><span class="keyword">var</span> myEncoding = <span class="string">"GBK"</span>;</span><br><span class="line"><span class="keyword">var</span> seedURL = <span class="string">'http://www.jrj.com.cn/'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> seedURL_format = <span class="string">"$('a')"</span>;<span class="comment">//a-href</span></span><br><span class="line"><span class="keyword">var</span> regExp =<span class="regexp">/\/\d&#123;4&#125;\/\d&#123;2&#125;\/\d+[.]/</span>;<span class="comment">//获取a href的正则表达式</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> title_format = <span class="string">"$('h1').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> pubtime = <span class="string">"$('.inftop').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> article_source = <span class="string">"$('h1').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> content_format =<span class="string">"$('.texttit_m1').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> author =<span class="string">"$('h1').text()"</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>注意，金融界也是GBK编码的网站</li>
+</ul>
+<h2 id="这些网站的爬虫，我也都有存储至MySQL"><a href="#这些网站的爬虫，我也都有存储至MySQL" class="headerlink" title="这些网站的爬虫，我也都有存储至MySQL"></a>这些网站的爬虫，我也都有存储至MySQL</h2><ul>
+<li><p>这里牵扯到一些复杂的分类问题</p>
+</li>
+<li><p>一开始我想把所有文件分开来放在不同databse下的不同table</p>
+</li>
+<li><p>但是后来我觉得切换不是很方便，所以直接把所有table放在同一个crawl 数据库下</p>
+</li>
+<li><p>最后，因为爬取了很多金融网站，而且为了给最后的express框架做一些内容上的支撑，所以我把所有的财经类网站放到了一张名为经济新闻的表中，这时候我们可以看到一张巨大的表格</p>
+</li>
+<li>
+
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/23/%E6%A8%A1%E4%BB%BF%E8%80%81%E5%B8%88%E7%9A%84%E4%BB%A3%E7%A0%81%E5%BC%80%E5%A7%8B%E8%87%AA%E5%B7%B1%E7%9A%84%E7%88%AC%E8%99%AB%E9%A1%B9%E7%9B%AE/" data-id="ck9xp0n1f008basnsgs4tdp3y" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/crawler/" rel="tag">crawler</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DP/" rel="tag">DP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-structure/" rel="tag">Data_structure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rank/" rel="tag">Rank</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regular-Expression/" rel="tag">Regular Expression</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/STL/" rel="tag">STL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bfs/" rel="tag">bfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/coffee/" rel="tag">coffee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cour-de-francais-accelere/" rel="tag">cour de francais accelere</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/crawler/" rel="tag">crawler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/" rel="tag">dfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/discrete-mathematics/" rel="tag">discrete mathematics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/easy/" rel="tag">easy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/francais/" rel="tag">francais</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hard/" rel="tag">hard</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-Link/" rel="tag">leetcode_Link</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-Queue/" rel="tag">leetcode_Queue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-Stack/" rel="tag">leetcode_Stack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab/" rel="tag">matlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/medium/" rel="tag">medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/traduction/" rel="tag">traduction</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AB%98%E6%95%B0/" rel="tag">高数</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 16.15px;">C++</a> <a href="/tags/DP/" style="font-size: 10.77px;">DP</a> <a href="/tags/Data-structure/" style="font-size: 13.85px;">Data_structure</a> <a href="/tags/JavaScript/" style="font-size: 15.38px;">JavaScript</a> <a href="/tags/Rank/" style="font-size: 13.08px;">Rank</a> <a href="/tags/Regular-Expression/" style="font-size: 10px;">Regular Expression</a> <a href="/tags/STL/" style="font-size: 14.62px;">STL</a> <a href="/tags/bfs/" style="font-size: 10.77px;">bfs</a> <a href="/tags/coffee/" style="font-size: 13.85px;">coffee</a> <a href="/tags/cour-de-francais-accelere/" style="font-size: 18.46px;">cour de francais accelere</a> <a href="/tags/crawler/" style="font-size: 14.62px;">crawler</a> <a href="/tags/dfs/" style="font-size: 10px;">dfs</a> <a href="/tags/discrete-mathematics/" style="font-size: 12.31px;">discrete mathematics</a> <a href="/tags/easy/" style="font-size: 16.15px;">easy</a> <a href="/tags/francais/" style="font-size: 19.23px;">francais</a> <a href="/tags/hard/" style="font-size: 10px;">hard</a> <a href="/tags/leetcode/" style="font-size: 10px;">leetcode</a> <a href="/tags/leetcode-Link/" style="font-size: 17.69px;">leetcode_Link</a> <a href="/tags/leetcode-Queue/" style="font-size: 13.85px;">leetcode_Queue</a> <a href="/tags/leetcode-Stack/" style="font-size: 16.92px;">leetcode_Stack</a> <a href="/tags/matlab/" style="font-size: 10px;">matlab</a> <a href="/tags/medium/" style="font-size: 20px;">medium</a> <a href="/tags/python/" style="font-size: 11.54px;">python</a> <a href="/tags/traduction/" style="font-size: 10px;">traduction</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 13.08px;">小技巧</a> <a href="/tags/%E9%AB%98%E6%95%B0/" style="font-size: 11.54px;">高数</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/05/07/pyspider%E6%A1%86%E6%9E%B6/">pyspider框架</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/07/%E5%A0%86%E6%8E%92%E5%BA%8F/">堆排序</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/07/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/">选择排序</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/07/%E5%AF%B9%E5%BC%A7%E9%95%BF%E7%9A%84%E6%9B%B2%E7%BA%BF%E7%A7%AF%E5%88%86/">对弧长的曲线积分</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/06/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/">归并排序</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

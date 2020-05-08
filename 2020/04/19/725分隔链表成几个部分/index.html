@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>725分隔链表成几个部分 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="725.分割链表注：现在开始尽量减少以图片的方式呈现题目了以下是题目123456789101112131415161718192021222324252627282930313233343536&#x2F;*给定一个头结点为 root 的链表, 编写一个函数以将链表分隔为 k 个连续的部分。每部分的长度应该尽可能的相等: 任意两部分的长度差距不能超过 1，也就是说可能有些部分为 null。这k个部分应该按照">
+<meta property="og:type" content="article">
+<meta property="og:title" content="725分隔链表成几个部分">
+<meta property="og:url" content="http://yoursite.com/2020/04/19/725%E5%88%86%E9%9A%94%E9%93%BE%E8%A1%A8%E6%88%90%E5%87%A0%E4%B8%AA%E9%83%A8%E5%88%86/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="725.分割链表注：现在开始尽量减少以图片的方式呈现题目了以下是题目123456789101112131415161718192021222324252627282930313233343536&#x2F;*给定一个头结点为 root 的链表, 编写一个函数以将链表分隔为 k 个连续的部分。每部分的长度应该尽可能的相等: 任意两部分的长度差距不能超过 1，也就是说可能有些部分为 null。这k个部分应该按照">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-04-19T08:57:44.000Z">
+<meta property="article:modified_time" content="2020-04-22T04:58:26.738Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="leetcode_Link">
+<meta property="article:tag" content="medium">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-725分隔链表成几个部分" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/19/725%E5%88%86%E9%9A%94%E9%93%BE%E8%A1%A8%E6%88%90%E5%87%A0%E4%B8%AA%E9%83%A8%E5%88%86/" class="article-date">
+  <time datetime="2020-04-19T08:57:44.000Z" itemprop="datePublished">2020-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      725分隔链表成几个部分
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="725-分割链表"><a href="#725-分割链表" class="headerlink" title="725.分割链表"></a>725.分割链表</h1><h4 id="注：现在开始尽量减少以图片的方式呈现题目了"><a href="#注：现在开始尽量减少以图片的方式呈现题目了" class="headerlink" title="注：现在开始尽量减少以图片的方式呈现题目了"></a>注：现在开始尽量减少以图片的方式呈现题目了</h4><h2 id="以下是题目"><a href="#以下是题目" class="headerlink" title="以下是题目"></a>以下是题目</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">给定一个头结点为 root 的链表, 编写一个函数以将链表分隔为 k 个连续的部分。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">每部分的长度应该尽可能的相等: 任意两部分的长度差距不能超过 1，也就是说可能有些部分为 null。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">这k个部分应该按照在链表中出现的顺序进行输出，并且排在前面的部分的长度应该大于或等于后面的长度。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">返回一个符合上述规则的链表的列表。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">举例： 1-&gt;2-&gt;3-&gt;4, k = 5 // 5 结果 [ [1], [2], [3], [4], null ]</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">示例 1：</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">输入: </span></span><br><span class="line"><span class="comment">root = [1, 2, 3], k = 5</span></span><br><span class="line"><span class="comment">输出: [[1],[2],[3],[],[]]</span></span><br><span class="line"><span class="comment">解释:</span></span><br><span class="line"><span class="comment">输入输出各部分都应该是链表，而不是数组。</span></span><br><span class="line"><span class="comment">例如, 输入的结点 root 的 val= 1, root.next.val = 2, \root.next.next.val = 3, 且 root.next.next.next = null。</span></span><br><span class="line"><span class="comment">第一个输出 output[0] 是 output[0].val = 1, output[0].next = null。</span></span><br><span class="line"><span class="comment">最后一个元素 output[4] 为 null, 它代表了最后一个部分为空链表。</span></span><br><span class="line"><span class="comment">示例 2：</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">输入: </span></span><br><span class="line"><span class="comment">root = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], k = 3</span></span><br><span class="line"><span class="comment">输出: [[1, 2, 3, 4], [5, 6, 7], [8, 9, 10]]</span></span><br><span class="line"><span class="comment">解释:</span></span><br><span class="line"><span class="comment">输入被分成了几个连续的部分，并且每部分的长度相差不超过1.前面部分的长度大于等于后面部分的长度。</span></span><br><span class="line"><span class="comment"> </span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">提示:</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">root 的长度范围： [0, 1000].</span></span><br><span class="line"><span class="comment">输入的每个节点的大小范围：[0, 999].</span></span><br><span class="line"><span class="comment">k 的取值范围： [1, 50].</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="以下是题目给出的代码"><a href="#以下是题目给出的代码" class="headerlink" title="以下是题目给出的代码"></a>以下是题目给出的代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;ListNode*&gt; <span class="title">splitListToParts</span><span class="params">(ListNode* root, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>很显然，题目的难点就是怎么设置每个存储链表单位的长短，因为他说每部分的长度相差不超过1，每部分的长度大于等于后面部分的长度</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	长度为10，分组为2，那么每个单位存储两个节点，共5个单位</span></span><br><span class="line"><span class="comment">	长度为10，分组为3，那么 4 3 3</span></span><br><span class="line"><span class="comment">	长度为10，分组为4，那么3 3 3 2</span></span><br><span class="line"><span class="comment">	</span></span><br><span class="line"><span class="comment">	于是我想用数组来存储，首先均分，然后再把余数均匀分摊到前几项</span></span><br><span class="line"><span class="comment">	我的思考，就是</span></span><br><span class="line"><span class="comment">	1.先用所有数/组 得到 基</span></span><br><span class="line"><span class="comment">	2.再用数%组 得到余数</span></span><br><span class="line"><span class="comment">	3.在前几项的基上+1，一直到余数被分光</span></span><br><span class="line"><span class="comment">	4.把这些项存到一个数组中</span></span><br><span class="line"><span class="comment">	</span></span><br><span class="line"><span class="comment">	然后就是断开链表，把头节点放入链表数组中去</span></span><br><span class="line"><span class="comment">	</span></span><br><span class="line"><span class="comment">	注意，这里有有几个细节</span></span><br><span class="line"><span class="comment">	1.如果这个组为1长度，直接插入头节点</span></span><br><span class="line"><span class="comment">	2.如果这个组为0长度，插入NULL</span></span><br><span class="line"><span class="comment">	</span></span><br><span class="line"><span class="comment">	代码量会长一点，因为能让自己看懂</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="function"><span class="built_in">vector</span>&lt;ListNode*&gt; <span class="title">splitListToParts</span><span class="params">(ListNode* root, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">        <span class="built_in">vector</span>&lt;ListNode *&gt; parts;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; install;</span><br><span class="line">        ListNode *cur = root,*temphead = root;</span><br><span class="line">      <span class="comment">//这一部分，就是计算链表中节点的个数</span></span><br><span class="line">        <span class="keyword">int</span> number = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (cur) &#123;</span><br><span class="line">            cur = cur-&gt;next;</span><br><span class="line">            number++;</span><br><span class="line">        &#125;</span><br><span class="line">        cur = root;</span><br><span class="line">        <span class="comment">//这里分两类，当组数大于长度，那么前面几组为1长度，后面为0长度</span></span><br><span class="line">        <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(k&gt;number)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">while</span>(cnt&lt;number)</span><br><span class="line">            &#123;</span><br><span class="line">                install.push_back(<span class="number">1</span>);</span><br><span class="line">                cnt++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">while</span>(cnt&lt;k)</span><br><span class="line">            &#123;</span><br><span class="line">                install.push_back(<span class="number">0</span>);</span><br><span class="line">                cnt++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span></span><br><span class="line">        &#123;   </span><br><span class="line">            <span class="keyword">int</span> integer = number / k;</span><br><span class="line">            <span class="keyword">int</span> remainder = number % k;</span><br><span class="line">            <span class="keyword">while</span> (remainder) &#123;</span><br><span class="line">                install.push_back(integer + <span class="number">1</span>);</span><br><span class="line">                remainder--;</span><br><span class="line">                cnt++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">while</span>(cnt&lt;k)</span><br><span class="line">            &#123;</span><br><span class="line">                install.push_back(integer);</span><br><span class="line">                cnt++;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">      </span><br><span class="line">      <span class="comment">//下面是切割操作，如果组数大于长度，那么如果单位长度为1.返回头节点，同时做头结点的更新，否则在数组中插入NULL节点</span></span><br><span class="line">        <span class="keyword">if</span>(k&gt;number)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;install.<span class="built_in">size</span>();i++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> tempCnt = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(install[i]==<span class="number">0</span>)</span><br><span class="line">                    parts.push_back(<span class="literal">NULL</span>);</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    temphead = cur-&gt;next;</span><br><span class="line">                    cur-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">                    parts.push_back(cur);</span><br><span class="line">                    cur = temphead;  </span><br><span class="line">                &#125;</span><br><span class="line">                     </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span></span><br><span class="line"><span class="comment">//	   否则，按照每个单位长度来切割链表，我这里用了三个节点，一个节点用来记录头节点，一个用来记录尾节点，还有一个临时节点用来帮助头节点和尾节点完成更新</span></span><br><span class="line">           </span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;install.<span class="built_in">size</span>();i++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> tempCnt = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">while</span>(tempCnt&lt;install[i]<span class="number">-1</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    tempCnt++;</span><br><span class="line">                    cur = cur-&gt;next;</span><br><span class="line">                &#125;</span><br><span class="line">                ListNode *next = cur-&gt;next;</span><br><span class="line">                cur-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">                parts.push_back(temphead);</span><br><span class="line">                cur = next;</span><br><span class="line">                temphead=next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">       </span><br><span class="line">    <span class="keyword">return</span> parts;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/19/725%E5%88%86%E9%9A%94%E9%93%BE%E8%A1%A8%E6%88%90%E5%87%A0%E4%B8%AA%E9%83%A8%E5%88%86/" data-id="ck9xp0mzj002nasnses1ye543" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-Link/" rel="tag">leetcode_Link</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/medium/" rel="tag">medium</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/04/19/V60%E7%94%9C%E6%84%9F%E5%86%B2%E6%B3%95/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          V60甜感冲法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/04/19/TheNextLargerPermutations/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Permutations</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DP/" rel="tag">DP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-structure/" rel="tag">Data_structure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rank/" rel="tag">Rank</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regular-Expression/" rel="tag">Regular Expression</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/STL/" rel="tag">STL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bfs/" rel="tag">bfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/coffee/" rel="tag">coffee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cour-de-francais-accelere/" rel="tag">cour de francais accelere</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/crawler/" rel="tag">crawler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/" rel="tag">dfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/discrete-mathematics/" rel="tag">discrete mathematics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/easy/" rel="tag">easy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/francais/" rel="tag">francais</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hard/" rel="tag">hard</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-Link/" rel="tag">leetcode_Link</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-Queue/" rel="tag">leetcode_Queue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-Stack/" rel="tag">leetcode_Stack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matlab/" rel="tag">matlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/medium/" rel="tag">medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/traduction/" rel="tag">traduction</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AB%98%E6%95%B0/" rel="tag">高数</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 16.15px;">C++</a> <a href="/tags/DP/" style="font-size: 10.77px;">DP</a> <a href="/tags/Data-structure/" style="font-size: 13.85px;">Data_structure</a> <a href="/tags/JavaScript/" style="font-size: 15.38px;">JavaScript</a> <a href="/tags/Rank/" style="font-size: 13.08px;">Rank</a> <a href="/tags/Regular-Expression/" style="font-size: 10px;">Regular Expression</a> <a href="/tags/STL/" style="font-size: 14.62px;">STL</a> <a href="/tags/bfs/" style="font-size: 10.77px;">bfs</a> <a href="/tags/coffee/" style="font-size: 13.85px;">coffee</a> <a href="/tags/cour-de-francais-accelere/" style="font-size: 18.46px;">cour de francais accelere</a> <a href="/tags/crawler/" style="font-size: 14.62px;">crawler</a> <a href="/tags/dfs/" style="font-size: 10px;">dfs</a> <a href="/tags/discrete-mathematics/" style="font-size: 12.31px;">discrete mathematics</a> <a href="/tags/easy/" style="font-size: 16.15px;">easy</a> <a href="/tags/francais/" style="font-size: 19.23px;">francais</a> <a href="/tags/hard/" style="font-size: 10px;">hard</a> <a href="/tags/leetcode/" style="font-size: 10px;">leetcode</a> <a href="/tags/leetcode-Link/" style="font-size: 17.69px;">leetcode_Link</a> <a href="/tags/leetcode-Queue/" style="font-size: 13.85px;">leetcode_Queue</a> <a href="/tags/leetcode-Stack/" style="font-size: 16.92px;">leetcode_Stack</a> <a href="/tags/matlab/" style="font-size: 10px;">matlab</a> <a href="/tags/medium/" style="font-size: 20px;">medium</a> <a href="/tags/python/" style="font-size: 11.54px;">python</a> <a href="/tags/traduction/" style="font-size: 10px;">traduction</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 13.08px;">小技巧</a> <a href="/tags/%E9%AB%98%E6%95%B0/" style="font-size: 11.54px;">高数</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/05/07/pyspider%E6%A1%86%E6%9E%B6/">pyspider框架</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/07/%E5%A0%86%E6%8E%92%E5%BA%8F/">堆排序</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/07/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/">选择排序</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/07/%E5%AF%B9%E5%BC%A7%E9%95%BF%E7%9A%84%E6%9B%B2%E7%BA%BF%E7%A7%AF%E5%88%86/">对弧长的曲线积分</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/06/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/">归并排序</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
