@@ -93,12 +93,14 @@
 <meta property="og:site_name" content="Jason">
 <meta property="og:description" content="stack容器  1234567891011121314151617181920212223242526272829303132333435363738394041&#x2F;&#x2F;&#x2F;&#x2F; Created by Jason on 2020&#x2F;3&#x2F;29.&#x2F;&#x2F;&#x2F;*3.4.3.1 stack构造函数    stack&lt;T&gt;stkT∥stack采用模板类实现,stack对象的默认构造形式    stack( c">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/2020/04/22/stack%E5%AE%B9%E5%99%A8/04/22/stack%E5%AE%B9%E5%99%A8/1.png">
 <meta property="article:published_time" content="2020-04-22T04:19:03.000Z">
 <meta property="article:modified_time" content="2020-04-22T04:42:47.592Z">
 <meta property="article:author" content="徐啟航">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="STL">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/04/22/stack%E5%AE%B9%E5%99%A8/04/22/stack%E5%AE%B9%E5%99%A8/1.png">
 
 
 
@@ -190,7 +192,7 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/%20" rel="section">
+          <a href="/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
@@ -393,7 +395,7 @@
       
 
       
-        <h1 id="stack容器"><a href="#stack容器" class="headerlink" title="stack容器"></a>stack容器</h1>
+        <h1 id="stack容器"><a href="#stack容器" class="headerlink" title="stack容器"></a>stack容器</h1><img src="/2020/04/22/stack%E5%AE%B9%E5%99%A8/04/22/stack%E5%AE%B9%E5%99%A8/1.png" class>
 
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Created by Jason on 2020/3/29.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">3.4.3.1 stack构造函数</span></span><br><span class="line"><span class="comment">    stack&lt;T&gt;stkT∥stack采用模板类实现,stack对象的默认构造形式</span></span><br><span class="line"><span class="comment">    stack( const stack&amp;stk)://拷贝构造函数</span></span><br><span class="line"><span class="comment">3.4.3.2 stack赋值操作</span></span><br><span class="line"><span class="comment">    stack operator( const stack &amp;stk);/重载等号操作符</span></span><br><span class="line"><span class="comment">3.4.3.3 stack数据存取操作。</span></span><br><span class="line"><span class="comment">    push(elem)//栈顶添加元素</span></span><br><span class="line"><span class="comment">    pop();//从栈顶移除第一个元素</span></span><br><span class="line"><span class="comment">    top();/返回栈顶元素</span></span><br><span class="line"><span class="comment">3.4.3.4 stack大小操作</span></span><br><span class="line"><span class="comment">    empty();//判断堆栈是否为空</span></span><br><span class="line"><span class="comment">    size();//返回堆栈的大小</span></span><br><span class="line"><span class="comment"> * */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test01</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt;s;</span><br><span class="line">    <span class="comment">//入栈</span></span><br><span class="line">    s.push(<span class="number">10</span>);</span><br><span class="line">    s.push(<span class="number">20</span>);</span><br><span class="line">    s.push( <span class="number">30</span>);</span><br><span class="line">    s.push(<span class="number">40</span>);</span><br><span class="line">    <span class="keyword">while</span> (!s.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//输出栈顶元素</span></span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;s.top()&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        s.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"栈的大小"</span>&lt;&lt;s.<span class="built_in">size</span>()&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    test01();</span><br><span class="line">   system(<span class="string">"pause"</span>);</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
@@ -534,7 +536,7 @@
               
                 <a href="/archives%7C%7C%20archive">
               
-                  <span class="site-state-item-count">137</span>
+                  <span class="site-state-item-count">138</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

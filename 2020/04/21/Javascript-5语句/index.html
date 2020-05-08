@@ -93,11 +93,18 @@
 <meta property="og:site_name" content="Jason">
 <meta property="og:description" content="js第五章语句5.2 复合语句和空语句复合语句：用花括号将多条语句括起来，当一条语句使用123456789&amp;#123;	x &#x3D; Math.PI;	cx &#x3D; Math.cos(x);	console.log(&quot;cos(Pi)&#x3D; &quot; +cx);&amp;#125;&#x2F;&#x2F;注意	1. 语句块结尾不需要分号	2. 语句块中的行都要有缩进，但非必需，增加可读性	3. Js无块级作用域，语句块中声明的变量非语句块私有">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/2020/04/21/Javascript-5%E8%AF%AD%E5%8F%A5/04/21/Javascript-5%E8%AF%AD%E5%8F%A5/throw1.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/21/Javascript-5%E8%AF%AD%E5%8F%A5/04/21/Javascript-5%E8%AF%AD%E5%8F%A5/throw2.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/21/Javascript-5%E8%AF%AD%E5%8F%A5/04/21/Javascript-5%E8%AF%AD%E5%8F%A5/throw3.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/21/Javascript-5%E8%AF%AD%E5%8F%A5/04/21/Javascript-5%E8%AF%AD%E5%8F%A5/throw4.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/21/Javascript-5%E8%AF%AD%E5%8F%A5/04/21/Javascript-5%E8%AF%AD%E5%8F%A5/%E5%B0%8F%E7%BB%93.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/21/Javascript-5%E8%AF%AD%E5%8F%A5/04/21/Javascript-5%E8%AF%AD%E5%8F%A5/%E5%B0%8F%E7%BB%932.png">
 <meta property="article:published_time" content="2020-04-21T10:28:33.000Z">
 <meta property="article:modified_time" content="2020-04-21T13:58:17.438Z">
 <meta property="article:author" content="徐啟航">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/04/21/Javascript-5%E8%AF%AD%E5%8F%A5/04/21/Javascript-5%E8%AF%AD%E5%8F%A5/throw1.png">
 
 
 
@@ -189,7 +196,7 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/%20" rel="section">
+          <a href="/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
@@ -540,12 +547,12 @@
 </ul>
 </li>
 </ul>
-
+<img src="/2020/04/21/Javascript-5%E8%AF%AD%E5%8F%A5/04/21/Javascript-5%E8%AF%AD%E5%8F%A5/throw1.png" class>
 
 <ul>
 <li>跳转-错误处理，错误处理时程序设计时必须要考虑的问题</li>
 </ul>
-
+<img src="/2020/04/21/Javascript-5%E8%AF%AD%E5%8F%A5/04/21/Javascript-5%E8%AF%AD%E5%8F%A5/throw2.png" class>
 
 <ul>
 <li><p>有错误发生时，执行流程像这样</p>
@@ -571,9 +578,9 @@
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">	....</span><br><span class="line">&#125;<span class="keyword">catch</span>(e)&#123;</span><br><span class="line">		<span class="keyword">if</span>(e <span class="keyword">instanceof</span> <span class="built_in">TypeError</span>)&#123;</span><br><span class="line">			alert(<span class="string">'Typr error!'</span>);</span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(e <span class="keyword">instanceof</span> <span class="built_in">Error</span>)&#123;</span><br><span class="line">			alert(e.message);</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		alert(<span class="string">'Error: '</span>+e);</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<img src="/2020/04/21/Javascript-5%E8%AF%AD%E5%8F%A5/04/21/Javascript-5%E8%AF%AD%E5%8F%A5/throw3.png" class>
 
-
-
+<img src="/2020/04/21/Javascript-5%E8%AF%AD%E5%8F%A5/04/21/Javascript-5%E8%AF%AD%E5%8F%A5/throw4.png" class>
 
 <h3 id="5-7其他语句类型"><a href="#5-7其他语句类型" class="headerlink" title="5.7其他语句类型"></a>5.7其他语句类型</h3><h4 id="use-strict"><a href="#use-strict" class="headerlink" title="use strict"></a>use strict</h4><ul>
 <li>use strict 是说明严格模式</li>
@@ -589,9 +596,9 @@
 </ul>
 </li>
 </ul>
-<h4 id="with语句，建议不要用"><a href="#with语句，建议不要用" class="headerlink" title="with语句，建议不要用"></a>with语句，建议不要用</h4><h4 id="debugger语句"><a href="#debugger语句" class="headerlink" title="debugger语句"></a>debugger语句</h4><h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2>
+<h4 id="with语句，建议不要用"><a href="#with语句，建议不要用" class="headerlink" title="with语句，建议不要用"></a>with语句，建议不要用</h4><h4 id="debugger语句"><a href="#debugger语句" class="headerlink" title="debugger语句"></a>debugger语句</h4><h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><img src="/2020/04/21/Javascript-5%E8%AF%AD%E5%8F%A5/04/21/Javascript-5%E8%AF%AD%E5%8F%A5/%E5%B0%8F%E7%BB%93.png" class>
 
-
+<img src="/2020/04/21/Javascript-5%E8%AF%AD%E5%8F%A5/04/21/Javascript-5%E8%AF%AD%E5%8F%A5/%E5%B0%8F%E7%BB%932.png" class>
       
     </div>
     
@@ -728,7 +735,7 @@
               
                 <a href="/archives%7C%7C%20archive">
               
-                  <span class="site-state-item-count">137</span>
+                  <span class="site-state-item-count">138</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

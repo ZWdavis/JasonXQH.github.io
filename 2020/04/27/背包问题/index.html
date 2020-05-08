@@ -93,12 +93,17 @@
 <meta property="og:site_name" content="Jason">
 <meta property="og:description" content="下面是问题   讲人话，就是这个意思   所以他的子问题如下     子问题 条件    0 i&#x3D;0或w&#x3D;0   c[i][w]&#x3D; c[i-1][w] wi&gt;w   max{c[i-1][w-wi]+v,c[i-1][w]} wi&lt;&#x3D;w   PS:0&#x2F;1背包问题和普通背包的差别就在于(1)物品是否可以重复选择, (2)物品是否可以只选取部分 现在就可用动态规划的方法运用上面的公式来填表">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/2020/04/27/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/04/27/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/1.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/27/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/04/27/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/2.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/27/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/04/27/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/3.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/27/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/04/27/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/4.png">
 <meta property="article:published_time" content="2020-04-27T07:45:04.000Z">
 <meta property="article:modified_time" content="2020-04-27T07:46:26.796Z">
 <meta property="article:author" content="徐啟航">
 <meta property="article:tag" content="discrete mathematics">
 <meta property="article:tag" content="DP">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/04/27/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/04/27/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/1.png">
 
 
 
@@ -190,7 +195,7 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/%20" rel="section">
+          <a href="/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
@@ -393,10 +398,10 @@
       
 
       
-        <h1 id="下面是问题"><a href="#下面是问题" class="headerlink" title="下面是问题"></a>下面是问题</h1>
+        <h1 id="下面是问题"><a href="#下面是问题" class="headerlink" title="下面是问题"></a>下面是问题</h1><img src="/2020/04/27/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/04/27/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/1.png" class>
 
 <p> 讲人话，就是这个意思</p>
-
+<img src="/2020/04/27/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/04/27/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/2.png" class>
 
 <p>所以他的子问题如下 </p>
 <table>
@@ -424,9 +429,9 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//这里把值和重量分开存储了</span></span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; value;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; weight;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; DP;</span><br><span class="line">    <span class="keyword">int</span> Number,maxSize;</span><br><span class="line">    <span class="comment">//Nis the number of items ,V is your capacity</span></span><br><span class="line">    <span class="keyword">while</span> ( <span class="built_in">cin</span> &gt;&gt; Number &gt;&gt; maxSize )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(Number&lt;<span class="number">0</span>&amp;&amp;maxSize&lt;<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        value.resize(Number+<span class="number">1</span>);</span><br><span class="line">        weight.resize(maxSize+<span class="number">1</span>);</span><br><span class="line">        DP.<span class="built_in">clear</span>();</span><br><span class="line">        DP.resize(maxSize+<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= Number; i++ )</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; weight[i] &gt;&gt; value[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> ( <span class="keyword">int</span> v = <span class="number">1</span>; v &lt;= maxSize; v++ )</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%3d"</span>,v);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= Number; i++ )<span class="comment">//row</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span> ( <span class="keyword">int</span> v = <span class="number">1</span>; v &lt;= maxSize; v++ )<span class="comment">//column</span></span><br><span class="line">            &#123;</span><br><span class="line"><span class="comment">//这里的设计很巧妙，因为现在DP数组都是上一层的值，如果有需要改动的地方，就改动，否则保持原样</span></span><br><span class="line">				<span class="comment">//第1层的dp初始化都是0</span></span><br><span class="line">                <span class="keyword">if</span> ( v &gt;= weight[i] )</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span> ( DP[v-weight[i]] + value[i] &gt;= DP[v] )</span><br><span class="line">                    &#123;</span><br><span class="line">                        DP[v] = DP[v-weight[i]] + value[i];</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%3d"</span>,DP[v]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; DP[maxSize] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>结果如下</p>
+<img src="/2020/04/27/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/04/27/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/3.png" class>
 
-
-
+<img src="/2020/04/27/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/04/27/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/4.png" class>
       
     </div>
     
@@ -565,7 +570,7 @@
               
                 <a href="/archives%7C%7C%20archive">
               
-                  <span class="site-state-item-count">137</span>
+                  <span class="site-state-item-count">138</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
