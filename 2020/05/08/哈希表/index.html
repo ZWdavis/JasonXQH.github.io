@@ -86,18 +86,24 @@
 
 
 
-<meta name="description" content="哈希表散列表是根据关键字直接进行访问的数据结构。散列表通过散列韩式将关键字映射到存储地址，建立了关键字和存储地址之间的一种直接映射关系">
+<meta name="description" content="哈希表概述散列表是根据关键字直接进行访问的数据结构。散列表通过散列韩式将关键字映射到存储地址，建立了关键字和存储地址之间的一种直接映射关系。这里的存储地址可以实数组下标，索引，内存地址等等 例如：关键字key &#x3D; (17,24,48,25),散列函数H(key) &#x3D; key%5,散列函数将关键字映射到存储地址的下标，将关键字存储到散列表的对应位置，如图    这是理想状态，没有任何重复，这样查找时">
 <meta property="og:type" content="article">
 <meta property="og:title" content="哈希表">
 <meta property="og:url" content="http://yoursite.com/2020/05/08/%E5%93%88%E5%B8%8C%E8%A1%A8/index.html">
 <meta property="og:site_name" content="Jason">
-<meta property="og:description" content="哈希表散列表是根据关键字直接进行访问的数据结构。散列表通过散列韩式将关键字映射到存储地址，建立了关键字和存储地址之间的一种直接映射关系">
+<meta property="og:description" content="哈希表概述散列表是根据关键字直接进行访问的数据结构。散列表通过散列韩式将关键字映射到存储地址，建立了关键字和存储地址之间的一种直接映射关系。这里的存储地址可以实数组下标，索引，内存地址等等 例如：关键字key &#x3D; (17,24,48,25),散列函数H(key) &#x3D; key%5,散列函数将关键字映射到存储地址的下标，将关键字存储到散列表的对应位置，如图    这是理想状态，没有任何重复，这样查找时">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/2020/05/08/%E5%93%88%E5%B8%8C%E8%A1%A8/1.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/08/%E5%93%88%E5%B8%8C%E8%A1%A8/2.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/08/%E5%93%88%E5%B8%8C%E8%A1%A8/3.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/08/%E5%93%88%E5%B8%8C%E8%A1%A8/4.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/08/%E5%93%88%E5%B8%8C%E8%A1%A8/5.png">
 <meta property="article:published_time" content="2020-05-08T07:04:45.000Z">
-<meta property="article:modified_time" content="2020-05-08T09:21:40.154Z">
+<meta property="article:modified_time" content="2020-05-09T01:17:07.706Z">
 <meta property="article:author" content="徐啟航">
 <meta property="article:tag" content="Data_structure">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/05/08/%E5%93%88%E5%B8%8C%E8%A1%A8/1.png">
 
 
 
@@ -357,7 +363,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  65
+                  1.6k
                 </span>
               
 
@@ -373,7 +379,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  1
+                  5
                 </span>
               
             </div>
@@ -394,8 +400,78 @@
       
 
       
-        <h1 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h1><p>散列表是根据关键字直接进行访问的数据结构。散列表通过散列韩式将关键字映射到存储地址，建立了关键字和存储地址之间的一种直接映射关系</p>
+        <h1 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h1><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>散列表是根据关键字直接进行访问的数据结构。散列表通过散列韩式将关键字映射到存储地址，建立了关键字和存储地址之间的一种直接映射关系。这里的存储地址可以实数组下标，索引，内存地址等等</p>
+<p>例如：关键字key = (17,24,48,25),散列函数H(key) = key%5,散列函数将关键字映射到存储地址的下标，将关键字存储到散列表的对应位置，如图</p>
+<img src="/2020/05/08/%E5%93%88%E5%B8%8C%E8%A1%A8/1.png" style="zoom:50%;">
 
+<ul>
+<li>这是理想状态，没有任何重复，这样查找时间就是O(1)的时间。如果冲突的话，也有很多处理方法。这种发生冲突的不同关键词（13和48）为同义词。因此，设计散列函数时应<strong>尽量减少冲突</strong>，如果冲突无法避免，则需要处理冲突的方法</li>
+</ul>
+<h3 id="散列函数"><a href="#散列函数" class="headerlink" title="散列函数"></a>散列函数</h3><p>散列函数又称为哈希函数，是将关键字映射到存储地址的函数。记为 hash(key) = Addr 设计遵循为2个原则</p>
+<ol>
+<li>散列函数尽可能简单，能够快速计算出任一关键词的散列地址</li>
+<li>散列函数映射的地址应该均匀分布整个空间，避免聚集，以减少冲突</li>
+</ol>
+<p>散列函数设计原则简化为四字箴言：简单，均匀</p>
+<h4 id="1-直接定址法"><a href="#1-直接定址法" class="headerlink" title="1.直接定址法"></a>1.直接定址法</h4><p>直接提取关键字的某个线性函数作为散列函数，散列函数形式如下：</p>
+<p><strong>hash(key) = a*key+b</strong></p>
+<p>其中a,b为常数</p>
+<p>适用于事先知道关键字，关键字集合不是很大且连续性较好。<strong>关键字如果不连续，则造成大量空位，造成空间浪费</strong></p>
+<p>例如，学生的学号{601001，601002，…..601006,….601045，…}，那么可以设计散列函数为 H(key) = key-601000</p>
+<p>这样可以将学生的学生好直接迎着到存储地址的下标。符合简单均匀的原则</p>
+<h4 id="2-除留余数法"><a href="#2-除留余数法" class="headerlink" title="2.除留余数法"></a>2.除留余数法</h4><ul>
+<li>除留余数法 是一种最简单最常用的构造散列函数的方法，并且不需要事先知道关键字的分布，假设散列表的表长为m，取一个不大于表长的最大素数p，设计散列函数为：</li>
+</ul>
+<p><strong>hash(key) = key%p</strong></p>
+<p>为什么要选择p为素数？</p>
+<ul>
+<li>为了避免冲突。因为在实际应用中，访问往往具有某种周期性，若周期与p有公共的素因子，则冲突的概率急剧上升。例如手表中的齿轮，两个交合齿轮的齿数最好是互质的，否则出现齿轮磨损绞断的概率很大，因此，发生冲突的概率随着p所含的素因子的增多而迅速增大，素因子越多，冲突也就越多</li>
+</ul>
+<h4 id="3-随机数法"><a href="#3-随机数法" class="headerlink" title="3.随机数法"></a>3.随机数法</h4><ul>
+<li>随机可以让关键字分布的更均匀一些，因此可以将关键字随机化，然后再使用除留余数法得到存储地址。散列函数为：</li>
+</ul>
+<p><strong>hash(key) = rand (key)%p</strong></p>
+<ul>
+<li>其中 rand()是C和C++中的随机函数 ，rand(n)表示求0~（n-1）的随机数。p的取值和除留余数法相同</li>
+</ul>
+<h4 id="4-数字分析法"><a href="#4-数字分析法" class="headerlink" title="4.数字分析法"></a>4.数字分析法</h4><ul>
+<li>数字分析法根据每个数字在各个位上出现的频率，选择平均分布的若干位，作为散列地址。该方法适用于已经直到关键字几何，通过观察分析得到</li>
+</ul>
+<img src="/2020/05/08/%E5%93%88%E5%B8%8C%E8%A1%A8/2.png" style="zoom:50%;">
+
+<h4 id="5-平方取中法"><a href="#5-平方取中法" class="headerlink" title="5.平方取中法"></a>5.平方取中法</h4><ul>
+<li>对关键字平方后，按照散列表的大小，取中间的若干位作为散列地址（平方后截取）。适用于事先不知道关键字的分布，且关键码的位数不是很大</li>
+<li>例如：散列地址为3位，则关键码10123的散列地址为475</li>
+</ul>
+<p><strong>10123^2 = 102475129</strong></p>
+<h4 id="6-折叠法"><a href="#6-折叠法" class="headerlink" title="6.折叠法"></a>6.折叠法</h4><ul>
+<li>将关键字从左到右分割成位数相等的及部分，将这几部分叠加求和，取后几位作为散列地址。适用于关键字位数很多，事先不知道关键字的分布。折叠法分为移位折叠和边界折叠两种。<ul>
+<li>移位折叠是将分割后的每一个部分的最低为对齐，然后相加求和</li>
+<li>边界折叠如同折纸，将相邻部分沿着边界来回折叠，然后对齐相加</li>
+</ul>
+</li>
+</ul>
+<img src="/2020/05/08/%E5%93%88%E5%B8%8C%E8%A1%A8/3.png" style="zoom:50%;">
+
+<h4 id="7-基数转换法"><a href="#7-基数转换法" class="headerlink" title="7.基数转换法"></a>7.基数转换法</h4><p>例如，将十进制数转为其他的进制表示，例如345转换成九进制表示为423。另外散列函数大多是基于整数的，如果关键字是浮点数，可以将关键字乘以M并四舍五入得到函数，再使用散列函数活着将关键字表示为二进制数然后再使用散列函数,如果关键字是字符，可以将字符串换成R进制的整数，然后再使用散列函数</p>
+<img src="/2020/05/08/%E5%93%88%E5%B8%8C%E8%A1%A8/4.png" style="zoom:50%;">
+
+<img src="/2020/05/08/%E5%93%88%E5%B8%8C%E8%A1%A8/5.png" style="zoom:50%;">
+
+
+
+<h4 id="8-全域散列法"><a href="#8-全域散列法" class="headerlink" title="8.全域散列法"></a>8.全域散列法</h4><ul>
+<li>如果对关键字了解不多，可以使用全域散列法。即将多种备选的散列函数放在一个集合H中，在实际应用中，随机选择其中一个作为散列函数。如果任意两个不同的关键字key1!=key2,hash(key1) = hash(key2)的散列函数个数最多是 |H|/m,|H|为集合中散列函数的个数，m为表长，则称H是全域的</li>
+<li>一般不常写</li>
+</ul>
+<h3 id="冲突处理方式"><a href="#冲突处理方式" class="headerlink" title="冲突处理方式"></a>冲突处理方式</h3><p>无论如何设计散列函数，都无法避免冲突问题。如果发生冲突，就需要进行冲突处理。 冲突处理的方法为3种，开放地址法、链地址法、建立公共溢出区</p>
+<h4 id="1-开放地址法"><a href="#1-开放地址法" class="headerlink" title="1.开放地址法"></a>1.开放地址法</h4><p>开放地址法是在线性存储空间上的解决方案，也称为闭散列。当发生冲突时，采用冲突处理方法在线性存储空间上探测其他的位置</p>
+<p>hash’(key) = (hash(key)+d)%m</p>
+<p>其中 hash（key)是原散列函数，hash’(key)是探测函数，di是增量序列，m为表长</p>
+<p>根据增量序列不同，开放地址法又分为 线性探测，二次探测，随机探测，再散列法</p>
+<h5 id="线性探测法"><a href="#线性探测法" class="headerlink" title="线性探测法"></a>线性探测法</h5><p>线性探测法是最简单的开放地址法，线性探测的增量序列为：</p>
+<p>$d_i = 1,2,….m-1$</p>
+<h5 id="二次探测法"><a href="#二次探测法" class="headerlink" title="二次探测法"></a>二次探测法</h5><h5 id="随即探测法"><a href="#随即探测法" class="headerlink" title="随即探测法"></a>随即探测法</h5><h5 id="再散列法"><a href="#再散列法" class="headerlink" title="再散列法"></a>再散列法</h5><h4 id="2-链地址法"><a href="#2-链地址法" class="headerlink" title="2.链地址法"></a>2.链地址法</h4><h4 id="3-建立公共溢出区"><a href="#3-建立公共溢出区" class="headerlink" title="3.建立公共溢出区"></a>3.建立公共溢出区</h4><h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3>
       
     </div>
     
@@ -532,7 +608,7 @@
               
                 <a href="/archives%7C%7C%20archive">
               
-                  <span class="site-state-item-count">140</span>
+                  <span class="site-state-item-count">139</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -578,7 +654,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#哈希表"><span class="nav-number">1.</span> <span class="nav-text">哈希表</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#哈希表"><span class="nav-number">1.</span> <span class="nav-text">哈希表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概述"><span class="nav-number">1.0.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#散列函数"><span class="nav-number">1.0.2.</span> <span class="nav-text">散列函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-直接定址法"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">1.直接定址法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-除留余数法"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">2.除留余数法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-随机数法"><span class="nav-number">1.0.2.3.</span> <span class="nav-text">3.随机数法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-数字分析法"><span class="nav-number">1.0.2.4.</span> <span class="nav-text">4.数字分析法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-平方取中法"><span class="nav-number">1.0.2.5.</span> <span class="nav-text">5.平方取中法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-折叠法"><span class="nav-number">1.0.2.6.</span> <span class="nav-text">6.折叠法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-基数转换法"><span class="nav-number">1.0.2.7.</span> <span class="nav-text">7.基数转换法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-全域散列法"><span class="nav-number">1.0.2.8.</span> <span class="nav-text">8.全域散列法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#冲突处理方式"><span class="nav-number">1.0.3.</span> <span class="nav-text">冲突处理方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-开放地址法"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">1.开放地址法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#线性探测法"><span class="nav-number">1.0.3.1.1.</span> <span class="nav-text">线性探测法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#二次探测法"><span class="nav-number">1.0.3.1.2.</span> <span class="nav-text">二次探测法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#随即探测法"><span class="nav-number">1.0.3.1.3.</span> <span class="nav-text">随即探测法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#再散列法"><span class="nav-number">1.0.3.1.4.</span> <span class="nav-text">再散列法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-链地址法"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">2.链地址法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-建立公共溢出区"><span class="nav-number">1.0.3.3.</span> <span class="nav-text">3.建立公共溢出区</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码实现"><span class="nav-number">1.0.4.</span> <span class="nav-text">代码实现</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -619,7 +695,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">112.1k</span>
+    <span title="Site words total count">115.7k</span>
   
 </div>
 
