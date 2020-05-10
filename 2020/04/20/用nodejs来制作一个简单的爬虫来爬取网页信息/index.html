@@ -419,8 +419,7 @@
 </li>
 <li><p>最近学校的web编程课要求我们做一个爬虫来爬取网页信息，老师给出了一个新闻网站的爬取，但是因为缺少对JavaScript语言的认识和运用，用nodejs来写显得举步维艰。（水平过于低下）</p>
 </li>
-<li><p>前三个问题，注重于基础知识，是为正式的爬虫项目打基础、做准备的，罗马不是一天建成的，有了前面的基础知识，对爬虫有了初步了解，才能够有能力看得懂（我说只是有能力看懂）每一步的操作</p>
-</li>
+<li>前三个问题，注重于基础知识，是为正式的爬虫项目打基础、做准备的，罗马不是一天建成的，有了前面的基础知识，对爬虫有了初步了解，才能够有能力看得懂（我说只是有能力看懂）每一步的操作</li>
 </ul>
 <ol>
 <li><h6 id="对JavaScript语法的陌生"><a href="#对JavaScript语法的陌生" class="headerlink" title="对JavaScript语法的陌生"></a>对JavaScript语法的陌生</h6></li>
@@ -478,9 +477,8 @@
 </li>
 </ol>
 <p>读到这里，你只需要了解我们要一步步完成的目标就行，具体的工具我会在接下来的文章中一一讲述。</p>
-<h3 id="3-对正则表达式的陌生"><a href="#3-对正则表达式的陌生" class="headerlink" title="3.对正则表达式的陌生"></a>3.对正则表达式的陌生</h3><h4 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h4><p>没有接触过正则表达式，一开始看到的时候感叹——这像天书般的/{}$.+-[]根本无从下手<br>有一说一，我就是因为看不懂这么几行正则表达式，才迟迟不开始爬虫作业（特别不好学）</p>
+<h3 id="3-对正则表达式的陌生"><a href="#3-对正则表达式的陌生" class="headerlink" title="3.对正则表达式的陌生"></a>3.对正则表达式的陌生</h3><h4 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h4><p>没有接触过正则表达式，一开始看到的时候感叹——这像天书般的\/{}$.+-[]根本无从下手<br>有一说一，我就是因为看不懂这么几行正则表达式，才迟迟不开始爬虫作业（特别不好学）</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> url_reg = <span class="regexp">/\/(\d&#123;4&#125;)\/(\d&#123;2&#125;)-(\d&#123;2&#125;)\/(\d&#123;7&#125;).shtml/</span>;</span><br><span class="line"><span class="keyword">var</span> regExp = <span class="regexp">/((\d&#123;4&#125;|\d&#123;2&#125;)(\-|\/|\.)\d&#123;1,2&#125;\3\d&#123;1,2&#125;)|(\d&#123;4&#125;年\d&#123;1,2&#125;月\d&#123;1,2&#125;日)/</span></span><br></pre></td></tr></table></figure>
-
 <h4 id="如何解决？-2"><a href="#如何解决？-2" class="headerlink" title="如何解决？"></a>如何解决？</h4><p>显然，ddl是第一生产力。只剩下两周的时间了，我找了几期正则表达式的教学视频来补习了一下，也是勉强有了大概，并且用了这个页面上的正则表达式检测器练习了几遍。</p>
 <ul>
 <li><a href="https://c.runoob.com/front-end/854" target="_blank" rel="noopener">菜鸟工具</a></li>
@@ -510,7 +508,6 @@
 </ol>
 <h4 id="如何解决-1"><a href="#如何解决-1" class="headerlink" title="如何解决"></a>如何解决</h4><h5 id="问题1"><a href="#问题1" class="headerlink" title="问题1"></a>问题1</h5><p>问了助教和老师之后，在大家一起努力下，找到了问题并成功解决了。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> filename = source_name + <span class="string">"_"</span> + (<span class="keyword">new</span> <span class="built_in">Date</span>()).toFormat(<span class="string">"YYYY-MM-DD"</span>) +</span><br><span class="line"><span class="string">"_"</span> + myURL.substr(myURL.lastIndexOf(<span class="string">'/'</span>) + <span class="number">1</span>) + <span class="string">".json"</span>;</span><br></pre></td></tr></table></figure>
-
 <p>一开始，我和老师命名文件的时候用的是同一行代码，但是很显然，这个存储方法不是放诸四海皆准的，我们需要结合网站的url和具体作用来具体分析，然后再选择一个不会让文件重名的命名方法.</p>
 <p>说白了，就是你怎样通过字符串拼接来给这么多文件取互不相同的名字？？</p>
 <p><strong>首先看看中国新闻网的（子网页）URL</strong></p>
@@ -550,12 +547,9 @@
 </li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> filename = source_name + <span class="string">"_"</span> +(<span class="keyword">new</span> <span class="built_in">Date</span>()).valueOf()+<span class="string">"_"</span>+<span class="string">".json"</span>;</span><br></pre></td></tr></table></figure>
-
 <ol>
-<li><p>我把新的Date()对象，使用了valueOf()的方法（返回的是毫秒数）</p>
-</li>
-<li><p>因为爬取每个页面的时间精确到毫秒级别，所以单单提取秒数是远远不够的，所以我没有用getSeconds()方法，而用了valueOf()方法</p>
-</li>
+<li>我把新的Date()对象，使用了valueOf()的方法（返回的是毫秒数）</li>
+<li>因为爬取每个页面的时间精确到毫秒级别，所以单单提取秒数是远远不够的，所以我没有用getSeconds()方法，而用了valueOf()方法</li>
 <li><p>经过再操作，这个问题解决了！</p>
 <h5 id="问题2"><a href="#问题2" class="headerlink" title="问题2"></a>问题2</h5></li>
 </ol>
@@ -565,7 +559,6 @@
 <p><strong>返回代码本身，看看 .json 之前出了什么问题</strong></p>
 <p>果然，我们发现了一个多余的下划线，本来是在老师的代码里面连接9166028.shtml用的，我没有把他删掉，这样， 下划线和.json的. 相连接，不符合命名规范。所以无法存储</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> filename = source_name + <span class="string">"_"</span> +(<span class="keyword">new</span> <span class="built_in">Date</span>()).valueOf() +<span class="string">".json"</span>;</span><br></pre></td></tr></table></figure>
-
 <p>改成这样后，再运行，就完美了</p>
 <p><img src="/2020/04/20/%E7%94%A8nodejs%E6%9D%A5%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E7%88%AC%E8%99%AB%E6%9D%A5%E7%88%AC%E5%8F%96%E7%BD%91%E9%A1%B5%E4%BF%A1%E6%81%AF/3.png" alt="示例"></p>
 <h3 id="7-对爬取特定信息的格式问题"><a href="#7-对爬取特定信息的格式问题" class="headerlink" title="7.对爬取特定信息的格式问题"></a>7.对爬取特定信息的格式问题</h3><h4 id="起因-4"><a href="#起因-4" class="headerlink" title="起因"></a>起因</h4><p>我准备爬取一个title和文章的内容，但是一开始只有文章内容被保留了下来，title并没有被爬取到</p>
@@ -574,17 +567,15 @@
 <li>原来，本来我的代码是这样的：</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> interface_format = <span class="string">"$('.edit_interface').text()"</span></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>然而，网站里的源代码竟然是这样的</li>
 </ul>
 <p><img src="/2020/04/20/%E7%94%A8nodejs%E6%9D%A5%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E7%88%AC%E8%99%AB%E6%9D%A5%E7%88%AC%E5%8F%96%E7%BD%91%E9%A1%B5%E4%BF%A1%E6%81%AF/4.png" alt="示例"></p>
-<p>我们看见&lt;span class=”edit_interface”&gt; &lt;/span&gt; 这一行代码没有任何东西！</p>
+<p>我们看见\<span class="edit_interface"> \</span> 这一行代码没有任何东西！</p>
 <p>所以，我们爬取下来的文件，变成了这样：</p>
 <p><img src="/2020/04/20/%E7%94%A8nodejs%E6%9D%A5%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E7%88%AC%E8%99%AB%E6%9D%A5%E7%88%AC%E5%8F%96%E7%BD%91%E9%A1%B5%E4%BF%A1%E6%81%AF/5.png" alt="示例"></p>
 <p>当我们改成下面代码的时候，一切都好起来了</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> interface_format = <span class="string">"$('h1.item-name').text()"</span></span><br></pre></td></tr></table></figure>
-
 <p><img src="/2020/04/20/%E7%94%A8nodejs%E6%9D%A5%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E7%88%AC%E8%99%AB%E6%9D%A5%E7%88%AC%E5%8F%96%E7%BD%91%E9%A1%B5%E4%BF%A1%E6%81%AF/6.png" alt="示例"></p>
 <h3 id="8-如何把数据存储到MySql中？"><a href="#8-如何把数据存储到MySql中？" class="headerlink" title="8.如何把数据存储到MySql中？"></a>8.如何把数据存储到MySql中？</h3><h4 id="起因-5"><a href="#起因-5" class="headerlink" title="起因"></a>起因</h4><p>如果说只能把内容存储到json文件中，那管理起来很麻烦。我们可以通过修改一下代码，让内容存储到数据库当中</p>
 <h4 id="如何解决-2"><a href="#如何解决-2" class="headerlink" title="如何解决"></a>如何解决</h4><p>看了老师的视频之后，在问过助教之后，最终解决了</p>
@@ -612,7 +603,6 @@
 <li>利用js文件搜寻</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mysql = <span class="built_in">require</span>(<span class="string">'./mysql_coffee.js'</span>);</span><br><span class="line"><span class="keyword">var</span> title = <span class="string">'咖啡'</span>;</span><br><span class="line"><span class="keyword">var</span> select_Sql = <span class="string">"select  interface_format,url,crawltime  from fetches where interface_format like '%"</span> + title + <span class="string">"%'"</span>;</span><br><span class="line"></span><br><span class="line">mysql.query(select_Sql, <span class="function"><span class="keyword">function</span>(<span class="params">qerr, vals, fields</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(vals);</span><br><span class="line">&#125;);</span><br><span class="line">------------------------------------------------------------------------------</span><br><span class="line"><span class="keyword">var</span> mysql = <span class="built_in">require</span>(<span class="string">'./mysql.js'</span>);</span><br><span class="line"><span class="keyword">var</span> title = <span class="string">'新冠'</span>;</span><br><span class="line"><span class="keyword">var</span> select_Sql = <span class="string">"select title,author,publish_date from fetches where title like '%"</span> + title + <span class="string">"%'"</span>;</span><br><span class="line"></span><br><span class="line">mysql.query(select_Sql, <span class="function"><span class="keyword">function</span>(<span class="params">qerr, vals, fields</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(vals);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//第一部分是老师的文件，第二部分是我的搜索文件</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">首先，是引用的文件不一样，一个是引用了mysql_coffee.js，另一个是mysql.js这决定了查询的数据库不同</span></span><br><span class="line"><span class="comment">其次，我的关键词是咖啡，老师的关键词是新冠</span></span><br><span class="line"><span class="comment">再然，我搜索的是标题、链接和爬取时间，老师搜索的是标题，作者，出版时间</span></span><br><span class="line"><span class="comment">注意： 不管是前面多么不一样 最后的  '%" + title + "%' 始终是一样的，这个title不是存储类型</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>来看看结果</li>
 <li>老师的结果</li>
@@ -627,7 +617,6 @@
 <li>首先，我们创建一个html前端</li>
 </ul>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"http://127.0.0.1:8080/7.02.html"</span> <span class="attr">method</span>=<span class="string">"GET"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">br</span>&gt;</span> 标题：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"title"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"Submit"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>具体样式如下</li>
 </ul>
@@ -636,7 +625,6 @@
 <li>随后，我们建立一个后端，这里用了http模块，而没有用其他框架</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="keyword">var</span> url = <span class="built_in">require</span>(<span class="string">'url'</span>);</span><br><span class="line"><span class="keyword">var</span> mysql = <span class="built_in">require</span>(<span class="string">'./mysql.js'</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">request, response</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> pathname = url.parse(request.url).pathname;</span><br><span class="line">    <span class="keyword">var</span> params = url.parse(request.url, <span class="literal">true</span>).query; </span><br><span class="line">    <span class="comment">//先去读取文件</span></span><br><span class="line">    fs.readFile(pathname.substr(<span class="number">1</span>), <span class="function"><span class="keyword">function</span>(<span class="params">err, data</span>) </span>&#123;</span><br><span class="line">        response.writeHead(<span class="number">200</span>, &#123; <span class="string">'Content-Type'</span>: <span class="string">'text/html; charset=utf-8'</span> &#125;);</span><br><span class="line">        <span class="comment">//如果文件非空，那么先把文件给打印出来</span></span><br><span class="line">        <span class="keyword">if</span> ((params.title === <span class="literal">undefined</span>) &amp;&amp; (data !== <span class="literal">undefined</span>))</span><br><span class="line">            response.write(data.toString());</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">//否则，我们去数据库寻找，并打印出来</span></span><br><span class="line">            response.write(<span class="built_in">JSON</span>.stringify(params));</span><br><span class="line">            <span class="comment">//数据库查找语言：title,author,publish_date这些都是存储的数据类型</span></span><br><span class="line">            <span class="comment">//where title like title就是要查询的关键词所在的数据类型，一般都是title</span></span><br><span class="line">            <span class="comment">// params.title 就是我们在网站上搜寻的关键词</span></span><br><span class="line">            <span class="keyword">var</span> select_Sql = <span class="string">"select title,author,publish_date from fetches where title like '%"</span> +</span><br><span class="line">                params.title + <span class="string">"%'"</span>;</span><br><span class="line">            mysql.query(select_Sql, <span class="function"><span class="keyword">function</span>(<span class="params">qerr, vals, fields</span>) </span>&#123;</span><br><span class="line">                <span class="comment">//把这些打印出来</span></span><br><span class="line">                <span class="built_in">console</span>.log(vals);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        response.end();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;).listen(<span class="number">8080</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'Server running at http://127.0.0.1:8080/7.02.html'</span>);</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>我们可以看到，老师的代码运行后，在搜索框中写入  新冠 后是这样一个结果</li>
 </ul>
@@ -662,12 +650,10 @@
 <li>我们用express框架来构建</li>
 </ul>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    //唯一不同的是，把7.02html改成了process_get</span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"http://127.0.0.1:8080/process_get"</span> <span class="attr">method</span>=<span class="string">"GET"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">br</span>&gt;</span> 标题：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"title"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"Submit"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>然后我们用express来写后端，虽然功能更丰富，但是代码更为简洁</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">var</span> mysql = <span class="built_in">require</span>(<span class="string">'./mysql.js'</span>)</span><br><span class="line"><span class="keyword">var</span> app = express();</span><br><span class="line"><span class="comment">//app.use(express.static('public'));</span></span><br><span class="line">app.get(<span class="string">'/7.03.html'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    res.sendFile(__dirname + <span class="string">"/"</span> + <span class="string">"7.03.html"</span>);</span><br><span class="line">&#125;)</span><br><span class="line">app.get(<span class="string">'/process_get'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//先设置编码</span></span><br><span class="line">    res.writeHead(<span class="number">200</span>, &#123; <span class="string">'Content-Type'</span>: <span class="string">'text/html;charset=utf-8'</span> &#125;); <span class="comment">//设置res编码为utf-8</span></span><br><span class="line">    <span class="comment">//sql字符串和参数，和上面的代码相同</span></span><br><span class="line">    <span class="keyword">var</span> fetchSql = <span class="string">"select url,source_name,title,author,publish_date from fetches where title like '%"</span> +</span><br><span class="line">        req.query.title + <span class="string">"%'"</span>;</span><br><span class="line">    <span class="comment">//然后把这些参数放到result中</span></span><br><span class="line">    mysql.query(fetchSql, <span class="function"><span class="keyword">function</span>(<span class="params">err, result, fields</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(result);</span><br><span class="line">        <span class="comment">//json字符串话</span></span><br><span class="line">        res.end(<span class="built_in">JSON</span>.stringify(result));</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> server = app.listen(<span class="number">8080</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"访问地址为 http://127.0.0.1:8080/7.03.html"</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>通过简单的修改，我们可以查询到自己想要的文件</li>
 <li>比如我想再什么值得买中搜寻咖啡</li>
@@ -687,12 +673,10 @@
 <li>引入第三方包 node-schedule;</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install node-schedule;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>爬虫代码中引入</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> schedule = <span class="built_in">require</span>(<span class="string">'node-schedule'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//定时执行</span></span><br><span class="line"><span class="keyword">var</span> rule = <span class="keyword">new</span> schedul.RecurrenceRule();</span><br><span class="line"><span class="keyword">var</span> times = [<span class="number">0</span>,<span class="number">12</span>];<span class="comment">//每天两次自动执行</span></span><br><span class="line"><span class="keyword">var</span> times2 = <span class="number">5</span>		<span class="comment">//分钟</span></span><br><span class="line">rule.hour = times;</span><br><span class="line">rule.minute = times2;</span><br><span class="line"><span class="comment">// 定时执行httpGet()函数</span></span><br><span class="line">schedule.scheduleJob(rule,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   seedget(); </span><br><span class="line">&#125;);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">seedget</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    request(seedURL, <span class="function"><span class="keyword">function</span>(<span class="params">err, res, body</span>) </span>&#123; <span class="comment">//读取种子页面</span></span><br><span class="line"><span class="comment">//  	.........</span></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
 <h3 id="13-尝试其他的扩展（留给读者，或者无限期暂停更新）"><a href="#13-尝试其他的扩展（留给读者，或者无限期暂停更新）" class="headerlink" title="13.尝试其他的扩展（留给读者，或者无限期暂停更新）"></a>13.尝试其他的扩展（留给读者，或者无限期暂停更新）</h3><ul>
 <li>对查询结果进行分页显示</li>
 <li>对查询结果按每个字段进行排序</li>
@@ -702,10 +686,8 @@
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>山再高，也得往上攀。浪波涛，也得去划船。我们在学习过程中需要有程序员精神。就是不断地发现问题，解决问题，虽然水平不高，但是大佬的水平也是在一次次的解决问题中提高的。 曾经自己认为高难度的作业也会一点一点被自己征服。</p>
 <p>完成一个比较大的项目，一定要把它拆分成很多小问题，这也是一种很实用的编程思维。分而治之，逐个击破。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(项目未完成) </span><br><span class="line">&#123; </span><br><span class="line">    <span class="keyword">if</span>(出现了问题)</span><br><span class="line">    &#123;</span><br><span class="line">     学习 | | 问老师； </span><br><span class="line">        问题解决了没？ 项目继续：学习+寻求更多帮助；</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h2 id="鸣谢"><a href="#鸣谢" class="headerlink" title="鸣谢"></a>鸣谢</h2><ul>
-<li><p>我初次尝试爬虫项目的时候，是助教高瑞卿学姐热心帮我解答了很多疑难问题，还帮我检查了代码中的错误。所以在博客的最后，特此感谢学姐的无私帮助。</p>
-</li>
+<li>我初次尝试爬虫项目的时候，是助教高瑞卿学姐热心帮我解答了很多疑难问题，还帮我检查了代码中的错误。所以在博客的最后，特此感谢学姐的无私帮助。</li>
 <li><p>在了解了我们的学习进度之后，王晔老师放宽了ddl，并且在视频中加入了很多在写爬虫时候的细节。并且也解答了我一部分问题，特此感谢。</p>
 </li>
 <li><p>前人栽树后人乘凉。感谢我的好朋友们，是你们在一些问题上的经验帮我规避了很多难题；感谢一些同学们写的博客，是看了你们的博客之后我才有了这篇博客的思路于灵感。</p>
@@ -937,7 +919,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">118.5k</span>
+    <span title="Site words total count">119.1k</span>
   
 </div>
 

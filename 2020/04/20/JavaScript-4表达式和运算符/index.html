@@ -409,33 +409,26 @@
 <li>数组初始化</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[] 			<span class="comment">//一个空数组</span></span><br><span class="line">[<span class="number">1</span>+<span class="number">2</span>,<span class="number">3</span>+<span class="number">4</span>]	<span class="comment">//拥有两个元素的数组</span></span><br></pre></td></tr></table></figure>
-
 <p>数组初始化表达式中的元素是可以嵌套的，（数组中的数组）</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> matrix =[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]]<span class="comment">//二维数组</span></span><br></pre></td></tr></table></figure>
-
 <h4 id="数组初始化"><a href="#数组初始化" class="headerlink" title="数组初始化"></a>数组初始化</h4><ul>
 <li>JavaScript对数组初始化表达式进行求值的时候，数组初始化表达式中的元素表达式也都会各自计算一次</li>
 <li>数组直接两种的列表都好之间的元素可以省略，这是省略的空位会填充值undefined。但结尾处的单个逗号不会创建undefined元素</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myarray1 = [<span class="number">1</span>,<span class="number">2</span>,,,<span class="number">5</span>];</span><br><span class="line">myarray1[<span class="number">3</span>];<span class="comment">//显示为undefined</span></span><br><span class="line"><span class="keyword">var</span> myarray2 = [<span class="number">1</span>,<span class="number">2</span>,,,<span class="number">5</span>,];</span><br><span class="line">myarray2;</span><br><span class="line">(<span class="number">5</span>)[<span class="number">1</span>,<span class="number">2</span>,empty*<span class="number">2</span>,<span class="number">5</span>]<span class="comment">//最后一个逗号后面不会从创立undefined元素</span></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>对象初始化</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var p &#x3D; &#123;x:2,y:1&#125;;	&#x2F;&#x2F;一个拥有两个属性成员的对象</span><br><span class="line">var q &#x3D; &#123;&#125;;			&#x2F;&#x2F;一个空对象</span><br><span class="line">q.x &#x3D; 2 q.y &#x3D; 1;	&#x2F;&#x2F;q的属性成员和p的一样</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>对象直接量也可以嵌套</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var rectangle &#x3D; &#123; unpperleft :&#123;x:2,y:2&#125;,lowerleft:&#123;x:2,y:2&#125;&#125;;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>JavaScript对数组初始化表达式进行求值的时候，数组初始化表达式中的元素表达式也都会各自计算一次</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> p = &#123;<span class="attr">x</span>:<span class="number">2</span>,<span class="attr">y</span>:<span class="number">1</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> side =<span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> square = &#123;<span class="string">"upperLeft"</span>:&#123;<span class="attr">x</span>:p.x,<span class="attr">y</span>:p.y&#125;,<span class="string">"lowerleft"</span>:&#123;<span class="attr">x</span>:p.x+side,<span class="attr">y</span>:p.y+side&#125;&#125;;</span><br></pre></td></tr></table></figure>
-
 <h4 id="Map-补充"><a href="#Map-补充" class="headerlink" title="Map(补充)"></a>Map(补充)</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Map 是一组键值对的结构，具有极快的查找速度</span></span><br><span class="line"><span class="comment">//用map实现查找，只需要名字-成绩的对照表，直接根据名字查找成绩</span></span><br><span class="line"><span class="comment">//无论这个表多大查找速度都不会慢 o(1)</span></span><br><span class="line"><span class="keyword">var</span> m = <span class="keyword">new</span> <span class="built_in">Map</span>([[<span class="string">'Michael'</span>,<span class="number">95</span>],[<span class="string">'Bob'</span>,<span class="number">75</span>],[<span class="string">'Tracy'</span>,<span class="number">85</span>]]);</span><br><span class="line">m.get(<span class="string">'Micheal'</span>);<span class="comment">//95</span></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>初始化Map<ul>
 <li>初始化Map需要一个二维数组，向上面一样，或者直接初始化一个空的Map</li>
@@ -443,42 +436,31 @@
 </li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> m = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line">m.set(<span class="string">'Adam'</span>,<span class="number">28</span>);</span><br><span class="line">m.set(<span class="string">'Bob'</span>,<span class="number">21</span>);</span><br><span class="line">m.has(<span class="string">'Adam'</span>);<span class="comment">//是否存在Adam，返回true</span></span><br><span class="line">m.get(<span class="string">'Adam'</span>);<span class="comment">//28</span></span><br><span class="line">m.delete(<span class="string">'Adam'</span>);</span><br><span class="line">m.get(<span class="string">'Adam'</span>)<span class="comment">//undefined</span></span><br><span class="line"><span class="comment">//注意，多次对一个key放入value值，会覆盖！</span></span><br></pre></td></tr></table></figure>
-
 <p>++++</p>
 <h4 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h4><ul>
 <li>创建一个set</li>
 <li>通过数组作为输入创建，或者直接创建一个空的set</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s2 = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]);</span><br><span class="line"><span class="keyword">var</span> s1 = <span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line"><span class="comment">//注意：重复元素在Set中会自动被过滤，也就是说不会重复</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//添加元素 add()</span></span><br><span class="line">s.add(<span class="number">4</span>);</span><br><span class="line">s;<span class="comment">//Set(1,2,3,4)</span></span><br><span class="line">s.add(<span class="number">4</span>)</span><br><span class="line">s;<span class="comment">//Set(1,2,3,4)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//删除元素delete（）</span></span><br><span class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]);</span><br><span class="line">s;<span class="comment">//set&#123;1,2,3&#125;;</span></span><br><span class="line">s.delete(<span class="number">3</span>);</span><br><span class="line">s;<span class="comment">//Set&#123;1,2&#125;</span></span><br></pre></td></tr></table></figure>
-
-
-
 <h3 id="4-3-函数定义表达式"><a href="#4-3-函数定义表达式" class="headerlink" title="4.3 函数定义表达式"></a>4.3 函数定义表达式</h3><ul>
 <li>函数定义表达式 定义一个JS函数，表达属的值就是这个新定义的函数</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> square = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x*x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h3 id="4-4-属性访问表达式：得到一个对象属性或者一个数组元素的值"><a href="#4-4-属性访问表达式：得到一个对象属性或者一个数组元素的值" class="headerlink" title="4.4 属性访问表达式：得到一个对象属性或者一个数组元素的值"></a>4.4 属性访问表达式：得到一个对象属性或者一个数组元素的值</h3><ul>
 <li>可以通过方括号或者点的方法来访问</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">expression.indentifier</span><br><span class="line">expression[expression]</span><br><span class="line"><span class="comment">//例子</span></span><br><span class="line"><span class="keyword">var</span> o = &#123;<span class="attr">x</span>:<span class="number">1</span>,<span class="attr">y</span>:&#123;<span class="attr">z</span>:<span class="number">3</span>&#125;&#125;;</span><br><span class="line"><span class="keyword">var</span> a = &#123;o,<span class="number">4</span>,[<span class="number">5</span>,<span class="number">6</span>]&#125;;</span><br><span class="line">o.x;		<span class="comment">//表达式o.x的属性</span></span><br><span class="line">o.y.z;		<span class="comment">//表达式o.y 的z属性</span></span><br><span class="line">o[<span class="string">"x"</span>];		<span class="comment">//对象o 的x属性</span></span><br><span class="line">a[<span class="number">1</span>];		<span class="comment">//表达式a中索引为1 的元素</span></span><br><span class="line">a[<span class="number">2</span>][<span class="string">"1"</span>];	<span class="comment">//表达式a[2]中索引为1 的元素</span></span><br><span class="line">a[<span class="number">0</span>].x;		<span class="comment">//表达式a[0]的x属性</span></span><br><span class="line">o.z			<span class="comment">//z不是o的属性，所以为undefined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// . 的写法只适用于要访问的属性名称是合法的标识符，且要周到要访问的属性的名字</span></span><br></pre></td></tr></table></figure>
-
 <h3 id="4-5-调用表达式"><a href="#4-5-调用表达式" class="headerlink" title="4.5 调用表达式"></a>4.5 调用表达式</h3><ul>
 <li>执行过程：首先计算函数表达式，然后计算参数表达式，得到一组参数值</li>
 </ul>
 <h3 id="4-6-对象创建表达式"><a href="#4-6-对象创建表达式" class="headerlink" title="4.6 对象创建表达式"></a>4.6 对象创建表达式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">new Object();</span><br><span class="line">new Point(2,3);</span><br><span class="line">var date &#x3D; new Date();</span><br></pre></td></tr></table></figure>
-
 <h3 id="4-7-运算符概述"><a href="#4-7-运算符概述" class="headerlink" title="4.7 运算符概述"></a>4.7 运算符概述</h3><p><img src="/2020/04/20/JavaScript-4%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%92%8C%E8%BF%90%E7%AE%97%E7%AC%A6/4.7.png" alt="示例"></p>
 <p><img src="/2020/04/20/JavaScript-4%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%92%8C%E8%BF%90%E7%AE%97%E7%AC%A6/4.72.png" alt="示例"></p>
 <h3 id="4-8-算术表达式"><a href="#4-8-算术表达式" class="headerlink" title="4.8 算术表达式"></a>4.8 算术表达式</h3><h4 id="4-8-3位运算符"><a href="#4-8-3位运算符" class="headerlink" title="4.8.3位运算符"></a>4.8.3位运算符</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;按位与&amp;</span><br><span class="line">&#x2F;&#x2F;按位或|</span><br><span class="line">&#x2F;&#x2F;按位异或^</span><br><span class="line">&#x2F;&#x2F;按位非~</span><br><span class="line">&#x2F;&#x2F;左移&lt;&lt;</span><br><span class="line">&#x2F;&#x2F;右移&gt;&gt;</span><br><span class="line">&#x2F;&#x2F;无符号右移&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
-
 <h3 id="4-9关系表达式"><a href="#4-9关系表达式" class="headerlink" title="4.9关系表达式"></a>4.9关系表达式</h3><ul>
 <li>关系运算符用于测试两个值之间的关系，返回true或false</li>
 </ul>
 <h4 id="4-9-1相等和不等运算符"><a href="#4-9-1相等和不等运算符" class="headerlink" title="4.9.1相等和不等运算符"></a>4.9.1相等和不等运算符</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x3D;&#x3D; 相等</span><br><span class="line">&#x3D;&#x3D;&#x3D; 严格相等</span><br><span class="line">!&#x3D; 不相等</span><br><span class="line">!&#x3D;&#x3D;不严格相等</span><br></pre></td></tr></table></figure>
-
-
-
 <h5 id="严格相等运算符"><a href="#严格相等运算符" class="headerlink" title="严格相等运算符==="></a>严格相等运算符===</h5><ul>
 <li>值类型不同，则不相等</li>
 <li>两个值都是NULL或者都是undefined，则他们不相等</li>
@@ -502,9 +484,6 @@
 </li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">true &#x3D;&#x3D; 1; &#x2F;&#x2F;true;</span><br><span class="line">true &#x3D;&#x3D;&#x3D; 1; &#x2F;&#x2F;false;</span><br><span class="line">NaN &#x3D;&#x3D;&#x3D; NaN; &#x2F;&#x2F;false</span><br><span class="line">isNaN(NaN);	&#x2F;&#x2F;true;</span><br><span class="line">1&#x3D;&#x3D;&quot;1&quot;;&#x2F;&#x2F;true</span><br><span class="line">1&#x3D;&#x3D;&#x3D;&quot;1&quot;&#x2F;&#x2F;false</span><br></pre></td></tr></table></figure>
-
-
-
 <h4 id="4-9-2-比较运算符"><a href="#4-9-2-比较运算符" class="headerlink" title="4.9.2 比较运算符"></a>4.9.2 比较运算符</h4><ul>
 <li><p>小于&lt;</p>
 </li>
@@ -534,9 +513,7 @@
 </li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//注意，数字和字符串比较是，更偏爱转换为数字</span></span><br><span class="line"><span class="comment">//只有在两个都是字符串时，才进行字符串的比较</span></span><br><span class="line"></span><br><span class="line"><span class="number">1</span>+<span class="number">2</span>			<span class="comment">//加法，结果是3</span></span><br><span class="line"><span class="string">"1"</span>+<span class="string">"2"</span>		<span class="comment">//字符串连接，结果是”12“</span></span><br><span class="line"><span class="string">"1"</span>+<span class="number">2</span>		<span class="comment">//字符串连接，2转换为“2”，结果是“12”</span></span><br><span class="line"><span class="number">11</span>&lt;<span class="number">3</span>		<span class="comment">//数字比较false</span></span><br><span class="line"><span class="string">"11"</span>&lt;<span class="number">3</span>		<span class="comment">//字符串比较true</span></span><br><span class="line"><span class="string">"11"</span>&lt;<span class="number">3</span>		<span class="comment">//字符串比较，结果为 true</span></span><br><span class="line"><span class="string">"one"</span>&lt;<span class="number">3</span>		<span class="comment">//数字的比较，“one”转换为NaN,return false</span></span><br></pre></td></tr></table></figure>
-
 <h4 id="4-9-3-in运算符"><a href="#4-9-3-in运算符" class="headerlink" title="4.9.3 in运算符"></a>4.9.3 in运算符</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> point = &#123;<span class="attr">x</span>:<span class="number">1</span>,<span class="attr">y</span>:<span class="number">1</span>&#125;;	<span class="comment">//定义一个对象</span></span><br><span class="line"><span class="string">"x"</span> <span class="keyword">in</span> point 			<span class="comment">//true 有一个x属性</span></span><br><span class="line"><span class="string">"z"</span> <span class="keyword">in</span> poing			<span class="comment">//false对象中不存在名为x的属性</span></span><br><span class="line"><span class="string">"toString"</span> <span class="keyword">in</span> point		<span class="comment">//true对象继承了toString()</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//数组里的属性名其实就是他的index下标</span></span><br><span class="line"><span class="keyword">var</span> data =[<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>];		<span class="comment">//一个数组</span></span><br><span class="line"><span class="string">"0"</span> <span class="keyword">in</span> data				<span class="comment">//true: 数组包含元素“0”</span></span><br><span class="line"><span class="number">1</span> <span class="keyword">in</span> data				<span class="comment">//true: 数字转换为字符串</span></span><br><span class="line"><span class="number">3</span> <span class="keyword">in</span> data				<span class="comment">//false：没有索引为3的</span></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>至此，我们知道in运算符其实是判断一个对象（右值）中是否一个属性（左值）</li>
 </ul>
@@ -545,7 +522,6 @@
 <li>如果左侧的对象是右侧类的实例，则表达式返回true，否则为false</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> d  = <span class="keyword">new</span> date();</span><br><span class="line">d <span class="keyword">instanceof</span> <span class="built_in">Date</span>;		<span class="comment">//true d 是date()创建的</span></span><br><span class="line">d <span class="keyword">instanceof</span> <span class="built_in">Object</span>;	<span class="comment">//true 所有对象都是Object实例</span></span><br><span class="line">d <span class="keyword">instanceof</span> <span class="built_in">Number</span>;	<span class="comment">//false d不是一个Number对象</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a =[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">a <span class="keyword">instanceof</span> <span class="built_in">Array</span>;		<span class="comment">//true</span></span><br><span class="line">a <span class="keyword">instanceof</span> <span class="built_in">Object</span>;	<span class="comment">//true</span></span><br><span class="line">a <span class="keyword">instanceof</span> <span class="built_in">RegExp</span>;	<span class="comment">//false 不是正则表达式</span></span><br></pre></td></tr></table></figure>
-
 <h3 id="4-10-逻辑表达式"><a href="#4-10-逻辑表达式" class="headerlink" title="4.10 逻辑表达式"></a>4.10 逻辑表达式</h3><h4 id="4-10-1-amp-amp"><a href="#4-10-1-amp-amp" class="headerlink" title="4.10.1 &amp;&amp;"></a>4.10.1 &amp;&amp;</h4><ul>
 <li>三层理解<ul>
 <li>当操作数都是布尔值的时候，&amp;&amp;对两个值执行布尔操作</li>
@@ -569,38 +545,24 @@
 <li>在爬虫项目中会用到、</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span> (<span class="string">"console.log('Hello world!')"</span>)<span class="comment">// 就是Hello world!  </span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> seedURL_format = <span class="string">"$('a')"</span>;</span><br><span class="line"><span class="keyword">var</span> keywords_format = <span class="string">" $('meta[name=\"keywords\"]').eq(0).attr(\"content\")"</span>;</span><br><span class="line"><span class="keyword">var</span> title_format = <span class="string">"$('title').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> date_format = <span class="string">"$('#pubtime_baidu').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> author_format = <span class="string">"$('#editor_baidu').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> content_format = <span class="string">"$('.left_zw').text()"</span>;</span><br><span class="line"><span class="keyword">var</span> desc_format = <span class="string">" $('meta[name=\"description\"]').eq(0).attr(\"content\")"</span>;</span><br><span class="line"><span class="keyword">var</span> source_format = <span class="string">"$('#source_baidu').text()"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (author_format == <span class="string">""</span>) fetch.author = source_name; <span class="comment">//eval(author_format);  //作者</span></span><br><span class="line"><span class="keyword">else</span> fetch.author = <span class="built_in">eval</span>(author_format);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (content_format == <span class="string">""</span>) fetch.content = <span class="string">""</span>;</span><br><span class="line"><span class="keyword">else</span> fetch.content = <span class="built_in">eval</span>(content_format).replace(<span class="string">"\r\n"</span> + fetch.author, <span class="string">""</span>); <span class="comment">//内容,是否要去掉作者信息自行决定</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (source_format == <span class="string">""</span>) fetch.source = fetch.source_name;</span><br><span class="line"><span class="keyword">else</span> fetch.source = <span class="built_in">eval</span>(source_format).replace(<span class="string">"\r\n"</span>, <span class="string">""</span>); <span class="comment">//来源</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (desc_format == <span class="string">""</span>) fetch.desc = fetch.title;</span><br><span class="line"><span class="keyword">else</span> fetch.desc = <span class="built_in">eval</span>(desc_format).replace(<span class="string">"\r\n"</span>, <span class="string">""</span>); <span class="comment">//摘要</span></span><br></pre></td></tr></table></figure>
-
 <h3 id="4-13其他运算符"><a href="#4-13其他运算符" class="headerlink" title="4.13其他运算符"></a>4.13其他运算符</h3><h4 id="条件运算符，不讲"><a href="#条件运算符，不讲" class="headerlink" title="条件运算符，不讲"></a>条件运算符，不讲</h4><h4 id="typeof-运算符，不讲"><a href="#typeof-运算符，不讲" class="headerlink" title="typeof 运算符，不讲"></a>typeof 运算符，不讲</h4><h4 id="delete运算符"><a href="#delete运算符" class="headerlink" title="delete运算符"></a>delete运算符</h4><pre><code>+ 一元操作符
-+ 用来删除对象属性或者数组元素</code></pre><h4 id="void-运算符"><a href="#void-运算符" class="headerlink" title="void 运算符"></a>void 运算符</h4><ul>
++ 用来删除对象属性或者数组元素
+</code></pre><h4 id="void-运算符"><a href="#void-运算符" class="headerlink" title="void 运算符"></a>void 运算符</h4><ul>
 <li>一元运算符，出现在操作数前，操作数可以是任意类型</li>
 <li>作用：操作数会照常计算，但虎落计算结果并返回undefined</li>
 <li>用处<ul>
 <li>在操作数具有副作用的时候使用void 来让程序更具有语义</li>
-<li>这个运算符最常用在客户端的URL – javascript:URL中，在URL中可以写带有副作用的表达式，但是void则让浏览器不必显示这个表达式的计算结果</li>
+<li>这个运算符最常用在客户端的URL — javascript:URL中，在URL中可以写带有副作用的表达式，但是void则让浏览器不必显示这个表达式的计算结果</li>
 </ul>
 </li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href = <span class="string">"javascript:void window.open();"</span> &gt;打开一个新窗口&lt;<span class="regexp">/a&gt;</span></span><br></pre></td></tr></table></figure>
-
 <h4 id="await-运算符，看不懂，暂时不讲"><a href="#await-运算符，看不懂，暂时不讲" class="headerlink" title="await 运算符，看不懂，暂时不讲"></a>await 运算符，看不懂，暂时不讲</h4><h4 id="逗号运算符-，"><a href="#逗号运算符-，" class="headerlink" title="逗号运算符 ，"></a>逗号运算符 ，</h4><ul>
 <li>二元运算符，他的操作数可以实任意类型</li>
 <li>首先计算左操作数，然后计算右操作数，最后返回右操作数的值</li>
 <li>最常用在for循环中</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//for循环中的第一个逗号是var语句的一部分</span></span><br><span class="line"><span class="comment">//第二个逗号是逗号运算符</span></span><br><span class="line"><span class="comment">//他将两个表达式（i++,j--）放在一条（for循环中的）语句中</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i =<span class="number">0</span>,j = <span class="number">10</span>;i&lt;j;i++,j--)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(i+j);<span class="comment">//返回10</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
       
     </div>
@@ -825,7 +787,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">118.5k</span>
+    <span title="Site words total count">119.1k</span>
   
 </div>
 

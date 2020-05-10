@@ -421,15 +421,15 @@
 </li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">srand(time(<span class="number">0</span>));	<span class="comment">//选时间做种子</span></span><br><span class="line">rand()%(high-low+<span class="number">1</span>)+low;<span class="comment">//产生一个low-high 之间的随机下标</span></span><br></pre></td></tr></table></figure>
-
 <h3 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h3><ol>
 <li>首先取数组的第一个元素作为基准元素 pivot = R[low], i = low ,j = high</li>
 <li>从右向左扫描，找到小于等于pivot的数，如果找到，R[i]和R[j] 交换，i++</li>
-<li>从左向右扫描，找到大于等于pivot的数，如果找到，R[i]和R[j] 交换，j –</li>
+<li>从左向右扫描，找到大于等于pivot的数，如果找到，R[i]和R[j] 交换，j —</li>
 <li>重复步骤2-3，直到i和j指针重合，返回该位置mid=i 该位置的数正好是pivot元素</li>
 <li>至此完成一趟排序，此时mid为界，将元数据分为两个子序列，左侧子序列元素都比pivot小，右边都比pivot大，然后再分别对这两个子序列进行快排</li>
 </ol>
-<h3 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h3><table>
+<h3 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h3><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>low,i</th>
@@ -443,7 +443,8 @@
 <th>high,j</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>30</td>
 <td>24</td>
 <td>5</td>
@@ -454,7 +455,10 @@
 <td>42</td>
 <td>39</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -469,7 +473,8 @@
 <th>high</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>12</td>
 <td>24</td>
 <td>5</td>
@@ -480,7 +485,10 @@
 <td>42</td>
 <td>39</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -495,7 +503,8 @@
 <th>high</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>12</td>
 <td>24</td>
 <td>5</td>
@@ -506,7 +515,10 @@
 <td>42</td>
 <td>39</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -521,7 +533,8 @@
 <th>high</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>12</td>
 <td>24</td>
 <td>5</td>
@@ -532,17 +545,16 @@
 <td>42</td>
 <td>39</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta"># <span class="meta-keyword">define</span> Maxsize 10000</span></span><br><span class="line"><span class="keyword">int</span> A[Maxsize];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Partition</span><span class="params">(<span class="keyword">int</span> r[],<span class="keyword">int</span> low,<span class="keyword">int</span> high)</span><span class="comment">//划分函数</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//设定基准元素</span></span><br><span class="line">    <span class="keyword">int</span> i = low, j = high,pivot = r[low];</span><br><span class="line">    <span class="keyword">while</span>(i&lt;j)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span> (i&lt;j&amp;&amp;r[j]&gt;pivot)</span><br><span class="line">            j--;</span><br><span class="line">        <span class="keyword">if</span>(i&lt;j)</span><br><span class="line">            swap(r[i++],r[j]);</span><br><span class="line">        <span class="comment">//r[i]和r[j]交换后，i右移一位</span></span><br><span class="line">        <span class="keyword">while</span>(i&lt;j&amp;&amp;r[i]&lt;=pivot)</span><br><span class="line">            i++;<span class="comment">//向右扫描</span></span><br><span class="line">        <span class="keyword">if</span>(i&lt;j)</span><br><span class="line">            swap(r[i],r[j--]);</span><br><span class="line">        <span class="comment">//r[i]和r[j]交换后，i右移一位</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> mid = i;</span><br><span class="line">    <span class="keyword">return</span> mid;<span class="comment">//返回我们的中间界限</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">QuickSort</span><span class="params">(<span class="keyword">int</span> R[],<span class="keyword">int</span> low,<span class="keyword">int</span> high)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> mid;</span><br><span class="line">    <span class="keyword">if</span>(low&lt;high)</span><br><span class="line">    &#123;</span><br><span class="line">        mid = Partition(R,low,high);</span><br><span class="line">        QuickSort(R,low,mid<span class="number">-1</span>);</span><br><span class="line">        QuickSort(R,mid+<span class="number">1</span>,high);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n ;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"请输入数列中的元素个数"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"请依次输入数列中的元素"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;A[i];</span><br><span class="line">    &#125;</span><br><span class="line">    QuickSort(A,<span class="number">0</span>,n<span class="number">-1</span>);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"快速排序的结果:"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;A[i]&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
 <h3 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h3><h4 id="最好情况"><a href="#最好情况" class="headerlink" title="最好情况"></a>最好情况</h4><h5 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h5><ul>
 <li>分解：划分Partition需要扫描每个元素，每次扫描的元素个数不超过n，因此时间复杂度为O(n)</li>
 <li>治理：在理想情况下，每次划分将问题分解为两个规模为n/2的子问题，递归求解连个规模为 n/2的自问题，所需的时间为 2T(n/2)</li>
 <li>合并：因为是原地排序，合并操作不需要时间复杂度</li>
 <li><img src="/2020/05/06/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/05/06/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/1.png" class></li>
-<li>$$ T(n):\left{ \begin{aligned} O(1),n = 1\2T(n/2)+O(n),n&gt;1 \end{aligned} \right. $$ </li>
+<li><script type="math/tex; mode=display">T(n):\left\{ \begin{aligned} O(1),n = 1\\2T(n/2)+O(n),n>1 \end{aligned} \right.</script></li>
 <li>最终 $T(n) = 2^xT(\frac{n}{2^x})+xO(n),x = \log n$</li>
 <li>所以 代入得 $T(n) = nT(1)+\log n*O(n)= O(n\log n)$</li>
 </ul>
@@ -553,7 +565,7 @@
 <li>分解：划分Partition需要扫描每个元素，每次扫描的元素个数不超过n，因此时间复杂度为O(n)</li>
 <li>治理：在最坏的情况下，每次划分将问题分解后，基准元素的左侧（或者右侧） 没有元素，基准元素的另一侧为1个规模为n-1的子问题。递归求解这个规模为n-1的子问题，所需的时间为T(n-1) </li>
 <li>合并：因为是原地排序，合并操作不需要时间复杂度</li>
-<li>$$ T(n):\left{ \begin{aligned} O(1),n = 1\ T(n-1)+O(n),n&gt;1 \end{aligned} \right. $$ </li>
+<li><script type="math/tex; mode=display">T(n):\left\{ \begin{aligned} O(1),n = 1\\ T(n-1)+O(n),n>1 \end{aligned} \right.</script></li>
 <li>相当于冒泡排序，这种情况下最坏的时间复杂度为O(n^2)</li>
 </ul>
 <h5 id="空间复杂度-1"><a href="#空间复杂度-1" class="headerlink" title="空间复杂度"></a>空间复杂度</h5><ul>
@@ -573,6 +585,7 @@
 <li>从上述算法可以看出，每次交换都是在和基准元素进行交换，实际上没必要这么做，我们的目的就是想把原序列分成以基准元素为界的两个子序列，左侧子序列小于等于基准元素，右侧子序列大于基准元素。</li>
 <li>那么有很多方法可以实现，我们可以从右向左扫描，找到小于pivot的数R[j],让R[i]与R[j]交换，一直交替进行贸易知道i和j碰头为止，这时将基准元素与R[i]交换即可。这样完成一次划分过程交换的元素个数就少了很多</li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -587,7 +600,8 @@
 <th>high,j</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>30</td>
 <td>24</td>
 <td>5</td>
@@ -598,7 +612,10 @@
 <td>42</td>
 <td>39</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -613,7 +630,8 @@
 <th>high</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>30</td>
 <td>24</td>
 <td>5</td>
@@ -624,7 +642,10 @@
 <td>42</td>
 <td>39</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -639,7 +660,8 @@
 <th>high,j</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>30</td>
 <td>24</td>
 <td>5</td>
@@ -650,7 +672,10 @@
 <td>42</td>
 <td>39</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -665,7 +690,8 @@
 <th>high</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>18</td>
 <td>24</td>
 <td>5</td>
@@ -676,12 +702,13 @@
 <td>42</td>
 <td>39</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <ul>
 <li>优化算法降低时间空间复杂度是很难的，但是常数级的优化是容易的</li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Partition</span><span class="params">(<span class="keyword">int</span> r[],<span class="keyword">int</span> low,<span class="keyword">int</span> high)</span><span class="comment">//划分函数</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//设定基准元素</span></span><br><span class="line">    <span class="keyword">int</span> i = low, j = high, pivot = r[low];</span><br><span class="line">    <span class="keyword">while</span>(i&lt;j)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span>( i&lt;j&amp;&amp;r[j]&gt;pivot&amp;&amp;j!=low)</span><br><span class="line">            j--;</span><br><span class="line">        <span class="keyword">while</span> ( i&lt;j&amp;&amp;r[i]&lt;=pivot&amp;&amp;i!=high)</span><br><span class="line">            i++;</span><br><span class="line">        <span class="keyword">if</span>(i&lt;j)</span><br><span class="line">            swap(r[i],r[j]);</span><br><span class="line">    &#125;</span><br><span class="line">    swap(r[low],r[j]);</span><br><span class="line">    <span class="keyword">int</span> mid = i;</span><br><span class="line">    <span class="keyword">return</span> mid;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 
       
     </div>
@@ -908,7 +935,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">118.5k</span>
+    <span title="Site words total count">119.1k</span>
   
 </div>
 

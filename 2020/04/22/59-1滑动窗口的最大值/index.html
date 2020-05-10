@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="easy,leetcode_Stack," />
+  <meta name="keywords" content="leetcode_Stack,easy," />
 
 
 
@@ -86,20 +86,20 @@
 
 
 
-<meta name="description" content="59-1滑动窗口最大值 题目给出的代码12345class Solution &amp;#123;public:    vector&lt;int&gt; maxSlidingWindow(vector&lt;int&gt;&amp; nums, int k) &amp;#123;           &amp;#125;&amp;#125;;  这里给出BF算法和利用deque维护的降序队列算法BF是自己写的123456789">
+<meta name="description" content="59-1滑动窗口最大值 题目给出的代码12345class Solution &amp;#123;public:    vector&lt;int&gt; maxSlidingWindow(vector&lt;int&gt;&amp; nums, int k) &amp;#123;           &amp;#125;&amp;#125;; 这里给出BF算法和利用deque维护的降序队列算法BF是自己写的1234567891">
 <meta property="og:type" content="article">
 <meta property="og:title" content="59-1滑动窗口的最大值">
 <meta property="og:url" content="http://yoursite.com/2020/04/22/59-1%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/index.html">
 <meta property="og:site_name" content="Jason">
-<meta property="og:description" content="59-1滑动窗口最大值 题目给出的代码12345class Solution &amp;#123;public:    vector&lt;int&gt; maxSlidingWindow(vector&lt;int&gt;&amp; nums, int k) &amp;#123;           &amp;#125;&amp;#125;;  这里给出BF算法和利用deque维护的降序队列算法BF是自己写的123456789">
+<meta property="og:description" content="59-1滑动窗口最大值 题目给出的代码12345class Solution &amp;#123;public:    vector&lt;int&gt; maxSlidingWindow(vector&lt;int&gt;&amp; nums, int k) &amp;#123;           &amp;#125;&amp;#125;; 这里给出BF算法和利用deque维护的降序队列算法BF是自己写的1234567891">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://yoursite.com/2020/04/22/59-1%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/59-1.png">
 <meta property="og:image" content="http://yoursite.com/2020/04/22/59-1%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/%E9%A2%98%E8%A7%A3.png">
 <meta property="article:published_time" content="2020-04-22T08:24:49.000Z">
 <meta property="article:modified_time" content="2020-05-08T09:47:43.594Z">
 <meta property="article:author" content="徐啟航">
-<meta property="article:tag" content="easy">
 <meta property="article:tag" content="leetcode_Stack">
+<meta property="article:tag" content="easy">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/2020/04/22/59-1%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/59-1.png">
 
@@ -400,14 +400,9 @@
       
         <h1 id="59-1滑动窗口最大值"><a href="#59-1滑动窗口最大值" class="headerlink" title="59-1滑动窗口最大值"></a>59-1滑动窗口最大值</h1><p><img src="/2020/04/22/59-1%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/59-1.png" alt></p>
 <h3 id="题目给出的代码"><a href="#题目给出的代码" class="headerlink" title="题目给出的代码"></a>题目给出的代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">maxSlidingWindow</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> k)</span> </span>&#123;       </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
 <h4 id="这里给出BF算法和利用deque维护的降序队列算法"><a href="#这里给出BF算法和利用deque维护的降序队列算法" class="headerlink" title="这里给出BF算法和利用deque维护的降序队列算法"></a>这里给出BF算法和利用deque维护的降序队列算法</h4><h4 id="BF是自己写的"><a href="#BF是自己写的" class="headerlink" title="BF是自己写的"></a>BF是自己写的</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">maxSlidingWindow</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;ans;</span><br><span class="line">        <span class="keyword">if</span>(nums.empty())</span><br><span class="line">            <span class="keyword">return</span> ans;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;nums.<span class="built_in">size</span>()-k+<span class="number">1</span>;i++)<span class="comment">//一共输出n-k+1次</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt;s;<span class="comment">//每次都初始化s</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = i;j&lt;i+k;j++)<span class="comment">//每次都从下标i开始</span></span><br><span class="line">            &#123;	</span><br><span class="line">                <span class="keyword">if</span>(s.empty())</span><br><span class="line">                &#123;</span><br><span class="line">                    s.push(nums[j]);</span><br><span class="line">                &#125;</span><br><span class="line">    <span class="comment">//栈中一直维持着最大值，但这样栈的存在其实就没意思了，定一个max应该就可以</span></span><br><span class="line">                <span class="keyword">if</span>(!s.empty()&amp;&amp;nums[j]&gt;s.top())</span><br><span class="line">                &#123;</span><br><span class="line">                    s.pop();</span><br><span class="line">                    s.push(nums[j]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//最后每次把栈顶放入数组</span></span><br><span class="line">            ans.push_back(s.top());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h4 id="但是用deque维护一个递减栈更好"><a href="#但是用deque维护一个递减栈更好" class="headerlink" title="但是用deque维护一个递减栈更好"></a>但是用deque维护一个递减栈更好</h4><p><img src="/2020/04/22/59-1%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/%E9%A2%98%E8%A7%A3.png" alt></p>
+<h4 id="但是用deque维护一个递减栈更好"><a href="#但是用deque维护一个递减栈更好" class="headerlink" title="但是用deque维护一个递减栈更好"></a>但是用deque维护一个递减栈更好</h4><p><img src="/2020/04/22/59-1%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/题解.png" alt></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">maxSlidingWindow</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">       <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ans;</span><br><span class="line">       <span class="built_in">deque</span>&lt;<span class="keyword">int</span>&gt; deq;</span><br><span class="line">       <span class="keyword">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">       <span class="comment">//我们要把数组的下标放到deque中去 </span></span><br><span class="line">        <span class="comment">//方便起见，我们把deque中的数代指vector中的数</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">		<span class="comment">//每次进来的如果比deque中的所有数要大，尾部比它小的都要清空</span></span><br><span class="line">            <span class="keyword">while</span>(!deq.empty() &amp;&amp; nums[i] &gt; nums[deq.back()])&#123;</span><br><span class="line">                deq.pop_back();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//一共要循环i-k+1次，所以当deq.front()到达i-k+1就不再进行循环了</span></span><br><span class="line">            <span class="keyword">if</span> (!deq.empty() &amp;&amp; deq.front() &lt; i - k + <span class="number">1</span>) deq.pop_front();</span><br><span class="line">            <span class="comment">//每次都需要把下标压入deque</span></span><br><span class="line">            deq.push_back(i);</span><br><span class="line">            <span class="comment">//因为前几次，deque.front()还没有移动到vector[0],所以不能算</span></span><br><span class="line">            <span class="keyword">if</span> (i &gt;= k <span class="number">-1</span>) ans.push_back(nums[deq.front()]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
 
       
     </div>
@@ -443,9 +438,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/easy/" rel="tag"><i class="fa fa-tag"></i> easy</a>
-          
             <a href="/tags/leetcode-Stack/" rel="tag"><i class="fa fa-tag"></i> leetcode_Stack</a>
+          
+            <a href="/tags/easy/" rel="tag"><i class="fa fa-tag"></i> easy</a>
           
         </div>
       
@@ -634,7 +629,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">118.5k</span>
+    <span title="Site words total count">119.1k</span>
   
 </div>
 

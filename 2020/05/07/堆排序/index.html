@@ -409,8 +409,7 @@
 </ul>
 <h3 id="完全二叉树举例"><a href="#完全二叉树举例" class="headerlink" title="完全二叉树举例"></a>完全二叉树举例</h3><p><img src="/2020/05/07/%E5%A0%86%E6%8E%92%E5%BA%8F/2.png" alt="示例"></p>
 <ul>
-<li><p>完全二叉树可以顺序存储，存到一个数组当中。上面的二叉树是一个最大堆。</p>
-</li>
+<li>完全二叉树可以顺序存储，存到一个数组当中。上面的二叉树是一个最大堆。</li>
 <li><p>如果这是一个完全二叉树，那么这个节点键值为i的左孩子一定是2i，右孩子一定是2i+1.他的父亲节点一定是i/2.</p>
 </li>
 <li><p>根据完全二叉树的性值，如果一个节点的下标为i,其左孩子下标为2i,其有孩子下标为2i+1,其双亲的下标为i/2.且具有n个节点的完全二叉树的深度为$\log_2n +1$</p>
@@ -434,23 +433,18 @@
 <p><img src="/2020/05/07/%E5%A0%86%E6%8E%92%E5%BA%8F/3.gif" alt="示例"></p>
 <p>视频截取自可视化算法网站  <a href="https://visualgo.net/zh" target="_blank" rel="noopener">visualgo.net</a>,太香了，推荐给大家</p>
 <h5 id="下沉的代码实现"><a href="#下沉的代码实现" class="headerlink" title="下沉的代码实现"></a>下沉的代码实现</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sink</span><span class="params">(<span class="keyword">int</span> k ,<span class="keyword">int</span> n)</span><span class="comment">//下沉操作</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">2</span>*k&lt;=n)<span class="comment">//如果有左孩子，k的左孩子为2k，右孩子为2k+1</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> j = <span class="number">2</span>*k;</span><br><span class="line">        <span class="keyword">if</span>(j&lt;n&amp;&amp;A[j]&lt;A[j+<span class="number">1</span>])<span class="comment">//如果有右孩子，且左孩子比右孩子小</span></span><br><span class="line">            j++;<span class="comment">//j指向右孩子</span></span><br><span class="line">        <span class="keyword">if</span>(A[k]&gt;A[j])<span class="comment">//比“较大的孩子”大</span></span><br><span class="line">            <span class="keyword">break</span>;  <span class="comment">// 已满足堆</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            swap(A[k],A[j]);<span class="comment">//与较大的孩子交换</span></span><br><span class="line">        k=j;<span class="comment">//k指向交换后的新位置，继续向下比较，一直下沉到叶子</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h4 id="构建初始堆"><a href="#构建初始堆" class="headerlink" title="构建初始堆"></a>构建初始堆</h4><ul>
 <li>构建初始堆的过程：首先按照完全二叉树顺序构建一棵完全二叉树。然后从最后一个分支节点n/2开始调整堆，依次将序号为 n/2-1,n/2-2,n/2-3……,1的节点执行下沉操作调整为堆。因为从叶子节点没什么可以调整的。没办法下沉了</li>
 <li>下面是一个构建初始堆的操作</li>
 </ul>
 <p><img src="/2020/05/07/%E5%A0%86%E6%8E%92%E5%BA%8F/2.gif" alt="示例"></p>
 <h5 id="构建初始堆代码实现"><a href="#构建初始堆代码实现" class="headerlink" title="构建初始堆代码实现"></a>构建初始堆代码实现</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CreatHeap</span> <span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = n/<span class="number">2</span>;i&gt;<span class="number">0</span>;i--)</span><br><span class="line">		Sink(i,n);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
 <h4 id="堆排序-1"><a href="#堆排序-1" class="headerlink" title="堆排序"></a>堆排序</h4><ul>
 <li>构建初始堆之后， 开始进行堆排序。因为最大堆的堆顶是最大的记录，可以将堆顶交换到最后一个元素的位置，然后堆顶执行下沉操作，调整r[1…n-1]为堆即可。重复此过程，直到剩余一个节点，得到有序序列</li>
 <li>下面是一个完整的堆排序操作</li>
 </ul>
 <p><img src="/2020/05/07/%E5%A0%86%E6%8E%92%E5%BA%8F/1.gif" alt="示例"></p>
 <h5 id="堆排序代码实现"><a href="#堆排序代码实现" class="headerlink" title="堆排序代码实现"></a>堆排序代码实现</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">HeapSort</span><span class="params">(<span class="keyword">int</span> n)</span><span class="comment">//堆排序</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    CreatHeap(n);</span><br><span class="line">    <span class="keyword">while</span>(n&gt;<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        swap(A[<span class="number">1</span>],A[n--]);<span class="comment">//堆顶和最后一个记录交换，交换后n-1</span></span><br><span class="line">        sink(<span class="number">1</span>,n);<span class="comment">//堆顶下沉</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h3 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h3><h4 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h4><p>堆排序的运行时间主要耗费在构建初始堆和反复调整堆上。构建初始堆需要从最后一个分支节点（n/2)到第一个节点进行下沉操作，下沉操作最多达到树的深度logn,因此构建初始堆的时间复杂度的上界是O(nlogn)，而实际上这是一个比较大的上界，大多数的分支节点下沉的操作少于logn 。构建n个记录的堆，只需要少于2n次的比较和少于n次的交换，构建初始堆的时间复杂度是线性阶O(n)。堆排序的过程中，每一趟排序需要从堆顶下沉到叶子，下沉操作为树的深度logn ，一共n-1次排序，总的时间复杂度为O(nlogn)</p>
 <h4 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h4><p>交换记录时需要一个辅助空间，所以空间复杂度为O(1)</p>
 <h4 id="稳定性"><a href="#稳定性" class="headerlink" title="稳定性"></a>稳定性</h4><p>对排序的时候多次交换关键字，可能会发生相等关键字排序前后位置不一致的情况，因此堆排序是不稳定的排序方法</p>
@@ -682,7 +676,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">118.5k</span>
+    <span title="Site words total count">119.1k</span>
   
 </div>
 

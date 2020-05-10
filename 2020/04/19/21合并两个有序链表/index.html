@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="leetcode_Link,easy," />
+  <meta name="keywords" content="easy,leetcode_Link," />
 
 
 
@@ -97,8 +97,8 @@
 <meta property="article:published_time" content="2020-04-19T03:58:08.000Z">
 <meta property="article:modified_time" content="2020-05-08T09:47:01.536Z">
 <meta property="article:author" content="徐啟航">
-<meta property="article:tag" content="leetcode_Link">
 <meta property="article:tag" content="easy">
+<meta property="article:tag" content="leetcode_Link">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/2020/04/19/21%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/21.png">
 
@@ -401,43 +401,43 @@
 <p>该很简单，但是如何写的优雅呢？</p>
 <p>这是leetcode给出的默认代码</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li><p>我们可以看到返回值是ListNode*，那么我们最好要创建一个新的链表来存储两个链表的值。因为先存储再排序很麻烦，我们直接来实现每当插入一个数的时候，进行一个判断。这样，直接return 新链表的节点就可以了</p>
 </li>
-<li><pre><code class="C++"><span class="comment">/**</span>
-<span class="comment"> * Definition for singly-linked list.</span>
-<span class="comment"> * struct ListNode {</span>
-<span class="comment"> *     int val;</span>
-<span class="comment"> *     ListNode *next;</span>
-<span class="comment"> *     ListNode(int x) : val(x), next(NULL) {}</span>
-<span class="comment"> * };</span>
-<span class="comment"> */</span>
-<span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
-<span class="keyword">public</span>:
-    <span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>{
-        ListNode *mix = <span class="keyword">new</span> ListNode(<span class="number">0</span>);
+<li><pre><code class="lang-C++">/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
+        ListNode *mix = new ListNode(0);
         ListNode *cur = mix;
-        <span class="keyword">while</span>(l1&amp;&amp;l2)
+        while(l1&amp;&amp;l2)
         {
-            <span class="keyword">if</span>(l1-&gt;val&lt;l2-&gt;val)<span class="comment">//当l1的值小于l2的节点值得时候，把l1插入新链表</span>
+            if(l1-&gt;val&lt;l2-&gt;val)//当l1的值小于l2的节点值得时候，把l1插入新链表
             {
                 cur-&gt;next = l1;
                 l1=l1-&gt;next;
-            } <span class="keyword">else</span><span class="comment">//否则，插入l2 得节点值</span>
+            } else//否则，插入l2 得节点值
             {
                 cur-&gt;next =l2;
                 l2 = l2-&gt;next;
             }
-            cur = cur-&gt;next;<span class="comment">//每次插入后，把节点指向下一个空间</span>
+            cur = cur-&gt;next;//每次插入后，把节点指向下一个空间
         }
-        cur-&gt;next = l1?l1:l2;<span class="comment">//如果l1，l2有一个被读完了，就会跳出循环</span>
-        <span class="comment">//那么，剩下的所有节点都插入到新的链表当中去</span>
-        <span class="comment">//就是说，如果cur-&gt;next = l1 的话，</span>
-        <span class="keyword">return</span> mix-&gt;next;
+        cur-&gt;next = l1?l1:l2;//如果l1，l2有一个被读完了，就会跳出循环
+        //那么，剩下的所有节点都插入到新的链表当中去
+        //就是说，如果cur-&gt;next = l1 的话，
+        return mix-&gt;next;
     }
 
-};</code></pre>
+};
+</code></pre>
 </li>
 <li><p>当然，这个解法存在内存泄露的缺点。</p>
 </li>
@@ -478,9 +478,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/leetcode-Link/" rel="tag"><i class="fa fa-tag"></i> leetcode_Link</a>
-          
             <a href="/tags/easy/" rel="tag"><i class="fa fa-tag"></i> easy</a>
+          
+            <a href="/tags/leetcode-Link/" rel="tag"><i class="fa fa-tag"></i> leetcode_Link</a>
           
         </div>
       
@@ -665,7 +665,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">118.5k</span>
+    <span title="Site words total count">119.1k</span>
   
 </div>
 

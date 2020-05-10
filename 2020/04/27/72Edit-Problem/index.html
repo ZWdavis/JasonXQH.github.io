@@ -86,12 +86,12 @@
 
 
 
-<meta name="description" content="下面是作业题目和力扣上的问题  动态规划算法，比较困难，这里附上一个比较容易懂的视频链接 https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v&#x3D;MiqoA-yF-0M 这是算法的伪代码  下面我们拿Sundays和Saturday为例，做一个动态规划表     “” s u n d a y s    “” 0 1 2 3 4 5 6 7   s 1 0 1 2 3 4 5 6   a 2">
+<meta name="description" content="下面是作业题目和力扣上的问题  动态规划算法，比较困难，这里附上一个比较容易懂的视频链接 https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v&#x3D;MiqoA-yF-0M 这是算法的伪代码  下面我们拿Sundays和Saturday为例，做一个动态规划表      “” s u n d a y s     “” 0 1 2 3 4 5 6 7   s 1 0 1 2 3 4 5 6   a">
 <meta property="og:type" content="article">
 <meta property="og:title" content="72Edit_Problem">
 <meta property="og:url" content="http://yoursite.com/2020/04/27/72Edit-Problem/index.html">
 <meta property="og:site_name" content="Jason">
-<meta property="og:description" content="下面是作业题目和力扣上的问题  动态规划算法，比较困难，这里附上一个比较容易懂的视频链接 https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v&#x3D;MiqoA-yF-0M 这是算法的伪代码  下面我们拿Sundays和Saturday为例，做一个动态规划表     “” s u n d a y s    “” 0 1 2 3 4 5 6 7   s 1 0 1 2 3 4 5 6   a 2">
+<meta property="og:description" content="下面是作业题目和力扣上的问题  动态规划算法，比较困难，这里附上一个比较容易懂的视频链接 https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v&#x3D;MiqoA-yF-0M 这是算法的伪代码  下面我们拿Sundays和Saturday为例，做一个动态规划表      “” s u n d a y s     “” 0 1 2 3 4 5 6 7   s 1 0 1 2 3 4 5 6   a">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://yoursite.com/2020/04/27/72Edit-Problem/1.png">
 <meta property="og:image" content="http://yoursite.com/2020/04/27/72Edit-Problem/2.png">
@@ -409,125 +409,128 @@
 <p>这是算法的伪代码</p>
 <p><img src="/2020/04/27/72Edit-Problem/3.png" alt></p>
 <p>下面我们拿Sundays和Saturday为例，做一个动态规划表</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center"></th>
-<th align="center">“”</th>
-<th align="center">s</th>
-<th align="center">u</th>
-<th align="center">n</th>
-<th align="center">d</th>
-<th align="center">a</th>
-<th align="center">y</th>
-<th align="center">s</th>
+<th style="text-align:center"></th>
+<th style="text-align:center">“”</th>
+<th style="text-align:center">s</th>
+<th style="text-align:center">u</th>
+<th style="text-align:center">n</th>
+<th style="text-align:center">d</th>
+<th style="text-align:center">a</th>
+<th style="text-align:center">y</th>
+<th style="text-align:center">s</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">“”</td>
-<td align="center">0</td>
-<td align="center">1</td>
-<td align="center">2</td>
-<td align="center">3</td>
-<td align="center">4</td>
-<td align="center">5</td>
-<td align="center">6</td>
-<td align="center">7</td>
+<tbody>
+<tr>
+<td style="text-align:center">“”</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">7</td>
 </tr>
 <tr>
-<td align="center">s</td>
-<td align="center">1</td>
-<td align="center">0</td>
-<td align="center">1</td>
-<td align="center">2</td>
-<td align="center">3</td>
-<td align="center">4</td>
-<td align="center">5</td>
-<td align="center">6</td>
+<td style="text-align:center">s</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">6</td>
 </tr>
 <tr>
-<td align="center">a</td>
-<td align="center">2</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">2</td>
-<td align="center">3</td>
-<td align="center">3</td>
-<td align="center">4</td>
-<td align="center">5</td>
+<td style="text-align:center">a</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">5</td>
 </tr>
 <tr>
-<td align="center">t</td>
-<td align="center">3</td>
-<td align="center">2</td>
-<td align="center">2</td>
-<td align="center">2</td>
-<td align="center">3</td>
-<td align="center">4</td>
-<td align="center">4</td>
-<td align="center">5</td>
+<td style="text-align:center">t</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">5</td>
 </tr>
 <tr>
-<td align="center">u</td>
-<td align="center">4</td>
-<td align="center">3</td>
-<td align="center">2</td>
-<td align="center">3</td>
-<td align="center">3</td>
-<td align="center">4</td>
-<td align="center">5</td>
-<td align="center">5</td>
+<td style="text-align:center">u</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">5</td>
 </tr>
 <tr>
-<td align="center">r</td>
-<td align="center">5</td>
-<td align="center">4</td>
-<td align="center">3</td>
-<td align="center">3</td>
-<td align="center">4</td>
-<td align="center">4</td>
-<td align="center">5</td>
-<td align="center">6</td>
+<td style="text-align:center">r</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">6</td>
 </tr>
 <tr>
-<td align="center">d</td>
-<td align="center">6</td>
-<td align="center">5</td>
-<td align="center">4</td>
-<td align="center">4</td>
-<td align="center">3</td>
-<td align="center">4</td>
-<td align="center">5</td>
-<td align="center">6</td>
+<td style="text-align:center">d</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">6</td>
 </tr>
 <tr>
-<td align="center">a</td>
-<td align="center">7</td>
-<td align="center">6</td>
-<td align="center">5</td>
-<td align="center">5</td>
-<td align="center">4</td>
-<td align="center">3</td>
-<td align="center">4</td>
-<td align="center">5</td>
+<td style="text-align:center">a</td>
+<td style="text-align:center">7</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">5</td>
 </tr>
 <tr>
-<td align="center">y</td>
-<td align="center">8</td>
-<td align="center">7</td>
-<td align="center">6</td>
-<td align="center">6</td>
-<td align="center">5</td>
-<td align="center">4</td>
-<td align="center">3</td>
-<td align="center">4</td>
+<td style="text-align:center">y</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">7</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">4</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>我们看到了最后 的交点就是4</p>
 <p>这里我贴上花花酱的链接和他的答案</p>
 <p><a href="https://zxi.mytechroad.com/blog/dynamic-programming/leetcode-72-edit-distance/" target="_blank" rel="noopener">https://zxi.mytechroad.com/blog/dynamic-programming/leetcode-72-edit-distance/</a></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">minDistance</span><span class="params">(<span class="built_in">string</span> word1, <span class="built_in">string</span> word2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> l1 = word1.length();</span><br><span class="line">    <span class="keyword">int</span> l2 = word2.length();</span><br><span class="line">    <span class="comment">// d[i][j] := minDistance(word1[0:i - 1], word2[0:j - 1]);</span></span><br><span class="line">    <span class="comment">//这是个建表操作建立l1+1列，每一列填充vector&lt;int&gt;(l2+1,0)这个数组</span></span><br><span class="line">    <span class="comment">//也就是（l2+1）个0，也就是l2+1行</span></span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="title">d</span><span class="params">(l1 + <span class="number">1</span>, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(l2 + <span class="number">1</span>, <span class="number">0</span>))</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//然后给第一行第一列都标上行数列数</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= l1; ++i)</span><br><span class="line">        d[i][<span class="number">0</span>] = i;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= l2; ++j)</span><br><span class="line">        d[<span class="number">0</span>][j] = j;</span><br><span class="line">	<span class="comment">//开始动态规划</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= l1; ++i)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= l2; ++j) </span><br><span class="line">        &#123;</span><br><span class="line"><span class="comment">//这个就是delta如果这两个字符串最后一个数字相等，那么delta=0，否则delta=1</span></span><br><span class="line">            <span class="keyword">int</span> delta = (word1[i - <span class="number">1</span>] == word2[j - <span class="number">1</span>]) ? <span class="number">0</span> : <span class="number">1</span>;</span><br><span class="line"><span class="comment">// 这就是最核心的算法           </span></span><br><span class="line"> d[i][j] = <span class="built_in">min</span>(d[i - <span class="number">1</span>][j - <span class="number">1</span>] + delta,<span class="built_in">min</span>(d[i][j - <span class="number">1</span>], d[i - <span class="number">1</span>][j]) + <span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span>;i&lt;=l1;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j =<span class="number">0</span>;j&lt;=l2;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%3d"</span>,d[i][j]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> d[l1][l2];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">string</span> word1,word2;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;word1&gt;&gt;word2;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;minDistance(word1,word2)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h3 id="结果如下"><a href="#结果如下" class="headerlink" title="结果如下"></a>结果如下</h3><p><img src="/2020/04/27/72Edit-Problem/4.png" alt></p>
 
       
@@ -759,7 +762,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">118.5k</span>
+    <span title="Site words total count">119.1k</span>
   
 </div>
 

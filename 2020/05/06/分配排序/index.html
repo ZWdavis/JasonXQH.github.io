@@ -102,7 +102,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/05/06/%E5%88%86%E9%85%8D%E6%8E%92%E5%BA%8F/6.png">
 <meta property="og:image" content="http://yoursite.com/2020/05/06/%E5%88%86%E9%85%8D%E6%8E%92%E5%BA%8F/5.png">
 <meta property="article:published_time" content="2020-05-06T03:50:52.000Z">
-<meta property="article:modified_time" content="2020-05-08T09:14:51.318Z">
+<meta property="article:modified_time" content="2020-05-08T11:25:18.190Z">
 <meta property="article:author" content="徐啟航">
 <meta property="article:tag" content="Data_structure">
 <meta property="article:tag" content="Rank">
@@ -427,6 +427,7 @@
 <ul>
 <li>先按个位排序</li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -442,7 +443,8 @@
 <th>9</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>70</td>
 <td></td>
 <td>12</td>
@@ -464,13 +466,15 @@
 <td></td>
 <td></td>
 <td>48</td>
-<td></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <ul>
 <li>按找桶的顺序收集，波浪化收集得到 70，80，12，92，83，54，75，68，48</li>
 <li>再按照第一趟的排序结果十位排序</li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -486,7 +490,8 @@
 <th>9</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td></td>
 <td>12</td>
 <td></td>
@@ -508,9 +513,10 @@
 <td></td>
 <td>75</td>
 <td>83</td>
-<td></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <ul>
 <li>再按照桶的顺序收集，得到12，48，54，68，70，75，80，83，92</li>
 </ul>
@@ -527,7 +533,6 @@
 <li>桶中的多个数据元素可以采用二维数组，链式存储，也可以采用一维辅助数组进行处理。</li>
 </ul>
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><h5 id="二维数组代码的实现"><a href="#二维数组代码的实现" class="headerlink" title="二维数组代码的实现"></a>二维数组代码的实现</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta"># <span class="meta-keyword">define</span> Maxsize 10000</span></span><br><span class="line"><span class="keyword">int</span> A[Maxsize];</span><br><span class="line"><span class="comment">//求出待排序序列中最大的元素位数</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Maxbit</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> maxvalue = A[<span class="number">0</span>],digits = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(A[i]&gt;maxvalue)</span><br><span class="line">            maxvalue = A[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(maxvalue!= <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        digits++;</span><br><span class="line">        maxvalue/=<span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> digits;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 求xbit位上的数字，如238上的第2位上的数字是3</span></span><br><span class="line"><span class="comment">// bit = 1的时候，那么就是8</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Bitnumber</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> <span class="built_in">bit</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> temp = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i&lt;<span class="built_in">bit</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        temp*=<span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (x/temp)%<span class="number">10</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 算法函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">RadixSort</span><span class="params">(<span class="keyword">int</span> A[],<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i ,j,k,<span class="built_in">bit</span>,maxbit;</span><br><span class="line">    maxbit = Maxbit(A,n);</span><br><span class="line">    <span class="comment">//构造一个动态二位数组</span></span><br><span class="line">    <span class="keyword">int</span> **B= <span class="keyword">new</span> <span class="keyword">int</span> *[<span class="number">10</span>];</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>;i&lt;<span class="number">10</span>;i++)</span><br><span class="line">        B[i] = <span class="keyword">new</span> <span class="keyword">int</span>[n+<span class="number">1</span>];<span class="comment">//第0位存储元素个数</span></span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>;i&lt;<span class="number">10</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        B[i][<span class="number">0</span>] = <span class="number">0</span>;<span class="comment">//先把元素个数默认为0</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//这里开始进行分配收集操作，一共进行maxbit次</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">bit</span> = <span class="number">1</span>;<span class="built_in">bit</span>&lt;=maxbit;<span class="built_in">bit</span>++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//分配操作</span></span><br><span class="line">        <span class="keyword">for</span>(j = <span class="number">0</span>;j&lt;n;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//取出位数</span></span><br><span class="line">            <span class="keyword">int</span> num = Bitnumber(A[j],<span class="built_in">bit</span>);</span><br><span class="line">            <span class="comment">//然后给A[j]分配桶内位置</span></span><br><span class="line">            <span class="keyword">int</span> index = ++B[num][<span class="number">0</span>];</span><br><span class="line">            <span class="comment">//存储</span></span><br><span class="line">            B[num][index] = A[j];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//收集操作，一共有10个桶，那么一一串连</span></span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>,j = <span class="number">0</span>;i&lt;<span class="number">10</span>;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(k=<span class="number">1</span>;k&lt;=B[i][<span class="number">0</span>];k++)</span><br><span class="line">                A[j++] = B[i][k];</span><br><span class="line">            <span class="comment">//更新原来序列，因为j一直在加，最后会把原来的序列全更新一遍</span></span><br><span class="line">            B[i][<span class="number">0</span>]=<span class="number">0</span>;<span class="comment">//收集完这个桶后元素置0</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//销毁数组</span></span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>;i&lt;<span class="number">10</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">delete</span> []B[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">delete</span> B;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n ;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"请输入数列中的元素个数"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"请依次输入数列中的元素"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;A[i];</span><br><span class="line">    &#125;</span><br><span class="line">    RadixSort(A,n);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"基数排序的结果:"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;A[i]&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h5 id="一维数组实现"><a href="#一维数组实现" class="headerlink" title="一维数组实现"></a>一维数组实现</h5><ul>
 <li>利用计数器数组计数</li>
 <li>计数器累加</li>
@@ -541,6 +546,7 @@
 <li>先计数</li>
 <li><img src="/2020/05/06/%E5%88%86%E9%85%8D%E6%8E%92%E5%BA%8F/7.png" alt="示例"></li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -556,7 +562,8 @@
 <th>9</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>2</td>
 <td>0</td>
 <td>2</td>
@@ -568,80 +575,16 @@
 <td>2</td>
 <td>0</td>
 </tr>
-<tr>
-<td>+ count数组累加</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>0</td>
-<td>1</td>
-<td>2</td>
-<td>3</td>
-<td>4</td>
-<td>5</td>
-<td>6</td>
-<td>7</td>
-<td>8</td>
-<td>9</td>
-</tr>
-<tr>
-<td>—-</td>
-<td>—-</td>
-<td>—-</td>
-<td>—-</td>
-<td>—-</td>
-<td>—-</td>
-<td>—-</td>
-<td>—-</td>
-<td>—-</td>
-<td>—-</td>
-</tr>
-<tr>
-<td>2</td>
-<td>2</td>
-<td>3</td>
-<td>5</td>
-<td>6</td>
-<td>8</td>
-<td>8</td>
-<td>8</td>
-<td>10</td>
-<td>10</td>
-</tr>
-<tr>
-<td>+ 68，75，54，70，83，48，80，12，75*，92 反向遍历，放入temp数组</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>+ 拿到92，个位数是2，那么看到2的count数组对应4，因为我们是从0开始计数的，所以92放到temp[3]中，同时count[2]–</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
+<ul>
+<li>count数组累加<br>| 0    | 1    | 2    | 3    | 4    | 5    | 6    | 7    | 8    | 9    |<br>| —— | —— | —— | —— | —— | —— | —— | —— | —— | —— |<br>| 2    | 2    | 3    | 5    | 6    | 8    | 8    | 8    | 10   | 10   |</li>
+<li>68，75，54，70，83，48，80，12，75*，92 反向遍历，放入temp数组</li>
+<li>拿到92，个位数是2，那么看到2的count数组对应4，因为我们是从0开始计数的，所以92放到temp[3]中，同时count[2]—</li>
+</ul>
 <p>count</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -657,7 +600,8 @@
 <th>9</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>2</td>
 <td>2</td>
 <td>3</td>
@@ -669,8 +613,11 @@
 <td>10</td>
 <td>10</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>temp</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -686,7 +633,8 @@
 <th>9</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td></td>
 <td></td>
 <td></td>
@@ -696,13 +644,15 @@
 <td></td>
 <td></td>
 <td></td>
-<td></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <ul>
 <li>以此类推，那么最后的结果就是这样</li>
 </ul>
 <p>count</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -718,7 +668,8 @@
 <th>9</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>0</td>
 <td>2</td>
 <td>2</td>
@@ -730,8 +681,11 @@
 <td>8</td>
 <td>10</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>temp</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -747,7 +701,8 @@
 <th>9</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>70</td>
 <td>80</td>
 <td>12</td>
@@ -759,12 +714,15 @@
 <td>68</td>
 <td>48</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>第二次循环<br> 70   ， 80   ， 12   ， 92   ， 83   ， 54   ， 75   ， 75*  ， 68   ， 48</p>
 <ul>
 <li>先计数</li>
 <li><img src="/2020/05/06/%E5%88%86%E9%85%8D%E6%8E%92%E5%BA%8F/8.png" alt="示例"></li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -780,7 +738,8 @@
 <th>9</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>0</td>
 <td>1</td>
 <td>0</td>
@@ -792,68 +751,15 @@
 <td>2</td>
 <td>1</td>
 </tr>
-<tr>
-<td>+ count累加</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>0</td>
-<td>1</td>
-<td>2</td>
-<td>3</td>
-<td>4</td>
-<td>5</td>
-<td>6</td>
-<td>7</td>
-<td>8</td>
-<td>9</td>
-</tr>
-<tr>
-<td>—-</td>
-<td>—-</td>
-<td>—-</td>
-<td>—-</td>
-<td>—-</td>
-<td>—-</td>
-<td>—-</td>
-<td>—-</td>
-<td>—-</td>
-<td>—-</td>
-</tr>
-<tr>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>2</td>
-<td>3</td>
-<td>4</td>
-<td>7</td>
-<td>9</td>
-<td>10</td>
-</tr>
-<tr>
-<td>+ 以此类推，那么最后的结果就是这样</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
+<ul>
+<li>count累加<br>| 0    | 1    | 2    | 3    | 4    | 5    | 6    | 7    | 8    | 9    |<br>| —— | —— | —— | —— | —— | —— | —— | —— | —— | —— |<br>| 0    | 1    | 1    | 1    | 2   | 3   | 4    | 7    | 9    | 10    |</li>
+<li>以此类推，那么最后的结果就是这样</li>
+</ul>
 <p>count</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -869,7 +775,8 @@
 <th>9</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>0</td>
 <td>0</td>
 <td>1</td>
@@ -881,8 +788,11 @@
 <td>7</td>
 <td>9</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>temp</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -898,7 +808,8 @@
 <th>9</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>12</td>
 <td>48</td>
 <td>54</td>
@@ -910,9 +821,10 @@
 <td>83</td>
 <td>92</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1000</span>;</span><br><span class="line"><span class="keyword">int</span> a[maxn],n;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxbit</span><span class="params">(<span class="keyword">int</span> data[], <span class="keyword">int</span> n)</span> <span class="comment">//辅助函数，求数据的最大位数</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//扫描一遍就可以了，判断是不是比10，1000大</span></span><br><span class="line">    <span class="keyword">int</span> d=<span class="number">1</span>;<span class="comment">//统计最大的位数</span></span><br><span class="line">    <span class="keyword">int</span> p=<span class="number">10</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span>(data[i]&gt;=p)</span><br><span class="line">        &#123;</span><br><span class="line">            p*=<span class="number">10</span>;</span><br><span class="line">            ++d;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> d;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">radixsort</span><span class="params">(<span class="keyword">int</span> data[], <span class="keyword">int</span> n)</span> <span class="comment">//基数排序</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> d=maxbit(data,n); <span class="comment">//求最大位数</span></span><br><span class="line">    <span class="keyword">int</span> *tmp=<span class="keyword">new</span> <span class="keyword">int</span>[n]; <span class="comment">//辅助数组</span></span><br><span class="line">    <span class="keyword">int</span> *count=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>]; <span class="comment">//计数器</span></span><br><span class="line">    <span class="keyword">int</span> i,j,k;</span><br><span class="line">    <span class="keyword">int</span> radix=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=d;i++) <span class="comment">//进行d次排序</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;<span class="number">10</span>;j++)</span><br><span class="line">            count[j]=<span class="number">0</span>; <span class="comment">//每次分配前清空计数器</span></span><br><span class="line">        <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;n;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            k=(data[j]/radix)%<span class="number">10</span>; <span class="comment">//取出个位数，然后是十位数，...</span></span><br><span class="line">            count[k]++; <span class="comment">//统计每个桶中的记录数</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(j=<span class="number">1</span>;j&lt;<span class="number">10</span>;j++)</span><br><span class="line">            count[j]+=count[j<span class="number">-1</span>]; <span class="comment">//将tmp中的位置依次分配给每个桶</span></span><br><span class="line">        <span class="keyword">for</span>(j=n<span class="number">-1</span>;j&gt;=<span class="number">0</span>;j--) <span class="comment">//将所有桶中记录依次收集到tmp中</span></span><br><span class="line">        &#123;</span><br><span class="line">            k=(data[j]/radix)%<span class="number">10</span>;</span><br><span class="line">            tmp[--count[k]]=data[j];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;n;j++) <span class="comment">//将临时数组的内容复制到data中</span></span><br><span class="line">            data[j]=tmp[j];</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"第"</span>&lt;&lt;i&lt;&lt;<span class="string">"次排序结果："</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;data[i]&lt;&lt;<span class="string">"\t"</span>;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        radix=radix*<span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">delete</span>[]tmp;</span><br><span class="line">    <span class="keyword">delete</span>[]count;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line">    radixsort(a,n);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h3 id="加一段基数排序的gif，更容易理解"><a href="#加一段基数排序的gif，更容易理解" class="headerlink" title="加一段基数排序的gif，更容易理解"></a>加一段基数排序的gif，更容易理解</h3><p><img src="/2020/05/06/%E5%88%86%E9%85%8D%E6%8E%92%E5%BA%8F/1.gif" alt="示例"></p>
 <p>视频来自可视化算法网站<a href="https://visualgo.net/zh" target="_blank" rel="noopener">https://visualgo.net/zh</a></p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img src="/2020/05/06/%E5%88%86%E9%85%8D%E6%8E%92%E5%BA%8F/6.png" alt="示例"></p>
@@ -1143,7 +1055,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">118.5k</span>
+    <span title="Site words total count">119.1k</span>
   
 </div>
 

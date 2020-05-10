@@ -369,7 +369,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  5k
+                  5.2k
                 </span>
               
 
@@ -385,7 +385,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  19
+                  20
                 </span>
               
             </div>
@@ -420,14 +420,12 @@
 <li>在JS中，类的所有实例对象都从同一个原型对象上继承属性。因此，原型对象是类的核心。通常，类的实例还需要进一步的初始化，通常通过定义一个函数来创建并初始化这个对象</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">range</span>(<span class="params">from,to</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> r = <span class="built_in">Object</span>.create(range.methods);</span><br><span class="line">    r.from = <span class="keyword">from</span>;</span><br><span class="line">    r.to = to;</span><br><span class="line">    <span class="keyword">return</span> r;</span><br><span class="line">&#125;</span><br><span class="line">range.methods = &#123;</span><br><span class="line">    <span class="comment">//在不在这个range当中</span></span><br><span class="line">    includes: <span class="function"><span class="keyword">function</span> (<span class="params">x</span>) </span>&#123; <span class="keyword">return</span> <span class="keyword">this</span>.from&lt;=x &amp;&amp;x&lt;=<span class="keyword">this</span>.to;&#125;,</span><br><span class="line"></span><br><span class="line">    foreach: <span class="function"><span class="keyword">function</span> (<span class="params">f</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> x = <span class="built_in">Math</span>.ceil(<span class="keyword">this</span>.from);x&lt;=<span class="keyword">this</span>.to;x++) f(x);&#125;,</span><br><span class="line">    <span class="comment">//range起点到终点</span></span><br><span class="line">    toString: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;<span class="keyword">return</span> <span class="string">"("</span>+ <span class="keyword">this</span>.from+<span class="string">"..."</span>+<span class="keyword">this</span>.to+<span class="string">")"</span>;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> r=range(<span class="number">1</span>,<span class="number">3</span>);</span><br><span class="line">r.includes(<span class="number">2</span>);      <span class="comment">//true</span></span><br><span class="line">r.foreach(<span class="built_in">console</span>.log);<span class="comment">//1,2</span></span><br><span class="line"><span class="built_in">console</span>.log(r);     <span class="comment">//from:1 to:3</span></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>工厂函数方法，没有定义构造函数。</li>
 <li>使用关键词new 来调用构造函数，使用new调用构造函数会自动创建一个新对象。因此构造函数本身只需要初始化这个新对象的状态即可</li>
 <li>调用构造函数的一个重要特征是，构造函数的protype属性被用作新对象的原型。这意味着通过同一个构造函数创建的所有对象都继承自一个相同的对象，因此他们都是同一个类的成员</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这是一个构造函数，用以初始化新创建的“范围对象</span></span><br><span class="line"><span class="comment">//注意，这里没有创造一个对象，而是初始化</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">Range</span>(<span class="params">from,to</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.from = <span class="keyword">from</span>;</span><br><span class="line">        <span class="keyword">this</span>.to = to;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//所有的范围对象都继承自这个对象</span></span><br><span class="line">    <span class="comment">//注意，属性的名字必须是prototype</span></span><br><span class="line">    Range.prototype = &#123;</span><br><span class="line">        <span class="comment">//在不在这个range当中</span></span><br><span class="line">        includes: <span class="function"><span class="keyword">function</span> (<span class="params">x</span>) </span>&#123; <span class="keyword">return</span> <span class="keyword">this</span>.from&lt;=x &amp;&amp;x&lt;=<span class="keyword">this</span>.to;&#125;,</span><br><span class="line"></span><br><span class="line">        foreach: <span class="function"><span class="keyword">function</span> (<span class="params">f</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">var</span> x = <span class="built_in">Math</span>.ceil(<span class="keyword">this</span>.from);x&lt;=<span class="keyword">this</span>.to;x++) f(x);&#125;,</span><br><span class="line">        <span class="comment">//range起点到终点</span></span><br><span class="line">        toString: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;<span class="keyword">return</span> <span class="string">"("</span>+ <span class="keyword">this</span>.from+<span class="string">"..."</span>+<span class="keyword">this</span>.to+<span class="string">")"</span>;&#125;</span><br><span class="line">    &#125;;</span><br><span class="line"><span class="comment">//这是后一定要+new 关键词，是从range里出来的一个实例</span></span><br><span class="line">    <span class="keyword">var</span> r =<span class="keyword">new</span> Range(<span class="number">1</span>,<span class="number">3</span>);</span><br><span class="line">    <span class="built_in">console</span>.log( r.includes(<span class="number">2</span>));</span><br><span class="line">    r.foreach(<span class="built_in">console</span>.log(r));</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>工厂函数range()转化为构造函数时被重命名为Range()</li>
 <li>Range()构造函数通过new 关键词调用，而range()工厂函数则不必使用new</li>
@@ -441,8 +439,8 @@
 <ul>
 <li><p>使用instanceof运算符来检测对象是否属于某个类</p>
 </li>
-<li><pre><code class="javascript">r <span class="keyword">instanceof</span> Range     <span class="comment">//    如果r继承自Range.prototype 返回true</span>
-&lt;!--￼<span class="number">2</span>--&gt;</code></pre>
+<li><p>```javascript<br>r instanceof Range     //    如果r继承自Range.prototype 返回true</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#123;% asset_img 1.png %&#125;</span><br><span class="line"></span><br><span class="line">#### constructor属性</span><br><span class="line"></span><br><span class="line">+ 每个JS函数都自动拥有一个prototype属性。这个属性的值时一个对象，这个对象包含唯一一个不可枚举属性constructor，constructor属性的值是一个函数对象，构造函数的原型中预先定义好的constructor属性，这意味着对象通常继承的constructor均指代他们的构造函数</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;javascript</span><br><span class="line">var F &#x3D; function()&#123;&#125;;</span><br><span class="line">var p &#x3D; F.prototype;</span><br><span class="line">var c &#x3D; p.constructor;</span><br><span class="line">c&#x3D;&#x3D;&#x3D;F	&#x2F;&#x2F;true 对于任意函数F.prototype.constructor&#x3D;&#x3D;&#x3D;F</span><br><span class="line"></span><br><span class="line">var o &#x3D; new F()</span><br><span class="line">o.constructor &#x3D;&#x3D;&#x3D;F&#x2F;&#x2F;true constructor属性指代这个类</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
@@ -499,24 +497,16 @@
 </li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	这个构造函数为它所创建的每个实例定义了实例字段r和i</span></span><br><span class="line"><span class="comment">	这两个字段分别保存附属的实部和虚部</span></span><br><span class="line"><span class="comment">	它们是对象的状态</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Complex</span>(<span class="params">real,imaginary</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">isNaN</span>(real)||<span class="built_in">isNaN</span>(imaginary))</span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>();</span><br><span class="line">	<span class="keyword">this</span>.r = real;</span><br><span class="line">    <span class="keyword">this</span>.i = imaginary;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h5 id="Step-2给构造函数的prototype对象定义实例的方法"><a href="#Step-2给构造函数的prototype对象定义实例的方法" class="headerlink" title="Step 2给构造函数的prototype对象定义实例的方法"></a>Step 2给构造函数的prototype对象定义实例的方法</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//当前复数对象加上另外一个复数，并返回一个新的计算和值后的附属对象</span></span><br><span class="line">Complex.prototype.add = <span class="function"><span class="keyword">function</span>(<span class="params">that</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> Complex (<span class="keyword">this</span>.r+that.r,<span class="keyword">this</span>.i+that.i);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//负数的求负运算</span></span><br><span class="line">Complex.prototyle.neg = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> complex (-<span class="keyword">this</span>.r,-<span class="keyword">this</span>.i);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//将复数对象转换为一个字符串</span></span><br><span class="line">Complex.prototype.toString = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">"&#123;"</span>+<span class="keyword">this</span>.r +<span class="string">","</span>+<span class="keyword">this</span>.i+<span class="string">"&#125;"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h5 id="Step3-给构造函数定义类字段和类属性"><a href="#Step3-给构造函数定义类字段和类属性" class="headerlink" title="Step3 给构造函数定义类字段和类属性"></a>Step3 给构造函数定义类字段和类属性</h5><img src="/2020/04/28/JavaScript-9%E7%B1%BB%E5%92%8C%E6%A8%A1%E5%9D%97/04/28/JavaScript-9%E7%B1%BB%E5%92%8C%E6%A8%A1%E5%9D%97/2.png" class>
-
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> c = <span class="keyword">new</span> Complex(<span class="number">2</span>,<span class="number">3</span>);</span><br><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> Complex(c.i,c.r);</span><br><span class="line">c.add(d).toString();	<span class="comment">//"&#123;5,5&#125;"使用了实例的方法</span></span><br><span class="line"><span class="comment">//这个稍微复杂的表达式用到了类方法和类字段</span></span><br><span class="line"><span class="comment">//complex表示一个类，先&#123;2，3&#125;，再定义一个加上&#123;-2，-3&#125;</span></span><br><span class="line">Complex.prase(c.toString()),add(c.neg()).equals(Complex.ZERO)<span class="comment">//结果永远是0</span></span><br></pre></td></tr></table></figure>
-
 <h3 id="9-4类的扩充"><a href="#9-4类的扩充" class="headerlink" title="9.4类的扩充"></a>9.4类的扩充</h3><ul>
 <li>具体可通过给原型对象添加新方法来扩充Javascript类</li>
 </ul>
 <img src="/2020/04/28/JavaScript-9%E7%B1%BB%E5%92%8C%E6%A8%A1%E5%9D%97/04/28/JavaScript-9%E7%B1%BB%E5%92%8C%E6%A8%A1%E5%9D%97/3.png" class>
-
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printf</span>(<span class="params"></span>)</span>&#123;<span class="keyword">return</span> <span class="built_in">console</span>.log(<span class="keyword">this</span>)&#125;;</span><br><span class="line">n=<span class="number">3</span>;</span><br><span class="line">n.times(printf,<span class="string">"hello world"</span>);</span><br></pre></td></tr></table></figure>
-
 <img src="/2020/04/28/JavaScript-9%E7%B1%BB%E5%92%8C%E6%A8%A1%E5%9D%97/04/28/JavaScript-9%E7%B1%BB%E5%92%8C%E6%A8%A1%E5%9D%97/4.png" class>
-
 <img src="/2020/04/28/JavaScript-9%E7%B1%BB%E5%92%8C%E6%A8%A1%E5%9D%97/04/28/JavaScript-9%E7%B1%BB%E5%92%8C%E6%A8%A1%E5%9D%97/5.png" class>
-
 <h3 id="9-5类和类型"><a href="#9-5类和类型" class="headerlink" title="9.5类和类型"></a>9.5类和类型</h3><ul>
 <li>三种用以检测任意对象的类的技术<ul>
 <li>instanceof运算符</li>
@@ -530,10 +520,8 @@
 </li>
 </ul>
 <h5 id="instanceof运算符"><a href="#instanceof运算符" class="headerlink" title="instanceof运算符"></a>instanceof运算符</h5><ul>
-<li><p>左操作数是待检测类的对象，有操作时是定义类的构造函数</p>
-</li>
-<li><p>如果o继承自c.prototype 则表达式o instanceof c的值为true。这里的继承可以不是直接继承</p>
-</li>
+<li>左操作数是待检测类的对象，有操作时是定义类的构造函数</li>
+<li>如果o继承自c.prototype 则表达式o instanceof c的值为true。这里的继承可以不是直接继承</li>
 <li><p>构造函数是类的公共标识，但原型是唯一的标识</p>
 <ul>
 <li>尽管instanceof运算符的右操作数是构造函数，但计算过程实际上是检测了对象的继承关系，而不是检测创建对象的构造函数</li>
@@ -543,7 +531,6 @@
 </li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">range.methods.isPrototypeOf(r);<span class="comment">//range.method是原型对象</span></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>instanceOf()和isPrototypeOf()方法的缺点<ul>
 <li>无法通过对象获得类名，只能检测对象是否属于指定的类名</li>
@@ -552,7 +539,6 @@
 </li>
 </ul>
 <h5 id="constructor-属性"><a href="#constructor-属性" class="headerlink" title="constructor 属性"></a>constructor 属性</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">typeAndValue</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x===<span class="literal">null</span>) <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">	<span class="keyword">switch</span>(x.constructor)&#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="built_in">Number</span>: <span class="keyword">return</span> <span class="string">"Number: "</span>+x;</span><br><span class="line">		cise <span class="built_in">String</span>: <span class="keyword">return</span> <span class="string">"String：'"</span>+x+<span class="string">"'"</span>;</span><br><span class="line">		......</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>不足之处<ul>
 <li>再多个执行上下文的场景中无法正常工作（比如再浏览器窗口的多个框架子页面中）</li>
@@ -561,13 +547,11 @@
 </li>
 </ul>
 <h5 id="构造函数的名称"><a href="#构造函数的名称" class="headerlink" title="构造函数的名称"></a>构造函数的名称</h5><ul>
-<li><p>使用instanceof元素安抚和constructor属性检测对象所属的类的主要的问题：</p>
-<ul>
+<li>使用instanceof元素安抚和constructor属性检测对象所属的类的主要的问题：<ul>
 <li>多个执行上下文中的函数看起来是一摸一样的，但是他们是相互独立的对象，因此彼此不相等</li>
 </ul>
 </li>
-<li><p>一种可能的解决方案，使用构造函数的名字而不是构造函数本身作为类标识符</p>
-<ul>
+<li>一种可能的解决方案，使用构造函数的名字而不是构造函数本身作为类标识符<ul>
 <li>一些JS实现中，函数对象由非标准的属性name，用来标识函数的名称</li>
 <li>对没有name属性的Javascript实现，可将函数转换为字符串然后从中提取出函数名</li>
 </ul>
@@ -582,7 +566,6 @@
 </li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这个构造函数没有名字</span></span><br><span class="line"><span class="keyword">var</span> Complex = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>&#123;<span class="keyword">this</span>.r = x,<span class="keyword">this</span>.i = y;&#125;</span><br><span class="line"><span class="comment">//这个构造函数有名字</span></span><br><span class="line"><span class="keyword">var</span> Range = <span class="function"><span class="keyword">function</span> <span class="title">Range</span>(<span class="params">f,t</span>)</span>&#123;<span class="keyword">this</span>.from = f;<span class="keyword">this</span>.to = t;&#125;</span><br></pre></td></tr></table></figure>
-
 <h4 id="鸭式辩型"><a href="#鸭式辩型" class="headerlink" title="鸭式辩型"></a>鸭式辩型</h4><ul>
 <li>不关注“对象的类是什么”关注“对象能做什么”<ul>
 <li>上文所描述的检测对象的类的各种技术多少都会有些问题，至少在客户端Javascript中式如此。解决办法就是规避掉这些问题：不要关注“对象的类是什么”，而是关注“对象能做什么”。因此提出鸭式辩型</li>
@@ -594,17 +577,14 @@
 </li>
 </ul>
 <img src="/2020/04/28/JavaScript-9%E7%B1%BB%E5%92%8C%E6%A8%A1%E5%9D%97/04/28/JavaScript-9%E7%B1%BB%E5%92%8C%E6%A8%A1%E5%9D%97/8.png" class>
-
 <h3 id="9-6-JavaScript面向对象的技术（略去）"><a href="#9-6-JavaScript面向对象的技术（略去）" class="headerlink" title="9.6 JavaScript面向对象的技术（略去）"></a>9.6 JavaScript面向对象的技术（略去）</h3><h3 id="9-7子类"><a href="#9-7子类" class="headerlink" title="9.7子类"></a>9.7子类</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><ul>
-<li><p>在JavaScript中创建子类的关键之处在于，采用合适的方法对原型对象进行初始化</p>
-</li>
+<li>在JavaScript中创建子类的关键之处在于，采用合适的方法对原型对象进行初始化</li>
 <li><p>如果类B继承自类A,B.prototype 必须是 A.prototype的后嗣。B的实例继承自B.prototype，后者同样继承自A.prototype</p>
 </li>
 <li><p>例子</p>
 </li>
 </ul>
 <h5 id="step1-定义Teacher（）构造函数"><a href="#step1-定义Teacher（）构造函数" class="headerlink" title="step1 定义Teacher（）构造函数"></a>step1 定义Teacher（）构造函数</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//teacher类继承自Person类</span></span><br><span class="line"><span class="comment">//首先Person类定义如下</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">first,last,age,gender,interests</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = &#123;</span><br><span class="line">        first,</span><br><span class="line">        last</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">    <span class="keyword">this</span>.gender = gender;</span><br><span class="line">    <span class="keyword">this</span>.interests = interests;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//不要重新定义一边属性，否则就不是从Person（）中继承的</span></span><br><span class="line"><span class="comment">//会需要更多的代码</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Teacher</span>(<span class="params">first,last,age,gender,interests,subject</span>) </span>&#123;</span><br><span class="line">    Person.call(<span class="keyword">this</span>,first,last,age,gender,interests,subject);</span><br><span class="line">    <span class="keyword">this</span>.subject = subject;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h5 id="step-2-设置Teacher-的原型和构造器引用"><a href="#step-2-设置Teacher-的原型和构造器引用" class="headerlink" title="step 2 设置Teacher()的原型和构造器引用"></a>step 2 设置Teacher()的原型和构造器引用</h5><ul>
 <li>Teacher.prototype=Object.create(Person.prototype)</li>
 <li>create()在这个例子里，创建一个和Person.prototype 一样的新的原型属性值，这个属性指向一个包括属性和方法的对象，然后将它作为Teacher.prototype 的属性值，这意味着Teacher.prototype现在会继承Person.prototype的所有属性和方法</li>
@@ -612,9 +592,7 @@
 <li>Teacher.prototype.constructor = Teacher;</li>
 </ul>
 <h5 id="step3-尝试向Teacher-添加新的greeeting-函数"><a href="#step3-尝试向Teacher-添加新的greeeting-函数" class="headerlink" title="step3 尝试向Teacher()添加新的greeeting()函数"></a>step3 尝试向Teacher()添加新的greeeting()函数</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Teacher.prototype.greeting = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> prefix;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>.gender===<span class="string">'male'</span>||<span class="keyword">this</span>.gender===<span class="string">'Male'</span>||<span class="keyword">this</span>.gender===<span class="string">'M'</span>||<span class="keyword">this</span>.gender===<span class="string">'m'</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        prefix = <span class="string">'Mr.'</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">this</span>.gender === <span class="string">'female'</span>||<span class="keyword">this</span>.gender ===<span class="string">'Female'</span>||<span class="keyword">this</span>.gender ===<span class="string">'f'</span>||<span class="keyword">this</span>.gender ===<span class="string">'F'</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        prefix = <span class="string">'Mrs.'</span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        prefix = <span class="string">'Mx.'</span></span><br><span class="line">    &#125;</span><br><span class="line">    alert(<span class="string">'Hello ,my name is '</span>+ prefix+<span class="string">''</span>+<span class="keyword">this</span>.name.last +<span class="string">',and I teache '</span>+ <span class="keyword">this</span>.subject+<span class="string">'.'</span>)</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
 <h5 id="step4创建一个Teacher-的实例"><a href="#step4创建一个Teacher-的实例" class="headerlink" title="step4创建一个Teacher()的实例"></a>step4创建一个Teacher()的实例</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> teacher1 = <span class="keyword">new</span> Teacher(<span class="string">'Dave'</span>,<span class="string">'Griffiths'</span>,<span class="number">31</span>,<span class="string">'male'</span>,[<span class="string">'football'</span>,<span class="string">'cookery'</span>],<span class="string">'mathematics'</span>);</span><br><span class="line">teacher1.name,first;</span><br><span class="line">teacher1.interests[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">teacher1.subject;</span><br><span class="line">teacher1.greeting();</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>前面两个进入到Person()的构造器，继承的属性和方法</li>
 <li>后面两个则是只有Teacher()的构造器才有的属性和方法</li>
@@ -623,12 +601,10 @@
 <li>使用戴悠class关键词的类名</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span></span>&#123;</span><br><span class="line">     <span class="keyword">constructor</span>(height,width) &#123;</span><br><span class="line">         <span class="keyword">this</span>.height = height;</span><br><span class="line">         <span class="keyword">this</span>.width = width;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>注意：函数声明和类声明之间的一个重要区别是函数声明会提升，但是类不会</li>
 </ul>
 <h4 id="定义类类表达式"><a href="#定义类类表达式" class="headerlink" title="定义类类表达式"></a>定义类类表达式</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//匿名类</span></span><br><span class="line">    <span class="keyword">let</span> Rectangle = <span class="class"><span class="keyword">class</span> </span>&#123;</span><br><span class="line">        <span class="keyword">constructor</span>(height,width) &#123;</span><br><span class="line">            <span class="keyword">this</span>.height = height;</span><br><span class="line">            <span class="keyword">this</span>.width = width;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="built_in">console</span>.log(Rectangle.name)</span><br><span class="line">    <span class="comment">//输出实例名字，因为类是匿名的</span></span><br><span class="line">    <span class="comment">//具名类</span></span><br><span class="line">    <span class="keyword">let</span> Rectangle = <span class="class"><span class="keyword">class</span> <span class="title">Rectangle2</span> </span>&#123;</span><br><span class="line">        <span class="keyword">constructor</span>(height,width) &#123;</span><br><span class="line">            <span class="keyword">this</span>.height = height;</span><br><span class="line">            <span class="keyword">this</span>.width = width;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="built_in">console</span>.log(Rectangle.name);</span><br><span class="line">    <span class="comment">//后面会把类具体的名字输出，不输出实例名</span></span><br></pre></td></tr></table></figure>
-
 <h4 id="类体和方法定义"><a href="#类体和方法定义" class="headerlink" title="类体和方法定义"></a>类体和方法定义</h4><ul>
 <li>一个类 的类体式{}中的部分。这是定义类成员的位置，如方法或者构造函数</li>
 <li>严格模式<ul>
@@ -641,46 +617,33 @@
 </li>
 </ul>
 <h5 id="原型方法"><a href="#原型方法" class="headerlink" title="原型方法"></a>原型方法</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span></span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(height,width) &#123;</span><br><span class="line">        <span class="keyword">this</span>.height = height;</span><br><span class="line">        <span class="keyword">this</span>.width = width;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">get</span> area()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.calcArea()</span><br><span class="line">    &#125;</span><br><span class="line">    calcArea()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.height*<span class="keyword">this</span>.width;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> square = <span class="keyword">new</span> Rectangle(<span class="number">10</span>,<span class="number">10</span>)</span><br><span class="line"><span class="built_in">console</span>.log(square.area)<span class="comment">//100</span></span><br></pre></td></tr></table></figure>
-
 <h5 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span></span>&#123;</span><br><span class="line">       <span class="keyword">constructor</span>(x,y) &#123;</span><br><span class="line">           <span class="keyword">this</span>.x = x;</span><br><span class="line">           <span class="keyword">this</span>.y = y;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">static</span> distance (a,b)</span><br><span class="line">       &#123;</span><br><span class="line">           <span class="keyword">const</span> dx = a.x-b.x;</span><br><span class="line">           <span class="keyword">const</span> dy = a.y-b.y;</span><br><span class="line">           <span class="keyword">return</span> <span class="built_in">Math</span>.hypot(dx,dy);<span class="comment">//返回所有参数的平方和的平方根</span></span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">const</span> p1 = <span class="keyword">new</span> Point(<span class="number">5</span>,<span class="number">5</span>);<span class="comment">//两个实例</span></span><br><span class="line">   <span class="keyword">const</span> p2 = <span class="keyword">new</span> Point(<span class="number">10</span>,<span class="number">10</span>);</span><br><span class="line">   <span class="built_in">console</span>.log(Point.distance(p1,p2));</span><br><span class="line"><span class="comment">//静态方法直接写类名+方法，再传入参数</span></span><br></pre></td></tr></table></figure>
-
 <h5 id="用原型和静态方法包装"><a href="#用原型和静态方法包装" class="headerlink" title="用原型和静态方法包装"></a>用原型和静态方法包装</h5><ul>
 <li><p>当一个对象调用静态或者原型方法时，如果该对象没有this值，那么this值再被调用的函数内部就是undefined，不会发生自动包装</p>
 </li>
-<li><pre><code class="javascript">  <span class="class"><span class="keyword">class</span> <span class="title">Animal</span></span>{
-      speak() {
-          <span class="keyword">return</span> <span class="keyword">this</span>;
-      }
-      <span class="keyword">static</span> eat(){
-<span class="comment">//这是对类来说的，不是对实例来说的，所以这样定义，this必为undefined</span>
-          <span class="keyword">return</span> <span class="keyword">this</span>;
-      }
+<li><p>```javascript<br>  class Animal{</p>
+<pre><code>  speak() {
+      return this;
   }
-  <span class="keyword">let</span> obj = <span class="keyword">new</span> Animal();
-  obj.speak();<span class="comment">// 这是一个Animal实例，有this对象，返回Animal{}</span>
-  <span class="keyword">let</span> speak = obj.speak();
-  speak();<span class="comment">//undefined，找不到this的值</span>
-
-  Animal.eat();<span class="comment">//class Animal;</span>
-  <span class="keyword">let</span> eat = Animal.eat();
-  eat();<span class="comment">//用一个类来调用一个方法，肯定没有this</span>
-&lt;!--￼<span class="number">18</span>--&gt;
-</code></pre>
+  static eat(){
+</code></pre><p>//这是对类来说的，不是对实例来说的，所以这样定义，this必为undefined</p>
+<pre><code>      return this;
+  }
+</code></pre><p>  }<br>  let obj = new Animal();<br>  obj.speak();// 这是一个Animal实例，有this对象，返回Animal{}<br>  let speak = obj.speak();<br>  speak();//undefined，找不到this的值</p>
+<p>  Animal.eat();//class Animal;<br>  let eat = Animal.eat();<br>  eat();//用一个类来调用一个方法，肯定没有this</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">+ 当我们使用传统的基于函数的类来编写上述代码，那么基于调用该函数的this值将发生自动装箱</span><br><span class="line">+ 这时候</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;javascript</span><br><span class="line">    function Animal()&#123;&#125;</span><br><span class="line">    Animal.prototype.speak &#x3D; function()&#123;</span><br><span class="line">        return this;</span><br><span class="line">    &#125;</span><br><span class="line">    Animal.eat &#x3D; function()&#123;</span><br><span class="line">        return this;</span><br><span class="line">    &#125;</span><br><span class="line">    let obj &#x3D; new Animal();</span><br><span class="line">    let speak &#x3D; obj.speak();</span><br><span class="line">    speak();&#x2F;&#x2F;global object 逻辑会混乱，建议用新的方法</span><br><span class="line"></span><br><span class="line">    let eat &#x3D; Animal.eat();</span><br><span class="line">    eat();&#x2F;&#x2F;global object</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h5 id="实例属性"><a href="#实例属性" class="headerlink" title="实例属性"></a>实例属性</h5><ul>
 <li>实例的属性必须定义在类的方法里</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span></span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(height,width) &#123;</span><br><span class="line">        <span class="keyword">this</span>.height = height;</span><br><span class="line">        <span class="keyword">this</span>.width = width;</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>静态的或者原型的数据属性，必须定义在类定义的外面</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//他和实例就完全没关系了，任何一个实例，要用这个静态属性的时候必然都是20</span></span><br><span class="line"><span class="comment">//对每个实例都是一样的，而且实例不能修改这个属性</span></span><br><span class="line">Rectangle.staticWidth = <span class="number">20</span>;</span><br><span class="line"><span class="comment">//对于每个实例来说都继承了一个原型，那么他也有这个原型的数据属性</span></span><br><span class="line"><span class="comment">//但是可以对这个prototypeWidth修改</span></span><br><span class="line">Rectangle.prototype.prototypeWidth = <span class="number">25</span></span><br></pre></td></tr></table></figure>
-
 <h5 id="字段声明"><a href="#字段声明" class="headerlink" title="字段声明"></a>字段声明</h5><ul>
-<li><p>共有字段声明</p>
-<ul>
+<li>共有字段声明<ul>
 <li>通过预先声明字段，字段始终存在</li>
 <li>这个字段可以用也可以不用默认值来声明</li>
 </ul>
@@ -696,25 +659,20 @@
 </li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span></span>&#123;</span><br><span class="line">	height = <span class="number">0</span>;</span><br><span class="line">	width ;</span><br><span class="line"> <span class="keyword">constructor</span>(height,width) &#123;</span><br><span class="line">            <span class="keyword">this</span>.height = height;</span><br><span class="line">            <span class="keyword">this</span>.width = width;</span><br><span class="line">        &#125;	 </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>私有例子</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span></span>&#123;</span><br><span class="line">#	height = 0;</span><br><span class="line">#	width ;</span><br><span class="line"> <span class="keyword">constructor</span>(height,width) &#123;</span><br><span class="line">            <span class="keyword">this</span>.height = height;</span><br><span class="line">            <span class="keyword">this</span>.width = width;</span><br><span class="line">        &#125;	 </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//在外面是看不到的</span></span><br></pre></td></tr></table></figure>
-
 <h4 id="用extends创建子类"><a href="#用extends创建子类" class="headerlink" title="用extends创建子类"></a>用extends创建子类</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span></span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    speak()&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name+<span class="string">' makes a noise.'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">//再原型方法的基础上修改speak()，打印....barks</span></span><br><span class="line">    speak() &#123;</span><br><span class="line">         <span class="built_in">console</span>.log(<span class="keyword">this</span>.name+<span class="string">' barks.'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//不对原型方法进行任何修改，打印...makes a noise</span></span><br><span class="line">    speak() &#123;</span><br><span class="line">        <span class="keyword">super</span>.speak();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> Dog(<span class="string">'轲轲'</span>);</span><br><span class="line">d.speak();</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>如果子类中存在构造函数，则需要再使用this之前首先调用super()</li>
 <li>也可以继承传统的基于函数的类</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    Animal.prototype.speak= <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name+<span class="string">' makes a noise.'</span>);</span><br><span class="line">    &#125;;</span><br><span class="line"><span class="comment">//可以继承传统的基于函数的类</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span></span></span><br><span class="line"><span class="class">    </span>&#123;</span><br><span class="line">        speak() &#123;</span><br><span class="line">            <span class="comment">// super.speak();</span></span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>.name+<span class="string">' barks.'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> d = <span class="keyword">new</span> Dog(<span class="string">'轲轲'</span>);</span><br><span class="line">    d.speak();</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>需要注意的式，类不能继承常规对象。如果要继承常规对象，可以改成Object.setPrototypeOf();</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义一个简单的对象</span></span><br><span class="line"><span class="keyword">var</span> Animal = &#123;</span><br><span class="line">	speak()&#123;</span><br><span class="line">		 <span class="built_in">console</span>.log(<span class="keyword">this</span>.name+<span class="string">' makes a noise.'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//这是一个类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span></span>&#123;</span><br><span class="line">	 <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">            <span class="keyword">this</span>.name = name;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//显示的指定Dog的prototype就是Animal</span></span><br><span class="line"><span class="built_in">Object</span>.setPrototypeOf(Dog.prototype,Animal);</span><br><span class="line">    <span class="keyword">var</span> d = <span class="keyword">new</span> Dog(<span class="string">'轲轲'</span>);</span><br><span class="line">    d.speak();</span><br></pre></td></tr></table></figure>
-
 <h3 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h3><ul>
 <li>任何javascript代码段就可以当作一个模块</li>
 <li>模块化的目标<ul>
@@ -731,7 +689,6 @@
 </li>
 <li>按照约定，模块的文件名应当和命名空间匹配<ul>
 <li><img src="/2020/04/28/JavaScript-9%E7%B1%BB%E5%92%8C%E6%A8%A1%E5%9D%97/04/28/JavaScript-9%E7%B1%BB%E5%92%8C%E6%A8%A1%E5%9D%97/9.png" class>
-
 </li>
 </ul>
 </li>
@@ -741,7 +698,6 @@
 <li>例子：<img src="/2020/04/28/JavaScript-9%E7%B1%BB%E5%92%8C%E6%A8%A1%E5%9D%97/04/28/JavaScript-9%E7%B1%BB%E5%92%8C%E6%A8%A1%E5%9D%97/10.png" class></li>
 <li>将模块函数当作构造函数使用，通过new来调用，通过将他们赋值来给this将其到处</li>
 <li><img src="/2020/04/28/JavaScript-9%E7%B1%BB%E5%92%8C%E6%A8%A1%E5%9D%97/04/28/JavaScript-9%E7%B1%BB%E5%92%8C%E6%A8%A1%E5%9D%97/11.png" class>
-
 </li>
 </ul>
 <h4 id="模块化的几个规范"><a href="#模块化的几个规范" class="headerlink" title="模块化的几个规范"></a>模块化的几个规范</h4><h5 id="CommonJS"><a href="#CommonJS" class="headerlink" title="CommonJS"></a>CommonJS</h5><ul>
@@ -751,16 +707,13 @@
 <li>缺点：CommonJS用同步的方式加载模块，在浏览器端，限于网络原因，CommonJS不适合浏览器端模块加载，更合理的是使用异步加载，比如AMD</li>
 </ul>
 <h5 id="AMD"><a href="#AMD" class="headerlink" title="AMD"></a>AMD</h5><ul>
-<li><p>即异步模块定义</p>
-</li>
-<li><p>采用这个异步方式加载模块，模块的加载不影响后面语句的运行</p>
-</li>
+<li>即异步模块定义</li>
+<li>采用这个异步方式加载模块，模块的加载不影响后面语句的运行</li>
 <li><p>所有依赖这个模块的语句，都定义在一个回调函数中，等到加载完成之后，这个回调函数才会运行，除了和CommonJS同步加载方式不同之外，AMD在模块的定义与引用上也有所不同</p>
 </li>
 <li><p>在AMD标准中，定义了下面三个API</p>
 <ul>
-<li><p>require([module],callback)</p>
-<ul>
+<li>require([module],callback)<ul>
 <li>又是我们依旧通过require关键字，它包含两个参数，第一个数组为要加载的模块，第二个参数为回调函数</li>
 </ul>
 </li>
@@ -775,10 +728,8 @@
 </li>
 </ul>
 </li>
-<li><p>优点：适合在浏览器环境中异步加载模块，并行加载多个模块</p>
-</li>
-<li><p>不能按需加载</p>
-</li>
+<li>优点：适合在浏览器环境中异步加载模块，并行加载多个模块</li>
+<li>不能按需加载</li>
 </ul>
 
       
@@ -1004,7 +955,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">118.5k</span>
+    <span title="Site words total count">119.1k</span>
   
 </div>
 
