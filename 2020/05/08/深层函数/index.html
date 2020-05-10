@@ -86,12 +86,12 @@
 
 
 
-<meta name="description" content="Generating functions definition$G(x) &#x3D; a_0+a_1+a_2……a_kx^k+… &#x3D; \sum_{k&#x3D;0}^{\infty}a_kx^k$ 关于Generating functions 或者叫母函数或深层函数，我们有一些例子  性质   怎么证明 ak&#x3D;k+1时候的结论？ 把$\sum_{j&#x3D;0}^k1看作是 a_j b_{k-j}&#x3D;1$ 原式就是 $f^2">
+<meta name="description" content="Generating functions definition$G(x) &#x3D; a_0+a_1+a_2……a_kx^k+… &#x3D; \sum_{k&#x3D;0}^{\infty}a_kx^k$ 关于Generating functions 或者叫母函数或生成函数，我们有一些例子  性质  怎么证明 ak&#x3D;k+1时候的结论？ 把$\sum_{j&#x3D;0}^k1看作是 a_j b_{k-j}&#x3D;1$ 原式就是 $f^2(">
 <meta property="og:type" content="article">
-<meta property="og:title" content="深层函数">
+<meta property="og:title" content="生成函数">
 <meta property="og:url" content="http://yoursite.com/2020/05/08/%E6%B7%B1%E5%B1%82%E5%87%BD%E6%95%B0/index.html">
 <meta property="og:site_name" content="Jason">
-<meta property="og:description" content="Generating functions definition$G(x) &#x3D; a_0+a_1+a_2……a_kx^k+… &#x3D; \sum_{k&#x3D;0}^{\infty}a_kx^k$ 关于Generating functions 或者叫母函数或深层函数，我们有一些例子  性质   怎么证明 ak&#x3D;k+1时候的结论？ 把$\sum_{j&#x3D;0}^k1看作是 a_j b_{k-j}&#x3D;1$ 原式就是 $f^2">
+<meta property="og:description" content="Generating functions definition$G(x) &#x3D; a_0+a_1+a_2……a_kx^k+… &#x3D; \sum_{k&#x3D;0}^{\infty}a_kx^k$ 关于Generating functions 或者叫母函数或生成函数，我们有一些例子  性质  怎么证明 ak&#x3D;k+1时候的结论？ 把$\sum_{j&#x3D;0}^k1看作是 a_j b_{k-j}&#x3D;1$ 原式就是 $f^2(">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://yoursite.com/2020/05/08/%E6%B7%B1%E5%B1%82%E5%87%BD%E6%95%B0/2.png">
 <meta property="og:image" content="http://yoursite.com/2020/05/08/%E6%B7%B1%E5%B1%82%E5%87%BD%E6%95%B0/4.png">
@@ -100,8 +100,11 @@
 <meta property="og:image" content="http://yoursite.com/2020/05/08/%E6%B7%B1%E5%B1%82%E5%87%BD%E6%95%B0/5.png">
 <meta property="og:image" content="http://yoursite.com/2020/05/08/%E6%B7%B1%E5%B1%82%E5%87%BD%E6%95%B0/6.png">
 <meta property="og:image" content="http://yoursite.com/2020/05/08/%E6%B7%B1%E5%B1%82%E5%87%BD%E6%95%B0/8.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/08/%E6%B7%B1%E5%B1%82%E5%87%BD%E6%95%B0/9.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/08/%E6%B7%B1%E5%B1%82%E5%87%BD%E6%95%B0/8.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/08/%E6%B7%B1%E5%B1%82%E5%87%BD%E6%95%B0/10.png">
 <meta property="article:published_time" content="2020-05-08T13:13:45.000Z">
-<meta property="article:modified_time" content="2020-05-09T08:33:44.058Z">
+<meta property="article:modified_time" content="2020-05-10T11:17:30.445Z">
 <meta property="article:author" content="徐啟航">
 <meta property="article:tag" content="discrete mathematics">
 <meta name="twitter:card" content="summary">
@@ -141,7 +144,7 @@
 
 
 
-  <title>深层函数 | Jason</title>
+  <title>生成函数 | Jason</title>
   
 
 
@@ -321,7 +324,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">深层函数</h1>
+          <h1 class="post-title" itemprop="name headline">生成函数</h1>
         
 
         <div class="post-meta">
@@ -365,7 +368,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  2.1k
+                  2.4k
                 </span>
               
 
@@ -381,7 +384,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  10
+                  11
                 </span>
               
             </div>
@@ -404,20 +407,17 @@
       
         <h1 id="Generating-functions"><a href="#Generating-functions" class="headerlink" title="Generating functions"></a>Generating functions</h1><p><img src="/2020/05/08/%E6%B7%B1%E5%B1%82%E5%87%BD%E6%95%B0/2.png" alt></p>
 <h2 id="definition"><a href="#definition" class="headerlink" title="definition"></a>definition</h2><p>$G(x) = a_0+a_1+a_2……a_kx^k+… = \sum_{k=0}^{\infty}a_kx^k$</p>
-<p>关于Generating functions 或者叫母函数或深层函数，我们有一些例子</p>
+<p>关于Generating functions 或者叫母函数或生成函数，我们有一些例子</p>
 <p><img src="/2020/05/08/%E6%B7%B1%E5%B1%82%E5%87%BD%E6%95%B0/4.png" alt></p>
-<h4 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h4><img src="/2020/05/08/%E6%B7%B1%E5%B1%82%E5%87%BD%E6%95%B0/1.png" style="zoom: 67%;">
-
+<h4 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h4><p><img src="/2020/05/08/%E6%B7%B1%E5%B1%82%E5%87%BD%E6%95%B0/1.png" style="zoom: 67%;"></p>
 <ul>
 <li>怎么证明 ak=k+1时候的结论？</li>
 <li>把$\sum_{j=0}^k1看作是 a_j b_{k-j}=1$</li>
 <li>原式就是 $f^2(x),f(x)是当 a_k = 1的时候对应的深层函数$</li>
 </ul>
-<h2 id="Extended-Binomial-Coefficient"><a href="#Extended-Binomial-Coefficient" class="headerlink" title="Extended Binomial Coefficient"></a>Extended Binomial Coefficient</h2><img src="/2020/05/08/%E6%B7%B1%E5%B1%82%E5%87%BD%E6%95%B0/3.png" style="zoom: 50%;">
-
+<h2 id="Extended-Binomial-Coefficient"><a href="#Extended-Binomial-Coefficient" class="headerlink" title="Extended Binomial Coefficient"></a>Extended Binomial Coefficient</h2><p><img src="/2020/05/08/%E6%B7%B1%E5%B1%82%E5%87%BD%E6%95%B0/3.png" style="zoom: 50%;"></p>
 <p>我们从中可以推断出这个结论</p>
-<img src="/2020/05/08/%E6%B7%B1%E5%B1%82%E5%87%BD%E6%95%B0/5.png" style="zoom: 50%;">
-
+<p><img src="/2020/05/08/%E6%B7%B1%E5%B1%82%E5%87%BD%E6%95%B0/5.png" style="zoom: 50%;"></p>
 <p>那么让 |x|&lt;1并且让u为一个实数. 二项式展开是一样的，只不过u可以实任意一个实数</p>
 <p>$(1+x)^u=\sum_{k=0}^{\infty}\tbinom{u}{k}x^k$</p>
 <p>有了以上结论我们可以分别求出$(1+x)^{-n}和(1-x)^{-n}$</p>
@@ -426,13 +426,13 @@
 <h2 id="Counting-Problems-and-Generating-functions"><a href="#Counting-Problems-and-Generating-functions" class="headerlink" title="Counting Problems and Generating functions"></a>Counting Problems and Generating functions</h2><h3 id="Example-I"><a href="#Example-I" class="headerlink" title="Example I"></a>Example I</h3><p><strong>Question</strong>: Find the number of solutions of e1 +e2 +e3 = 17, where<br>e1,e2, and e3 are nonnegative integers with $2\leq e_1\leq 5,3\leq e_2 \leq 6, 4\leq e_3 \leq 7$</p>
 <p><strong>solution</strong>: 构造一个多项式</p>
 <p>$(x^2 + x^3 + x^4 + x^5)(x^3 + x^4 + x^5 + x^6)(x^4 + x^5 + x^6 + x^7)$</p>
-<p>然后从里面挑，让最后相乘后x的17次方的系数。这就是通过深层函数来构造一个方程的解</p>
-<img src="/2020/05/08/%E6%B7%B1%E5%B1%82%E5%87%BD%E6%95%B0/6.png" style="zoom: 50%;">
-
+<p>然后从里面挑，让最后相乘后x的17次方的系数。这就是通过生成函数来构造一个方程的解</p>
+<p><img src="/2020/05/08/%E6%B7%B1%E5%B1%82%E5%87%BD%E6%95%B0/6.png" style="zoom: 50%;"></p>
 <h3 id="Example-II"><a href="#Example-II" class="headerlink" title="Example II"></a>Example II</h3><p><strong>Question:</strong>In how many different ways can eight identical cookies be distributed among three distinct children if each child receives at least two cookies and no more than four cookies?</p>
 <p><strong>solution:</strong> 转换成 $e_1+e_2+e_3 = 8 ,2\leq e_n\leq 4$</p>
 <p>所以这个多项式就是 $(x^2+x^3+x^4)^3$,在里面找x^8 的系数是多少</p>
 <p>$(x^2+x^3+x^4)^3=x^6(1+x+x^2)^3$ 也就是从$(1+x+x^2)^3$中找到x^2的系数</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -440,7 +440,8 @@
 <th>#cases</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>x^2,1,1</td>
 <td>$C_3^1$</td>
 </tr>
@@ -448,7 +449,9 @@
 <td>x,x,1</td>
 <td>$C_3^2$</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h3 id="Example-III"><a href="#Example-III" class="headerlink" title="Example III"></a>Example III</h3><p><strong>Question:</strong>How many positive integers less than 1,000,000 have the sum of there digits equal to 19?</p>
 <p><strong>solution:</strong> 相当于一个六位数$\overline{a_1a_2a_3a_4a_5a_6}$ and $a_1+a_2+a_3+a_4+a_5+a_6=19$</p>
 <p>其中 $0\leq a_i \leq 9$</p>
@@ -474,14 +477,14 @@
 <p>这么写有什么好处呢因为 $x^{k+1}$以后的项的系数，不会和之前的项相乘得到目标x^k,并且，我们这样写，就可以写成 $f(x) = (\frac{1}{1-x})^n = (1-x)^{-n}= \sum_{k=0}^{\infty}\tbinom{-n}{k}(-x)^k$</p>
 <p>那么这样的话，x^k 的系数就是 $\tbinom{-n}{k}(-1)^k = (-1)^kC(n+k-1,k)(-1)^k = \tbinom{n+k-1}{r}$</p>
 <h3 id="Example-VII"><a href="#Example-VII" class="headerlink" title="Example VII"></a>Example VII</h3><p><strong>Question:</strong>Find # ways to select r objects of n different kinds if we must select at least one object of each kind.</p>
-<p><strong>solution:</strong> 当每个元素至少找一个，那么深层函数怎么写，又怎么做呢？</p>
+<p><strong>solution:</strong> 当每个元素至少找一个，那么生成函数怎么写，又怎么做呢？</p>
 <p>$f (x) = (x + x^2 + ….)^n$中找x^r 的系数 。这就是说，把原来的1去掉了，因为每个元素都至少找一个。从中提取出一个x^n那么就变成了$f(x)= x^n(1+x+x^2+…)^n=\frac{x^n}{(1-x)^n}= x^n(1-x)^{-n}$</p>
 <p>根据上面的结论我们可以得到 $f(x)= x^n\sum_{r=0}^{\infty}\tbinom{-n}{r}(-x)^r =\sum_{r=0}^{\infty}\tbinom{-n}{r}x^{n+r}$</p>
 <p>令t = n+r 可得</p>
 <p>$ =\sum_{t=n}^{\infty}\tbinom{t-1}{t-n}x^t$</p>
 <p>那么也就是说有 C(r-1,r-n)种方法</p>
 <h2 id="Using-Generating-functions-to-solve-Recurrence-Relaion"><a href="#Using-Generating-functions-to-solve-Recurrence-Relaion" class="headerlink" title="Using Generating functions to solve Recurrence Relaion"></a>Using Generating functions to solve Recurrence Relaion</h2><h3 id="Example-I-1"><a href="#Example-I-1" class="headerlink" title="Example I"></a>Example I</h3><p><strong>Question:</strong>Solve recurrence relation $a_k = 3a_{k-1}$ for k = 1， 2，3;<br>and initial condition $a_0 = 2$.</p>
-<p><strong>solution:</strong> 这是用深层函数来求出递推公式</p>
+<p><strong>solution:</strong> 这是用生成函数来求出递推公式</p>
 <p>那么为了得到$a_{k-1}$我们可以这样变形$xf(x) = \sum_{k=0}^{\infty}a_kx^{k+1}=\sum_{k=1}^{\infty}a_{k-1}x^k$</p>
 <p>所以原递推关系变成了 </p>
 <p>$f(x)-3xf(x)=\sum_{k=0}^{\infty}a_kx^k-3\sum_{k=1}^{\infty}a^kx^k = a_0+\sum_{k=1}^{\infty}(a_k-3a_{k-1})x^k = 2$</p>
@@ -490,7 +493,7 @@
 <p>所以说，$a_k = 2\cdot3^k$</p>
 <h3 id="Example-II-1"><a href="#Example-II-1" class="headerlink" title="Example II"></a>Example II</h3><p><strong>Question:</strong>Suppose that a valid codeword is an n-digit number indecimal notation containing an even number of 0s. Let an denote the number of valid codewords of length n. Note that a1 = 9, and the recurrence relation is</p>
 <p>$a_n=8a_{n-1}+10^{n-1}$</p>
-<p><strong>solution:</strong> 要用深层函数来解决，我们要求出 a0的值，代入得 a0=1</p>
+<p><strong>solution:</strong> 要用生成函数来解决，我们要求出 a0的值，代入得 a0=1</p>
 <p>那么$f(x)-1=\sum_{n=1}^{\infty}a_nx^n=\sum_{n=1}^{\infty}(8a_{n-1}x^n+10^{n-1}x^n)$</p>
 <p>这边为什么要减去1呢，就是把a0给减掉，剩下的就是从n=1开始的和了</p>
 <p>所以继续化简得$=8x\sum_{n=1}^{\infty}a_{n-1}x^{n-1}+x\sum_{n=1}^{\infty}10^nx^n=8xf(x)+\frac{x}{1-10x}$</p>
@@ -498,7 +501,7 @@
 <p>由定义$\frac 1{1-ax}=\sum_{k=0}^{\infty}a^kx^k$我们得到了$f(x)= \sum_{k=0}^{\infty}\frac 1{2}(8^k+10^k)x^k$</p>
 <p>那么自然 $a_n=\frac 1 2(8^k+10^k)$</p>
 <h3 id="Example-III-1"><a href="#Example-III-1" class="headerlink" title="Example III"></a>Example III</h3><p><strong>Question:</strong> Using the generating function method to solve $a_n -3a_{n-1} = n , a_0 = 1$</p>
-<p><strong>solution:</strong> 要用深层函数来解决，我们令$f(x)= \sum_{k=0}^{\infty}a_kx^k$</p>
+<p><strong>solution:</strong> 要用生成函数来解决，我们令$f(x)= \sum_{k=0}^{\infty}a_kx^k$</p>
 <p>注意，这里是$a_{n-1}$那么我们向上面一样写 $xf(x)$，如果是二阶的$a_{n-2}$那么就需要令$x^2f(x)$ </p>
 <p>所以 $xf(x)= \sum_{k=0}^{\infty}a_kx^{k+1}= \sum_{k=1}^{\infty}a_{k-1}x^k$</p>
 <p>根据递推关系，我们带入可得</p>
@@ -516,6 +519,21 @@
 <p>$(1+x)^{2n}=[(x+1)^n]^2=[C(n,0)+C(n,1)x+C(n,2)x^2…..+C(n,n)x^n]^2$</p>
 <p>要看的是 $x^n$的系数，那么要看的就是$\sum_{k=0}^{n}C(n,k)C(n-k)=\sum_{k=0}^nC(n,k)^2$</p>
 <p>Because both C(2n,n) andPnk=0 $C(n,k)^2$ represent the coefficient of xn in $(1 + x)^{2n}$, they must be equal.</p>
+<h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><p><img src="/2020/05/08/%E6%B7%B1%E5%B1%82%E5%87%BD%E6%95%B0/9.png"></p>
+<p><img src="/2020/05/08/%E6%B7%B1%E5%B1%82%E5%87%BD%E6%95%B0/8.png"></p>
+<ul>
+<li>对照上面的定理就好了，需要注意的是3n，2n+3这类的可以变形成3(n+1)-3和2(n+1)+1这两样，然后分别变成相对应的生成函数</li>
+</ul>
+<p><img src="/2020/05/08/%E6%B7%B1%E5%B1%82%E5%87%BD%E6%95%B0/10.png"></p>
+<ul>
+<li><p>对于这种已经知道生成函数，要我们求$a_k$的题目，我的经验就是<strong>有则改之无则加勉</strong></p>
+</li>
+<li><p>就是说，像$\frac 1{1-5x},\frac{1}{1-x^2}$这类，我们可以通过定理变形成$\sum_{k=0}^{\infty}5^kx^k和\sum_{k=0}^{\infty}(x^2)^k(把原来的x替换成x^2即可)$</p>
+</li>
+<li>但是像x^2+3x+7这类的，已经把系数$a_k$显示出来了，我们就没有必要再去改动他了，如果后面的分出来 $x_0orx_1$这类的倒是可以合并同类项</li>
+<li>此外，要灵活运用变量替换，比如说$\frac{x^4}{1-x^4}-&gt;x^4\sum_{k=0}^{\infty}(x^4)^k-&gt;\sum_{k=0}^{\infty}x^{4k+4}$</li>
+<li>然后令k+1 = m 在变量代换可得$\sum_{m=1}^\infty x^{4m}$</li>
+</ul>
 
       
     </div>
@@ -536,7 +554,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>Post link:</strong>
-    <a href="http://yoursite.com/2020/05/08/%E6%B7%B1%E5%B1%82%E5%87%BD%E6%95%B0/" title="深层函数">http://yoursite.com/2020/05/08/%E6%B7%B1%E5%B1%82%E5%87%BD%E6%95%B0/</a>
+    <a href="http://yoursite.com/2020/05/08/%E6%B7%B1%E5%B1%82%E5%87%BD%E6%95%B0/" title="生成函数">http://yoursite.com/2020/05/08/%E6%B7%B1%E5%B1%82%E5%87%BD%E6%95%B0/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice: </strong>
@@ -653,7 +671,7 @@
               
                 <a href="/archives%7C%7C%20archive">
               
-                  <span class="site-state-item-count">139</span>
+                  <span class="site-state-item-count">141</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -699,7 +717,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Generating-functions"><span class="nav-number">1.</span> <span class="nav-text">Generating functions</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#definition"><span class="nav-number">1.1.</span> <span class="nav-text">definition</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#性质"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">性质</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Extended-Binomial-Coefficient"><span class="nav-number">1.2.</span> <span class="nav-text">Extended Binomial Coefficient</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Counting-Problems-and-Generating-functions"><span class="nav-number">1.3.</span> <span class="nav-text">Counting Problems and Generating functions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-I"><span class="nav-number">1.3.1.</span> <span class="nav-text">Example I</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-II"><span class="nav-number">1.3.2.</span> <span class="nav-text">Example II</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-III"><span class="nav-number">1.3.3.</span> <span class="nav-text">Example III</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-IV"><span class="nav-number">1.3.4.</span> <span class="nav-text">Example IV</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-V"><span class="nav-number">1.3.5.</span> <span class="nav-text">Example V</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-VI"><span class="nav-number">1.3.6.</span> <span class="nav-text">Example VI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-VII"><span class="nav-number">1.3.7.</span> <span class="nav-text">Example VII</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Using-Generating-functions-to-solve-Recurrence-Relaion"><span class="nav-number">1.4.</span> <span class="nav-text">Using Generating functions to solve Recurrence Relaion</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-I-1"><span class="nav-number">1.4.1.</span> <span class="nav-text">Example I</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-II-1"><span class="nav-number">1.4.2.</span> <span class="nav-text">Example II</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-III-1"><span class="nav-number">1.4.3.</span> <span class="nav-text">Example III</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-IV-1"><span class="nav-number">1.4.4.</span> <span class="nav-text">Example IV</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Generating-functions"><span class="nav-number">1.</span> <span class="nav-text">Generating functions</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#definition"><span class="nav-number">1.1.</span> <span class="nav-text">definition</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#性质"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">性质</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Extended-Binomial-Coefficient"><span class="nav-number">1.2.</span> <span class="nav-text">Extended Binomial Coefficient</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Counting-Problems-and-Generating-functions"><span class="nav-number">1.3.</span> <span class="nav-text">Counting Problems and Generating functions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-I"><span class="nav-number">1.3.1.</span> <span class="nav-text">Example I</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-II"><span class="nav-number">1.3.2.</span> <span class="nav-text">Example II</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-III"><span class="nav-number">1.3.3.</span> <span class="nav-text">Example III</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-IV"><span class="nav-number">1.3.4.</span> <span class="nav-text">Example IV</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-V"><span class="nav-number">1.3.5.</span> <span class="nav-text">Example V</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-VI"><span class="nav-number">1.3.6.</span> <span class="nav-text">Example VI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-VII"><span class="nav-number">1.3.7.</span> <span class="nav-text">Example VII</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Using-Generating-functions-to-solve-Recurrence-Relaion"><span class="nav-number">1.4.</span> <span class="nav-text">Using Generating functions to solve Recurrence Relaion</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-I-1"><span class="nav-number">1.4.1.</span> <span class="nav-text">Example I</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-II-1"><span class="nav-number">1.4.2.</span> <span class="nav-text">Example II</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-III-1"><span class="nav-number">1.4.3.</span> <span class="nav-text">Example III</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-IV-1"><span class="nav-number">1.4.4.</span> <span class="nav-text">Example IV</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例题"><span class="nav-number">1.4.5.</span> <span class="nav-text">例题</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -740,7 +758,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">116.6k</span>
+    <span title="Site words total count">118.5k</span>
   
 </div>
 
