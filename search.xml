@@ -450,7 +450,7 @@ public:
   <entry>
     <title>394字符串解码</title>
     <url>/2020/04/22/394%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E7%A0%81/</url>
-    <content><![CDATA[<h1 id="394-字符串解码"><a href="#394-字符串解码" class="headerlink" title="394 字符串解码"></a>394 字符串解码</h1><h2 id="下面是题目"><a href="#下面是题目" class="headerlink" title="下面是题目"></a>下面是题目</h2><p><img src="/2020/04/22/394%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E7%A0%81/394字符串解码\394.png" alt></p>
+    <content><![CDATA[<h1 id="394-字符串解码"><a href="#394-字符串解码" class="headerlink" title="394 字符串解码"></a>394 字符串解码</h1><h2 id="下面是题目"><a href="#下面是题目" class="headerlink" title="下面是题目"></a>下面是题目</h2><p><img src="/2020/04/22/394%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E7%A0%81/394.png" alt></p>
 <h3 id="下面是题目给出的模板"><a href="#下面是题目给出的模板" class="headerlink" title="下面是题目给出的模板"></a>下面是题目给出的模板</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">decodeString</span><span class="params">(<span class="built_in">string</span>&amp; s)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><ol>
 <li>这题不看题解我真滴很难做，思路是有一点，但是要把它编程代码其实不简单！贴一下大佬的代码</li>
@@ -6794,12 +6794,12 @@ console.log(s[0]);
 <ol>
 <li>沿D中任意光滑闭曲线L，由$\oint_LPdx+Qdy=0$</li>
 <li>对D中任一分段光滑曲线L，曲线积分$\int_LPdx+Qdy$与路径无关，只与起止点有关</li>
-<li>Pdx+Qdy在D内是某以函数$u(x,y)$的全微分，$du(x,y)=Pdx+Qdy$</li>
+<li>Pdx+Qdy在D内是某一函数$u(x,y)$的全微分，$du(x,y)=Pdx+Qdy$</li>
 <li>在D内每一点都有$\frac{\delta P}{\delta y}=\frac{\delta Q}{\delta x}$</li>
 </ol>
 <h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>根据定理，若某区域D内 $\frac{\delta P}{\delta y}=\frac{\delta Q}{\delta x}$</p>
 <ol>
-<li>计算曲线积分时，可选择方便的积分路径</li>
+<li>计算曲线积分时，可选择方便的积分路径，一般是直线。</li>
 <li>求曲线积分时，可利用格林公式简化计算，若积分路径不是闭曲线，可以添加辅助线</li>
 <li><img src="/2020/05/11/%E6%A0%BC%E6%9E%97%E5%85%AC%E5%BC%8F/9.png" style="zoom:40%;"></li>
 <li><img src="/2020/05/11/%E6%A0%BC%E6%9E%97%E5%85%AC%E5%BC%8F/10.png" style="zoom:40%;"></li>
@@ -6807,8 +6807,30 @@ console.log(s[0]);
 <h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><ol>
 <li><p><img src="/2020/05/11/%E6%A0%BC%E6%9E%97%E5%85%AC%E5%BC%8F/11.png" style="zoom:40%;"></p>
 </li>
-<li></li>
+<li><p><img src="/2020/05/11/%E6%A0%BC%E6%9E%97%E5%85%AC%E5%BC%8F/12.png" style="zoom:40%;"></p>
+</li>
 </ol>
+<ul>
+<li>注意，一般让你求全微分原函数地，都是从（0，0）到x，y，这样会方便很多</li>
+</ul>
+<ol>
+<li>$\int_L\frac{(3y-x)dx+(y-3x)dy}{(x+y)^3}$其中L是由点$A(\frac{\pi}{2},0)$沿着曲线 $y = \frac{\pi}{2}cosx$到点$B(0,\frac{\pi}{2})$的弧段</li>
+</ol>
+<ul>
+<li>首先确定P和Q，判断是不是$\frac{\delta P}{\delta y}=\frac{\delta Q}{\delta x}$</li>
+<li>知道他们相等后，我们选择最简单的路径，也就是AB直线，然后带入</li>
+<li>积分限就是x1-&gt;x2，因为是对x积分。然后把y带入求积分</li>
+</ul>
+<ol>
+<li>验证$e^x[e^y(x-y+2)+y]dx+e^x[e^y(x-y)+1]dy$是某个函数u(x,y)的全微分，并求出这样一个u(x,y)</li>
+</ol>
+<ul>
+<li>首先确定P和Q，判断是不是$\frac{\delta P}{\delta y}=\frac{\delta Q}{\delta x}$</li>
+<li>知道他们相等</li>
+<li>$u(x,y)=\int_{(0,0)}^{(x,y)}e^x[e^y(x-y+2)+y]dx+e^x[e^y(x-y)+1]dy$</li>
+<li>$=\int_0^x(x+2)e^xdx+\int_0^y(xe^xe^y-e^x)dy$ </li>
+<li>然后就可以求出原函数了</li>
+</ul>
 ]]></content>
       <tags>
         <tag>高数</tag>
@@ -6837,6 +6859,26 @@ console.log(s[0]);
     <url>/2020/05/11/1381%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E6%94%AF%E6%8C%81%E5%A2%9E%E9%87%8F%E6%93%8D%E4%BD%9C%E7%9A%84%E6%A0%88/</url>
     <content><![CDATA[<h1 id="1381设计一个支持增量操作的栈"><a href="#1381设计一个支持增量操作的栈" class="headerlink" title="1381设计一个支持增量操作的栈"></a>1381设计一个支持增量操作的栈</h1><p><img src="/2020/05/11/1381%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E6%94%AF%E6%8C%81%E5%A2%9E%E9%87%8F%E6%93%8D%E4%BD%9C%E7%9A%84%E6%A0%88/1.png" alt></p>
 <h3 id="下面是解法"><a href="#下面是解法" class="headerlink" title="下面是解法"></a>下面是解法</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CustomStack</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;v;</span><br><span class="line">    <span class="keyword">int</span> top;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    CustomStack(<span class="keyword">int</span> maxSize) &#123;</span><br><span class="line">        v.resize(maxSize);</span><br><span class="line">        top = <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(top!=v.<span class="built_in">size</span>()<span class="number">-1</span>)&#123;</span><br><span class="line">            ++top;</span><br><span class="line">            v[top] = x;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//利用vector模仿栈，这里的pop不是真的pop，原来的数据还保留，只是top变了</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(top==<span class="number">-1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        --top;</span><br><span class="line">        <span class="keyword">return</span> v[<span class="number">1</span>+top];</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">increment</span><span class="params">(<span class="keyword">int</span> k, <span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> temp = <span class="built_in">min</span>(k,top+<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;temp;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            v[i] +=val;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>leetcode_Stack</tag>
+        <tag>medium</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>880索引处地解码字符串</title>
+    <url>/2020/05/11/880%E7%B4%A2%E5%BC%95%E5%A4%84%E5%9C%B0%E8%A7%A3%E7%A0%81%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>456find132pattern</title>
+    <url>/2020/05/11/456find132pattern/</url>
+    <content><![CDATA[<p> <img src="/2020/05/11/456find132pattern/1.png" alt></p>
+<h3 id="555-BF失败！"><a href="#555-BF失败！" class="headerlink" title="555,BF失败！"></a>555,BF失败！</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">find132pattern</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums.<span class="built_in">size</span>()&lt;<span class="number">3</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;nums.<span class="built_in">size</span>()<span class="number">-2</span>;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = i+<span class="number">1</span>;j&lt;nums.<span class="built_in">size</span>()<span class="number">-1</span>;j++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> k = j+<span class="number">1</span>;k&lt;nums.<span class="built_in">size</span>();k++)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(nums[i]&lt;nums[k]&amp;&amp;nums[k]&lt;nums[j])</span><br><span class="line">                        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="一种好方法"><a href="#一种好方法" class="headerlink" title="一种好方法"></a>一种好方法</h3><p>运用上面的思路，可以对算法进行简化操作</p>
+<p>我们先找到i和j，让nums[i]&lt;nums[j]然后再在nums[j+1]到尾部找到夹在他们两之间的nums[k]</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">find132pattern</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums.<span class="built_in">size</span>()&lt;<span class="number">3</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">0</span>;<span class="comment">//1模式</span></span><br><span class="line">        <span class="keyword">int</span> j=<span class="number">0</span>;<span class="comment">//3模式</span></span><br><span class="line">        <span class="keyword">int</span> k=<span class="number">0</span>;<span class="comment">//2模式</span></span><br><span class="line">        <span class="keyword">int</span> n=nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">while</span>(i&lt;n)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//这一步是找到前i个中的最小值，作为1</span></span><br><span class="line">            <span class="keyword">while</span>(i&lt;n<span class="number">-2</span> &amp;&amp; nums[i]&gt;=nums[i+<span class="number">1</span>]) i++;</span><br><span class="line">            j=i+<span class="number">1</span>;</span><br><span class="line">            <span class="comment">//这一步是找到第i到j中最大的，这里已经比nums[i]大了</span></span><br><span class="line">            <span class="keyword">while</span>(j&lt;n<span class="number">-1</span> &amp;&amp; nums[j]&lt;=nums[j+<span class="number">1</span>]) j++;</span><br><span class="line">            k=j+<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span>(k&lt;n)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(nums[k]&lt;nums[j] &amp;&amp; nums[k]&gt;nums[i])</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                <span class="keyword">else</span> k++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//如果没找到的话，那就进行第二次遍历</span></span><br><span class="line">            <span class="comment">//i到j之间已经不存在情况了</span></span><br><span class="line"><span class="comment">//比如4，3，2，1，9，10，11，-1，100;  i是1，j是11既然1-11都没有</span></span><br><span class="line"><span class="comment">//那么1-9，1-10更加不会有，所以从i=j+1开始探索           </span></span><br><span class="line">            i=j+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>用栈存放最大的元素，次大的元素用third存放，遍历方式从后往前。若找到比third小的元素则说明存在132模式。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">find132pattern</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums.<span class="built_in">size</span>()&lt;<span class="number">3</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; <span class="built_in">max</span>;</span><br><span class="line">        <span class="keyword">int</span> n=nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">int</span> third=INT_MIN;</span><br><span class="line">        <span class="comment">//初始化不能为0，因为要进行比较，初始化为0会出错。</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=n<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i]&lt;third) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">while</span>(!<span class="built_in">max</span>.empty() &amp;&amp; nums[i]&gt;<span class="built_in">max</span>.top())</span><br><span class="line">	<span class="comment">//若找到比栈中还大的元素，则更新最大和次大，次大和最大靠地越近，那么就越有可能找到1</span></span><br><span class="line">            &#123;</span><br><span class="line">                third=<span class="built_in">max</span>.top();</span><br><span class="line">                <span class="built_in">max</span>.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">max</span>.push(nums[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>leetcode_Stack</tag>
         <tag>medium</tag>

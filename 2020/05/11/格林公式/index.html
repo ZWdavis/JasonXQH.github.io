@@ -104,8 +104,9 @@
 <meta property="og:image" content="http://yoursite.com/2020/05/11/%E6%A0%BC%E6%9E%97%E5%85%AC%E5%BC%8F/9.png">
 <meta property="og:image" content="http://yoursite.com/2020/05/11/%E6%A0%BC%E6%9E%97%E5%85%AC%E5%BC%8F/10.png">
 <meta property="og:image" content="http://yoursite.com/2020/05/11/%E6%A0%BC%E6%9E%97%E5%85%AC%E5%BC%8F/11.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/11/%E6%A0%BC%E6%9E%97%E5%85%AC%E5%BC%8F/12.png">
 <meta property="article:published_time" content="2020-05-11T01:57:06.000Z">
-<meta property="article:modified_time" content="2020-05-11T03:46:13.043Z">
+<meta property="article:modified_time" content="2020-05-11T12:42:12.260Z">
 <meta property="article:author" content="徐啟航">
 <meta property="article:tag" content="高数">
 <meta name="twitter:card" content="summary">
@@ -369,7 +370,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  512
+                  777
                 </span>
               
 
@@ -385,7 +386,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  2
+                  3
                 </span>
               
             </div>
@@ -443,12 +444,12 @@
 <ol>
 <li>沿D中任意光滑闭曲线L，由$\oint_LPdx+Qdy=0$</li>
 <li>对D中任一分段光滑曲线L，曲线积分$\int_LPdx+Qdy$与路径无关，只与起止点有关</li>
-<li>Pdx+Qdy在D内是某以函数$u(x,y)$的全微分，$du(x,y)=Pdx+Qdy$</li>
+<li>Pdx+Qdy在D内是某一函数$u(x,y)$的全微分，$du(x,y)=Pdx+Qdy$</li>
 <li>在D内每一点都有$\frac{\delta P}{\delta y}=\frac{\delta Q}{\delta x}$</li>
 </ol>
 <h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>根据定理，若某区域D内 $\frac{\delta P}{\delta y}=\frac{\delta Q}{\delta x}$</p>
 <ol>
-<li>计算曲线积分时，可选择方便的积分路径</li>
+<li>计算曲线积分时，可选择方便的积分路径，一般是直线。</li>
 <li>求曲线积分时，可利用格林公式简化计算，若积分路径不是闭曲线，可以添加辅助线</li>
 <li><img src="/2020/05/11/%E6%A0%BC%E6%9E%97%E5%85%AC%E5%BC%8F/9.png" style="zoom:40%;"></li>
 <li><img src="/2020/05/11/%E6%A0%BC%E6%9E%97%E5%85%AC%E5%BC%8F/10.png" style="zoom:40%;"></li>
@@ -456,8 +457,30 @@
 <h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><ol>
 <li><p><img src="/2020/05/11/%E6%A0%BC%E6%9E%97%E5%85%AC%E5%BC%8F/11.png" style="zoom:40%;"></p>
 </li>
-<li></li>
+<li><p><img src="/2020/05/11/%E6%A0%BC%E6%9E%97%E5%85%AC%E5%BC%8F/12.png" style="zoom:40%;"></p>
+</li>
 </ol>
+<ul>
+<li>注意，一般让你求全微分原函数地，都是从（0，0）到x，y，这样会方便很多</li>
+</ul>
+<ol>
+<li>$\int_L\frac{(3y-x)dx+(y-3x)dy}{(x+y)^3}$其中L是由点$A(\frac{\pi}{2},0)$沿着曲线 $y = \frac{\pi}{2}cosx$到点$B(0,\frac{\pi}{2})$的弧段</li>
+</ol>
+<ul>
+<li>首先确定P和Q，判断是不是$\frac{\delta P}{\delta y}=\frac{\delta Q}{\delta x}$</li>
+<li>知道他们相等后，我们选择最简单的路径，也就是AB直线，然后带入</li>
+<li>积分限就是x1-&gt;x2，因为是对x积分。然后把y带入求积分</li>
+</ul>
+<ol>
+<li>验证$e^x[e^y(x-y+2)+y]dx+e^x[e^y(x-y)+1]dy$是某个函数u(x,y)的全微分，并求出这样一个u(x,y)</li>
+</ol>
+<ul>
+<li>首先确定P和Q，判断是不是$\frac{\delta P}{\delta y}=\frac{\delta Q}{\delta x}$</li>
+<li>知道他们相等</li>
+<li>$u(x,y)=\int_{(0,0)}^{(x,y)}e^x[e^y(x-y+2)+y]dx+e^x[e^y(x-y)+1]dy$</li>
+<li>$=\int_0^x(x+2)e^xdx+\int_0^y(xe^xe^y-e^x)dy$ </li>
+<li>然后就可以求出原函数了</li>
+</ul>
 
       
     </div>
@@ -595,7 +618,7 @@
               
                 <a href="/archives%7C%7C%20archive">
               
-                  <span class="site-state-item-count">146</span>
+                  <span class="site-state-item-count">148</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -682,7 +705,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">123k</span>
+    <span title="Site words total count">123.8k</span>
   
 </div>
 
